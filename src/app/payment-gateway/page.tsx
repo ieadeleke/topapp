@@ -1,14 +1,9 @@
 import Layout from "@/components/layout";
-import MapImg from "@/assets/images/map.png";
 import Image from "next/image";
 import Vector from "@/assets/images/vector.svg";
-import { GoArrowUpRight } from "react-icons/go";
-import { BsTwitterX } from "react-icons/bs";
-import { AiOutlineMedium } from "react-icons/ai";
-import { SiLinkedin } from "react-icons/si";
 import TaxIcon from "@/assets/images/icons/tax.svg";
 import WomanSmiling from "@/assets/images/woman.svg";
-import ArrowIcon from "@/assets/images/icons/Arrow.svg";
+import ArrowIcon from "@/assets/images/icons/arrow.svg";
 import { FaCheck } from "react-icons/fa6";
 
 

@@ -1,5 +1,4 @@
 import Layout from "@/components/layout";
-import MapImg from "@/assets/images/map.png";
 import Image from "next/image";
 import HeroImg from "@/assets/images/hr/hero.png";
 import Hero1Img from "@/assets/images/hr/hero1.svg";

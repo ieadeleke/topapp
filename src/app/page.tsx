@@ -3,10 +3,7 @@ import Image from "next/image";
 import LogoImg from "@/assets/images/logo.svg";
 import HeroImg from "@/assets/images/hero.png";
 import ShoppersImg from "@/assets/images/shoppers.svg";
-
-import PayeImg from "@/assets/images/icons/paye.svg";
 import WithholdingImg from "@/assets/images/icons/withholding.svg";
-import GovernmentImg from "@/assets/images/icons/government.svg";
 
 
 export default function Home() {
