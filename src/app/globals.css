@@ -1,21 +1,102 @@
+@font-face {
+  font-family: "Campton Semi-Bold";
+  src: url("/campton/CamptonSemiBold.otf");
+}
+
+@font-face {
+  font-family: "Campton Medium";
+  src: url("/campton/CamptonMedium.otf");
+}
+
+@font-face {
+  font-family: "Campton Light";
+  src: url("/campton/CamptonLight.otf");
+}
+
+@font-face {
+  font-family: "Satoshi Medium";
+  src: url("/satoshi/Satoshi-Medium.otf");
+}
+
+@font-face {
+  font-family: "Satoshi Regular";
+  src: url("/satoshi/Satoshi-Regular.otf");
+}
+
+@font-face {
+  font-family: "Satoshi Bold";
+  src: url("/satoshi/Satoshi-Bold.otf");
+}
+
+@font-face {
+  font-family: "Satoshi Light";
+  src: url("/satoshi/Satoshi-Light.otf");
+}
+
+@font-face {
+  font-family: "ClashDisplay";
+  src: url("/clashdisplay/ClashDisplay-Bold.woff");
+}
+@font-face {
+  font-family: "ClashDisplay Regular";
+  src: url("/clashdisplay/ClashDisplay-Semibold.woff");
+}
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
+  --background: #F8FFF3;
   --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --text-color: #003E42;
+  --primary: #D3FFB4;
+  --dark: #00555A;
 }
 
 body {
-  color: var(--foreground);
+  color: var(--text-color);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #fff;
+  font-family: "Campton Medium";
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Campton Semi-Bold";
+}
+
+.dotted-line {
+  width: 100%;
+  height: 4px;
+  /* Thickness of the line */
+  background: repeating-linear-gradient(to right,
+      gray,
+      gray 30px,
+      /* Length of the dash */
+      transparent 10px,
+      transparent 40px
+      /* Space between dashes */
+    );
+}
+
+.wallet-bg {
+  background: url("/wallet.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.about-hero {
+  background: url("/about.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 750px;
 }
