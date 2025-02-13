@@ -24,7 +24,7 @@ const WalletPage = () => {
                             </p>
                             <div className="flex gap-5">
                                 <Link href="" className="bg-[#1F5E59] py-4 px-8 text-white rounded-[10px]">Contact</Link>
-                                <Link href="" className="bg-transparent border-2 border-solid border-[#1F5E59] py-4 px-8 text-[#1F5E59] rounded-[10px]">Let's Get Started</Link>
+                                <Link href="" className="bg-transparent border-2 border-solid border-[#1F5E59] py-4 px-8 text-[#1F5E59] rounded-[10px]">Let&apos;s Get Started</Link>
                             </div>
                         </div>
                         <div>
