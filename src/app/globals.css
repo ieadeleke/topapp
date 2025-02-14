@@ -37,6 +37,7 @@
   font-family: "ClashDisplay";
   src: url("/clashdisplay/ClashDisplay-Bold.woff");
 }
+
 @font-face {
   font-family: "ClashDisplay Regular";
   src: url("/clashdisplay/ClashDisplay-Semibold.woff");
@@ -99,4 +100,24 @@ h6 {
   background-size: cover;
   background-repeat: no-repeat;
   height: 750px;
+}
+
+.manual {
+  background: url("/bg.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* styles/globals.css or in a component-level CSS file */
+.custom-dropdown .ant-dropdown-menu {
+  padding: 0 !important;
+  border-radius: 10px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.custom-dropdown .ant-dropdown-menu-item {
+  padding: 0 !important;
+  background: white !important;
 }
