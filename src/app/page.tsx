@@ -334,7 +334,7 @@ export default function Home() {
           <div className="my-24 px-24">
             <div className="bg-[#DFFF5E] relative rounded-[100px] py-20 px-20 border-2 border-solid border-black min-h-[700px]">
               <h4 className="text-6xl font-campton w-[90%]">
-                "Automate salary processing, PAYE deductions, and employee benefits for streamlined HR operations."
+                &apos;Automate salary processing, PAYE deductions, and employee benefits for streamlined HR operations.&apos;
               </h4>
               <Image src={MaleposeImg} alt="man sitting on a chair" className="absolute right-5 -bottom-14 w-[650px]" />
             </div>

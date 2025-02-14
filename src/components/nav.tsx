@@ -3,7 +3,6 @@ import { IoIosArrowDown } from "react-icons/io";
 import LogoImg from "@/assets/images/logo-full.svg";
 import Image from "next/image";
 import { Dropdown, MenuProps } from "antd";
-import { DownOutlined } from "@ant-design/icons";
 
 import { FaArrowRight } from "react-icons/fa6";
 
