@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { ChangeEvent, useContext, useEffect, useState } from "react";
+import { ChangeEvent, useContext, useEffect, useState, Suspense } from "react"; // Import Suspense
 import { Payment } from "@/models/payment";
 import {
   InputProps,
@@ -19,11 +19,9 @@ const TextInput = ({ className, ...props }: InputProps) => (
   <RegularTextInput className={cn("w-full md:w-96", className)} {...props} />
 );
 
-export default function GenerateReceiptPage() {
+function GenerateReceiptPage() {
   const router = useRouter();
-  const [payment, setPayment] = useState<
-    (Payment & { Receipts: string[] }) | null
-  >(null);
+  const [payment, setPayment] = useState< (Payment & { Receipts: string[] }) | null >(null);
   const { showSnackBar } = useContext(GlobalContext);
   const [reference, setReference] = useState("");
   const [transactionId, setTransactionID] = useState("");
@@ -35,7 +33,6 @@ export default function GenerateReceiptPage() {
   } = useHarmonizeNotification();
   const referenceParams = useSearchParams().get("reference");
   const tx_idParams = useSearchParams().get("tx_id");
-
   const tx_payment_method = useSearchParams().get("payment_method");
   const billingReference = useSearchParams().get("billingReference");
   const paymentReference = useSearchParams().get("reference");
@@ -97,63 +94,69 @@ export default function GenerateReceiptPage() {
     <PaymentLayout>
       <div className="mt-12 min-h-screen flex flex-col items-center">
         <div className="flex flex-col">
-          {
-            tx_payment_method === "wallet" ?
-              <GenerateReceipt
-                data={{
-                  amount: amountPaid ? amountPaid : "",
-                  url: ReceiptNumber ? ReceiptNumber : "",
-                  billingReference: billingReference ? billingReference : "",
-                  paymentTime: new Date().toString(),
-                  senderName: senderName ? senderName : "",
-                }}
+          {tx_payment_method === "wallet" ? (
+            <GenerateReceipt
+              data={{
+                amount: amountPaid ? amountPaid : "",
+                url: ReceiptNumber ? ReceiptNumber : "",
+                billingReference: billingReference ? billingReference : "",
+                paymentTime: new Date().toString(),
+                senderName: senderName ? senderName : "",
+              }}
+            />
+          ) : harmonizeNotificationData ? (
+            <div className="flex flex-col space-y-10">
+              <div className="space-y-10">
+                <GenerateReceipt
+                  handleRoute="harmonize"
+                  multipleDisplayDownloadLink={true}
+                  multipleDownloadLinks={harmonizeNotificationData.Receipts}
+                  data={{
+                    amount: harmonizeNotificationData.amountPaid,
+                    url: harmonizeNotificationData.Receipts[0],
+                    billingReference: harmonizeNotificationData.paymentRef,
+                    paymentTime: new Date().toString(),
+                    senderName: harmonizeNotificationData.PayerName,
+                  }}
+                />
+                <Divider className="w-full h-[1px] bg-gray-200" />
+              </div>
+            </div>
+          ) : (
+            <form onSubmit={onFormSubmit} className={cn("flex flex-col")}>
+              <h1 className="font-bold">Enter your Payment Reference</h1>
+              <TextInput
+                defaultValue={reference}
+                onChange={(evt) => setReference(evt.target.value)}
+                className="mt-2"
+                placeholder="XXXX-XXX-XXXXXX"
               />
-              :
-              harmonizeNotificationData ? (
-                <div className="flex flex-col space-y-10">
-                  {/* {harmonizeNotificationData.Receipts.map((receipt, index) => ( */}
-                  <div className="space-y-10">
-                    <GenerateReceipt
-                      handleRoute="harmonize"
-                      multipleDisplayDownloadLink={true}
-                      multipleDownloadLinks={harmonizeNotificationData.Receipts}
-                      data={{
-                        amount: harmonizeNotificationData.amountPaid,
-                        url: harmonizeNotificationData.Receipts[0],
-                        billingReference: harmonizeNotificationData.paymentRef,
-                        paymentTime: new Date().toString(),
-                        senderName: harmonizeNotificationData.PayerName,
-                      }}
-                    />
-                    <Divider className="w-full h-[1px] bg-gray-200" />
-                  </div>
-                </div>
-              ) : (
-                <form onSubmit={onFormSubmit} className={cn("flex flex-col")}>
-                  <h1 className="font-bold">Enter your Payment Reference</h1>
-                  <TextInput
-                    defaultValue={reference}
-                    onChange={(evt) => setReference(evt.target.value)}
-                    className="mt-2"
-                    placeholder="XXXX-XXX-XXXXXX"
-                  />
-                  <Button
-                    onClick={submitReference}
-                    variant="contained"
-                    disabled={isHarmonizeNotificationLoading}
-                    className={cn("h-10 mt-4 w-full")}
-                  >
-                    {isHarmonizeNotificationLoading
-                      ? "Please wait... Loading"
-                      : harmonizeNotificationError
-                        ? "Try again"
-                        : "Generate Receipt"}
-                  </Button>
-                  <div className="flex items-center"></div>
-                </form>
-              )}
+              <Button
+                onClick={submitReference}
+                variant="contained"
+                disabled={isHarmonizeNotificationLoading}
+                className={cn("h-10 mt-4 w-full")}
+              >
+                {isHarmonizeNotificationLoading
+                  ? "Please wait... Loading"
+                  : harmonizeNotificationError
+                  ? "Try again"
+                  : "Generate Receipt"}
+              </Button>
+              <div className="flex items-center"></div>
+            </form>
+          )}
         </div>
       </div>
     </PaymentLayout>
+  );
+}
+
+// Wrap the component with Suspense and provide a fallback
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <GenerateReceiptPage />
+    </Suspense>
   );
 }
