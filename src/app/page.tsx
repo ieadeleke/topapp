@@ -363,10 +363,10 @@ export default function Home() {
               </div>
               <div className="px-0">
                 <h3 className="text-white mb-16 text-6xl leading-normal md:leading-normal font-camptonthin mt-10 3xl:w-[95%] mx-auto 4xl:w-[95%]">
-                  <div className="w-max">
+                  <div className="w-ma">
                     Simplify <span className="text-black font-camptonsemi border-b-2 border-white border-solid">Tax and Bill
                       Payments</span> with <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2">
+                      <div className="flex flex-wrap items-center gap-2">
                         <span className="font-camptonsemi border-b-2 border-white border-solid"> Pay4IT</span> <span className="text-black font-camptonsemi"> API </span> <span className="text-black font-camptonsemi border-b-2 border-white border-solid">Integration
                         </span>
 

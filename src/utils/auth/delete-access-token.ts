@@ -2,6 +2,6 @@
 
 import { cookies } from 'next/headers'
 
-export const deleteAccessToken = () => {
-    cookies().delete('accessToken')
+export const deleteAccessToken = async () => {
+    (await cookies()).delete('accessToken')
 }
