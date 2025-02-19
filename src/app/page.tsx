@@ -240,6 +240,7 @@ export default function Home() {
                       <div className="flex items-center gap-2">
                         <span className="font-camptonsemi border-b-2 border-white border-solid"> Pay4IT</span> <span className="text-black font-camptonsemi"> API </span> <span className="text-black font-camptonsemi border-b-2 border-white border-solid">Integration
                         </span>
+                        
                       </div>
                       <span className="size-24 rounded-full bg-white block flex items-center">
                         <Image src={ArrowHomeImg} alt="paye" className="" />
