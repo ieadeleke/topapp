@@ -20,6 +20,13 @@ import CardImg from "@/assets/images/home/card.png";
 import ArrowHomeImg from "@/assets/images/icons/arrow-home.svg";
 import { FaArrowRightLong } from "react-icons/fa6";
 
+import Company1Img from "@/assets/images/companies/_1.svg";
+import Company2Img from "@/assets/images/companies/_2.svg";
+import Company3Img from "@/assets/images/companies/_3.svg";
+import Company4Img from "@/assets/images/companies/_4.svg";
+import Company5Img from "@/assets/images/companies/_5.svg";
+
+
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -83,7 +90,13 @@ export default function Home() {
               <Image src={HeroImg} alt="HeroImg" />
             </div>
           </div>
-          <div className="mt-2 py-14 bg-primary w-full"></div>
+          <div className="mt-2 py-14 bg-primary w-full">
+            <Image src={Company1Img} alt="paye" className="" />
+            <Image src={Company2Img} alt="paye" className="" />
+            <Image src={Company3Img} alt="paye" className="" />
+            <Image src={Company4Img} alt="paye" className="" />
+            <Image src={Company5Img} alt="paye" className="" />
+          </div>
           <div className="mt-20 px-5 md:px-20">
             <div className="flex flex-col md:flex-row justify-between mb-24 md:items-end max-w-[1657px]">
               <h3 className="text-3xl md:text-5xl md:leading-snug leading-snug max-w-[1190px]">

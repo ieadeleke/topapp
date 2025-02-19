@@ -35,32 +35,6 @@ const Navigation = (props: NavInterface) => {
                         </span>
                     </Link>
 
-                    <Link href="/" className="flex items-start gap-4">
-                        <span className="text-xl">
-                            <Image src={AboutIcon2} alt="about us" className="w-full h-full" />
-                        </span>
-                        <div>
-                            <p className="font-camptonsemi text-base mb-1">Blog</p>
-                            <p className="text-sm text-gray-500 font-camptonthin text-[#353535]">Artistic visual expression</p>
-                        </div>
-                        <span>
-                            <FaArrowRight className="text-[#00555A] text-xl" />
-                        </span>
-                    </Link>
-
-                    <Link href="/" className="flex items-start gap-4">
-                        <span className="text-xl">
-                            <Image src={AboutIcon3} alt="about us" className="w-full h-full" />
-                        </span>
-                        <div>
-                            <p className="font-camptonsemi text-base mb-1">Community</p>
-                            <p className="text-sm text-gray-500 font-camptonthin text-[#353535]">Stunning Web Design</p>
-                        </div>
-                        <span>
-                            <FaArrowRight className="text-[#00555A] text-xl" />
-                        </span>
-                    </Link>
-
                     <Link href="/job" className="flex items-start gap-4">
                         <span className="text-xl">
                             <Image src={AboutIcon4} alt="about us" className="w-full h-full" />
@@ -89,7 +63,7 @@ const Navigation = (props: NavInterface) => {
                         </span>
                         <div>
                             <p className="font-camptonsemi text-base mb-1">HR Solution</p>
-                            <p className="text-sm text-gray-500 font-camptonthin text-[#353535]">Get to know about us</p>
+                            {/* <p className="text-sm text-gray-500 font-camptonthin text-[#353535]">Get to know about us</p> */}
                         </div>
                         <span>
                             <FaArrowRight className="text-[#00555A] text-xl" />
@@ -102,7 +76,7 @@ const Navigation = (props: NavInterface) => {
                         </span>
                         <div>
                             <p className="font-camptonsemi text-base mb-1">Payment Gateway</p>
-                            <p className="text-sm text-gray-500 font-camptonthin text-[#353535]">Artistic visual expression</p>
+                            {/* <p className="text-sm text-gray-500 font-camptonthin text-[#353535]">Artistic visual expression</p> */}
                         </div>
                         <span>
                             <FaArrowRight className="text-[#00555A] text-xl" />
@@ -115,7 +89,7 @@ const Navigation = (props: NavInterface) => {
                         </span>
                         <div>
                             <p className="font-camptonsemi text-base mb-1">Tax & Government API</p>
-                            <p className="text-sm text-gray-500 font-camptonthin text-[#353535]">Stunning Web Design</p>
+                            {/* <p className="text-sm text-gray-500 font-camptonthin text-[#353535]">Stunning Web Design</p> */}
                         </div>
                         <span>
                             <FaArrowRight className="text-[#00555A] text-xl" />
@@ -128,7 +102,7 @@ const Navigation = (props: NavInterface) => {
                         </span>
                         <div>
                             <p className="font-camptonsemi text-base mb-1">Wallet Services</p>
-                            <p className="text-sm text-gray-500 font-camptonthin text-[#353535]">Join our wonderful team</p>
+                            {/* <p className="text-sm text-gray-500 font-camptonthin text-[#353535]">Join our wonderful team</p> */}
                         </div>
                         <span>
                             <FaArrowRight className="text-[#00555A] text-xl" />
@@ -149,7 +123,7 @@ const Navigation = (props: NavInterface) => {
                         </span>
                         <div>
                             <p className="font-camptonsemi text-base mb-1">PAYE API</p>
-                            <p className="text-sm text-gray-500 font-camptonthin text-[#353535]">Artistic visual expression</p>
+                            {/* <p className="text-sm text-gray-500 font-camptonthin text-[#353535]">Artistic visual expression</p> */}
                         </div>
                         <span>
                             <FaArrowRight className="text-[#00555A] text-xl" />
@@ -161,7 +135,7 @@ const Navigation = (props: NavInterface) => {
                         </span>
                         <div>
                             <p className="font-camptonsemi text-base mb-1">Withholding Tax Api</p>
-                            <p className="text-sm text-gray-500 font-camptonthin text-[#353535]">Get to know about us</p>
+                            {/* <p className="text-sm text-gray-500 font-camptonthin text-[#353535]">Get to know about us</p> */}
                         </div>
                         <span>
                             <FaArrowRight className="text-[#00555A] text-xl" />
@@ -174,7 +148,7 @@ const Navigation = (props: NavInterface) => {
                         </span>
                         <div>
                             <p className="font-camptonsemi text-base mb-1">Government Bills</p>
-                            <p className="text-sm text-gray-500 font-camptonthin text-[#353535]">Stunning Web Design</p>
+                            {/* <p className="text-sm text-gray-500 font-camptonthin text-[#353535]">Stunning Web Design</p> */}
                         </div>
                         <span>
                             <FaArrowRight className="text-[#00555A] text-xl" />
@@ -187,7 +161,7 @@ const Navigation = (props: NavInterface) => {
                         </span>
                         <div>
                             <p className="font-camptonsemi text-base mb-1">Careers</p>
-                            <p className="text-sm text-gray-500 font-camptonthin text-[#353535]">Join our wonderful team</p>
+                            {/* <p className="text-sm text-gray-500 font-camptonthin text-[#353535]">Join our wonderful team</p> */}
                         </div>
                         <span>
                             <FaArrowRight className="text-[#00555A] text-xl" />
