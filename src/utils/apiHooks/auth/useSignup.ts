@@ -16,7 +16,7 @@ export const useSignup = () => {
         setData(null)
         const response = await execute(async () => await AuthService().signup(params))
         if (response) {
-            setData(response)
+            // setData(response.message)
         }
     }
 
