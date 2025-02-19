@@ -1,3 +1,4 @@
+import { JSX } from "react";
 import { MenuSideBar } from "./components/MenuSideBar";
 import { NavBar } from "./components/NavBar";
 

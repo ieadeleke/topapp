@@ -1,3 +1,4 @@
+import { JSX } from "react";
 import { NavBar } from "./NavBar";
 
 type AuthLayoutProps = {
