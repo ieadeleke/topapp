@@ -50,12 +50,12 @@ export default function Home() {
       <Layout>
         <>
           <div className="hero-sect px-20 py-20">
-            <div className="grid grid-cols-2 max-w-[1626px] mx-auto gap-10">
+            <div className="flex flex-col md:grid grid-cols-2 max-w-[1626px] mx-auto gap-10">
               <div>
                 <div className="bg-primary rounded-lg py-3 px-5 mb-4 flex items-center gap-3 w-max">
                   A Better Way to Do It.
                 </div>
-                <h3 className="text-5xl leading-tight md:leading-tight">
+                <h3 className="text-3xl md:text-5xl leading-tight md:leading-tight">
                   Simpler, Faster & Reliable Payment for Businesses and Governments.
                 </h3>
               </div>
