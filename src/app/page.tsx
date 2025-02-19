@@ -178,10 +178,10 @@ export default function Home() {
               </div>
             </SwiperSlide>
           </Swiper>
-          <div className="manual px-24 mt-24">
-            <div className="grid grid-cols-3 gap-10 pt-20 pb-24 items-center">
+          <div className="manual px-5 md:px-24 mt-24">
+            <div className="flex flex-col md:grid grid-cols-3 gap-10 pt-20 pb-24 items-center">
               <div>
-                <h3 className="text-7xl text-white font-campton md:leading-tight leading-tight mb-5">Use Pay4it to pay for it</h3>
+                <h3 className="text-3xl md:text-7xl text-white font-campton md:leading-tight leading-tight mb-5">Use Pay4it to pay for it</h3>
                 <p className="text-white text-2xl mb-5 font-camptonthin 4xl:w-[90%]">
                   Transactions and payments made seamlessly.
                 </p>
