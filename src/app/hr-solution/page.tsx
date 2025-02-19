@@ -13,7 +13,7 @@ const HRSolutionPage = () => {
         <div className="bg-white">
             <Layout>
                 <div className="pb-28">
-                    <div className="pt-10 px-20 max-w-[1814px] mx-auto">
+                    <div className="pt-10 px-5 md:px-20 max-w-[1814px] mx-auto">
                         <div className="flex items-center text-center">
                             <div className="w-[90%] mx-auto">
                                 <div className="flex items-start justify-center gap-3">

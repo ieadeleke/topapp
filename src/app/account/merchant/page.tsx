@@ -6,15 +6,11 @@ import AccountLayout from "@/components/account/layout";
 import useFetchWalletTransactions from "@/utils/apiHooks/wallets/useFetchWalletTransactions";
 
 import { Input, Select } from "antd";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import type { MenuProps } from 'antd';
 import { HiOutlineUser } from "react-icons/hi";
 import { IoSettingsOutline } from "react-icons/io5";
-import { UpdatePassword } from "@/components/account/activity/settings/UpdatePassword";
-import { EditProfile } from "@/components/account/activity/settings/EditProfile";
-import { capitalizeText } from "@/utils/formatters/capitalizeText";
-import UserContext from "@/context/UserContext";
 
 
 const Dashboard = () => {
@@ -23,14 +19,6 @@ const Dashboard = () => {
 
     const [selectedHistory, setSelectedHistory] = useState();
     const [history, setHistory] = useState();
-    const [currentView, setCurrentView] = useState("profile");
-
-    const { user } = useContext(UserContext)
-
-    useEffect(() => {
-        if (user) {
-        }
-    }, [user])
 
     const dataSource = [
         {
@@ -156,31 +144,32 @@ const Dashboard = () => {
                                         <div className="size-48 rounded-full bg-black"></div>
                                         <div className="pb-5">
                                             <h4 className="text-2xl mb-3 mt-10">
-                                                {capitalizeText(user?.firstName ? user?.firstName : "")} {capitalizeText(user?.lastName ? user?.lastName : "")}
+                                                Lagos State Internal Revenue Service
                                             </h4>
                                             <p className="text-[#003235] text-sm">
-                                                {user?.email}
+                                                mkabadoo@companymail.com
                                             </p>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="px-12 mt-10">
-                                    <div className="w-max mx-auto mb-10 flex items-center gap-4">
-                                        <div onClick={() => setCurrentView("profile")} className={`cursor-pointer px-14 py-2 flex items-center gap-2 ${currentView === "profile" ? "border-b-2 border-[#003235] border-solid" : ""}`}>
+                                    <div className="w-max mx-auto mb-14 flex items-center gap-4">
+                                        <div className="px-14 py-2 flex items-center gap-2 border-b-2 border-[#003235] border-solid">
                                             <HiOutlineUser className="text-2xl" />
                                             <span className="font-camptonthin text-sm">My Profile</span>
                                         </div>
-                                        <div onClick={() => setCurrentView("password")} className={`cursor-pointer px-14 py-2 flex items-center gap-2 ${currentView === "password" ? "border-b-2 border-[#003235] border-solid" : ""}`}>
+                                        <div className="px-14 py-2 flex items-center gap-2">
+                                            <div>
+                                                <Image src={APIIcon} alt="api icon" className="w-full" />
+                                            </div>
+                                            <div>
+                                                <span className="font-camptonthin text-sm block">API keys</span>
+                                            </div>
+                                        </div>
+                                        <div className="px-14 py-2 flex items-center gap-2">
                                             <IoSettingsOutline className="text-2xl" />
                                             <span className="font-camptonthin text-sm">Password</span>
                                         </div>
-                                    </div>
-                                    <div className="">
-                                        {currentView === "profile" ?
-                                            <EditProfile />
-                                            :
-                                            <UpdatePassword />
-                                        }
                                     </div>
                                 </div>
                             </div>
