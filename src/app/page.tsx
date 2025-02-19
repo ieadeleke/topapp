@@ -381,7 +381,7 @@ export default function Home() {
             </div>
           </div>
           <div className="my-24 px-10 md:px-24 3xl:px-32 3xl:px-32 4xl:w-[80%] mb-32 mx-auto">
-            <div className="bg-[#DFFF5E] relative rounded-[100px] py-20 px-20 border-2 border-solid border-black min-h-[700px]">
+            <div className="bg-[#DFFF5E] relative rounded-[50px] md:rounded-[100px] py-20 px-20 border-2 border-solid border-black min-h-[700px]">
               <h4 className="text-6xl font-campton w-[90%] leading-tight md:leading-tight">
                 &quot;Automate salary processing, PAYE deductions, and employee benefits for streamlined HR operations.&quot;
               </h4>

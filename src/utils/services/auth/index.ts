@@ -29,7 +29,7 @@ export function AuthService() {
             method: "POST",
             data: params
         })
-        return response as SignUpResponseParams
+        return response;
     }
 
     async function resetPassword(params: ResetPasswordParams) {
