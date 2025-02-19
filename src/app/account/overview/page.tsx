@@ -9,7 +9,7 @@ import Image from "next/image";
 import ActivateWallet from "@/components/account/activity/activate-wallet";
 import { useState } from "react";
 import BillReferencePage from "@/components/account/activity/reference";
-import GovernmentBillProps from "@/components/account/activity/government-bill";
+import GovernmentBillPayment from "@/components/account/activity/government-bill";
 import UtilityBillPayment from "@/components/account/activity/utility";
 
 const Dashboard = () => {
@@ -109,7 +109,7 @@ const Dashboard = () => {
                     </div>
                     <ActivateWallet toggleActivateWallet={toggleActivateWallet} open={activateWalletModal} />
                     <BillReferencePage toggleActivateWallet={toggleBillReferenceWallet} open={billReferenceWalletModal} />
-                    <GovernmentBillProps toggleActivateWallet={toggleGovernmentBill} open={governmentBillModal} />
+                    <GovernmentBillPayment toggleActivateWallet={toggleGovernmentBill} open={governmentBillModal} />
                 </>
             </AccountLayout>
         </div>
