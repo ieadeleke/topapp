@@ -201,6 +201,7 @@ const SideBar = () => {
                             <span>Activity Log</span>
                         </Link>
                     </li > */}
+                    
                     <li className={`flex items-center gap-4 text-sm px-5 py-5 ${pathName === "/account/settings" ? "bg-[#003235] rounded-[8px] text-white" : "text-[#1B1B1B]"}`}>
                         <Link href="/account/settings" className={`flex items-center gap-4 text-sm font-camptonthin ${pathName === "/account/settings" ? "bg-[#003235] rounded-[8px] text-white" : "text-[#1B1B1B]"}`}>
                             <span>
