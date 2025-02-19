@@ -13,6 +13,7 @@ import { cn } from "@/lib/utils";
 import Button from "@/components/buttons";
 import GlobalContext from "@/context/GlobalContext";
 import { GenerateReceipt } from "@/components/charge/GenerateReceipt";
+import { Suspense } from "react";
 import { PaymentLayout } from "@/components/layout/payment-layout";
 
 type Error = {
@@ -30,7 +31,7 @@ const TextInput = ({ className, ...props }: InputProps) => (
   <RegularTextInput className={cn("w-full md:w-96", className)} {...props} />
 );
 
-export default function GenerateReceiptPage() {
+function GenerateReceiptPage() {
   const router = useRouter();
   const [payment, setPayment] = useState<
     (Payment & { ReceiptNumber: string }) | null
@@ -152,3 +153,13 @@ export default function GenerateReceiptPage() {
     </PaymentLayout>
   );
 }
+
+const GenerateReceiptDefaultPage = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <GenerateReceiptPage />
+    </Suspense>
+  );
+};
+
+export default GenerateReceiptDefaultPage;
