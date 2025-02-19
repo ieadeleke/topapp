@@ -28,6 +28,9 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useAddNewMerchant from "@/utils/apiHooks/merchants/useAddNewMerchant";
 import Button from "../elements/button";
+import { Profile } from "@/models/profile";
+import { capitalizeText } from "@/utils/formatters/capitalizeText";
+import { useFetchUser } from "@/utils/apiHooks/profile/useFetchUser";
 
 const SideBar = () => {
 
@@ -43,10 +46,51 @@ const SideBar = () => {
         CACReg: yup.string().required('Please enter your CAC registration number'),
         address: yup.string().required('Please enter your business address'),
     })
+
     const { addNewMerchant, data, isLoading, error } = useAddNewMerchant();
 
     const { control, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(validator)
+    });
+
+    const { error: userError, data: userFetchedData, fetchUser } = useFetchUser();
+
+    const [userData, setUserData] = useState<Profile>({
+        name: "",
+        addedBy: "",
+        email: "",
+        firstName: "",
+        isActive: false,
+        lastName: "",
+        loginCount: 0,
+        loginDisabled: false,
+        loginReTryTime: "",
+        phoneNumber: "",
+        userName: "",
+        imgUrl: "",
+        wallet: {
+            _id: "",
+            accountName: "",
+            accountNumber: "",
+            accountReference: "",
+            availableBalance: 0,
+            bankName: "",
+            bookedBalance: 0,
+            country: "",
+            currency: "",
+            dailyTransactionLimit: 0,
+            email: "",
+            maxBalance: 0,
+            minBalance: 0,
+            phoneNumber: "",
+            previousBalance: 0,
+            provider: "",
+            providerCustomerId: "",
+            status: "",
+            tier: "",
+            type: "",
+            userId: "",
+        }
     });
 
     const [openMerchantModal, setOpenMerchantModal] = useState<boolean>(false);
@@ -69,14 +113,38 @@ const SideBar = () => {
         addNewMerchant(e);
     }
 
+    useEffect(() => {
+        if (userFetchedData) {
+            setUserData(userFetchedData);
+        }
+    }, [userFetchedData]);
+
+    useEffect(() => {
+        if (userError) {
+            // setUserData(userError);
+        }
+    }, [userError]);
+
+    useEffect(() => {
+        fetchUser();
+    }, [])
+
     return (
         <div className="h-full overflow-scroll overflow-x-hidden">
             <div className="border border-solid border-[#EFEFEF] px-4 py-5 float-left w-[250px] rounded-[16px] h-max">
                 <div className="flex items-center mb-5 gap-2">
-                    <Image src={AvatarImg} alt="avatar" />
                     <div>
-                        <h4 className="text-xl">Laura Ajike</h4>
-                        <p className="text-xs text-[#1F1F22]">laura@gmail.com.com</p>
+                        {
+                            userData?.imgUrl ?
+                                <Image src={userData?.imgUrl} alt="avatar" />
+                                :
+                                // <Image src={AvatarImg} alt="avatar" />
+                                <div className="size-16 rounded-full bg-black"></div>
+                        }
+                    </div>
+                    <div>
+                        <h4 className="text-lg leading-normal md:leading-normal">{capitalizeText(userData?.firstName ? userData?.firstName : "")} {capitalizeText(userData?.lastName ? userData?.lastName : "")}</h4>
+                        <p className="text-xs text-[#1F1F22]">{userData?.email}</p>
                     </div>
                 </div>
                 <ul className="flex flex-col">
@@ -104,14 +172,14 @@ const SideBar = () => {
                             <span>Transaction History</span>
                         </Link>
                     </li >
-                    <li className={`flex items-center gap-4 text-sm px-5 py-5 ${pathName === "/account/users" ? "bg-[#003235] rounded-[8px] text-white" : "text-[#1B1B1B]"}`}>
+                    {/* <li className={`flex items-center gap-4 text-sm px-5 py-5 ${pathName === "/account/users" ? "bg-[#003235] rounded-[8px] text-white" : "text-[#1B1B1B]"}`}>
                         <Link href="/account/users" className={`flex items-center gap-4 text-sm font-camptonthin ${pathName === "/account/users" ? "text-white" : "text-[#1B1B1B]"}`}>
                             <span>
                                 <Image src={pathName === "/account/users" ? PeopleWhiteImg : PeopleImg} alt="bell icon" className="w-[20px]" />
                             </span>
                             <span>Users</span>
                         </Link>
-                    </li >
+                    </li > */}
                     <li className={`flex items-center gap-4 text-sm px-5 py-5 ${pathName === "/account/merchant" ? "bg-[#003235] rounded-[8px] text-white" : "text-[#1B1B1B]"}`}>
                         <Link href="/account/merchant" className={`flex items-center gap-4 text-sm font-camptonthin ${pathName === "/account/merchant" ? "text-white" : "text-[#1B1B1B]"}`}>
                             <span>
@@ -120,14 +188,14 @@ const SideBar = () => {
                             <span>Merchant Admin</span>
                         </Link>
                     </li >
-                    <li className={`flex items-center gap-4 text-sm px-5 py-5 ${pathName === "/account/activity" ? "bg-[#003235] rounded-[8px] text-white" : "text-[#1B1B1B]"}`}>
+                    {/* <li className={`flex items-center gap-4 text-sm px-5 py-5 ${pathName === "/account/activity" ? "bg-[#003235] rounded-[8px] text-white" : "text-[#1B1B1B]"}`}>
                         <Link href="/account/activity" className={`flex items-center gap-4 text-sm font-camptonthin ${pathName === "/account/activity" ? "bg-[#003235] rounded-[8px] text-white" : "text-[#1B1B1B]"}`}>
                             <span>
                                 <Image src={pathName === "/account/activity" ? BellWhiteImg : BellImg} alt="bell icon" className="w-[18px]" />
                             </span>
                             <span>Activity Log</span>
                         </Link>
-                    </li >
+                    </li > */}
                     <li className={`flex items-center gap-4 text-sm px-5 py-5 ${pathName === "/account/settings" ? "bg-[#003235] rounded-[8px] text-white" : "text-[#1B1B1B]"}`}>
                         <Link href="/account/settings" className={`flex items-center gap-4 text-sm font-camptonthin ${pathName === "/account/settings" ? "bg-[#003235] rounded-[8px] text-white" : "text-[#1B1B1B]"}`}>
                             <span>

@@ -1,5 +1,5 @@
 import { request } from "@/utils/request"
-import { ActivateAgentWalletParams, ActivateAgentWalletResponse, FetchProfileResponse, RefreshAgentWalletParams, RefreshAgentWalletResponse, SetAgentPinParams, SetAgentPinResponse, UpdateProfileParams, UpdateProfileResponse } from "./types"
+import { ActivateWalletParams, ActivateWalletResponse, FetchProfileResponse, RefreshAgentWalletParams, RefreshAgentWalletResponse, SetAgentPinParams, SetAgentPinResponse, UpdateProfileParams, UpdateProfileResponse } from "./types"
 import { ApiResponse } from "@/models"
 import { Profile } from "@/models/profile"
 
@@ -13,13 +13,13 @@ export function ProfileService() {
         return data as FetchProfileResponse;
     }
 
-    async function activateAgentWallet(params: ActivateAgentWalletParams) {
+    async function activateWallet(params: ActivateWalletParams) {
         const data = await request({
-            path: `v1/agent/ActivateUserWallet`,
+            path: `v1/auth/ActivateUserWallet`,
             method: "POST",
             body: params
         })
-        return data as ActivateAgentWalletResponse;
+        return data as ActivateWalletResponse;
     }
 
     async function refreshAgentWallet(params: RefreshAgentWalletParams) {
@@ -66,7 +66,7 @@ export function ProfileService() {
     return {
         getUser,
         updateProfile,
-        activateAgentWallet,
+        activateWallet,
         refreshAgentWallet,
         setNewUserPin
     }

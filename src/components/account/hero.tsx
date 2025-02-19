@@ -7,7 +7,11 @@ import { Dropdown } from "antd";
 import Link from "next/link";
 import { useEffect, useState } from "react"
 
-export const AccountHero = () => {
+interface AccountHeroInterface {
+    toggleActivateWallet: () => void
+}
+
+export const AccountHero = (props: AccountHeroInterface) => {
 
     const { error: userError, data: userFetchedData, fetchUser } = useFetchUser();
 
@@ -84,13 +88,21 @@ export const AccountHero = () => {
         }
     ]
 
-    return <div className="flex flex-col h-64 justify-center rounded-3xl global-hero">
-        <div className="flex flex-col md:flex-row justify-between md:items-center gap-5 px-8">
-            <div>
-                <h1 className="text-3xl mb-3 text-white font-bold leading-relaxed">Hello {capitalizeText(userData?.userName ? userData?.userName : "")},</h1>
-                <p className="text-white">Welcome to your dashboard</p>
+    return <div className="account-hero h-64 justify-center rounded-3xl global-hero">
+        <div className="flex h-full gap-5 px-6 py-6 justify-between">
+            <div className="flex flex-col h-full justify-between">
+                <div>
+                    <p className="text-sm text-white">Wallet Balance</p>
+                    <h1 className="text-3xl mb-3 text-white font-bold leading-relaxed"><span className="text-sm">NGN</span>0.00</h1>
+                </div>
+                <div>
+                    <button className="text-sm text-black rounded-lg py-3 px-4 bg-primary flex items-center gap-2">Fund Wallet</button>
+                </div>
             </div>
             <div>
+                <button onClick={props.toggleActivateWallet} className="text-sm text-black rounded-lg py-3 px-4 bg-primary flex items-center gap-2">Activate Wallet</button>
+            </div>
+            {/* <div>
                 <Dropdown
                     menu={{
                         items,
@@ -99,7 +111,7 @@ export const AccountHero = () => {
                 >
                     <button className="bg-white px-8 py-3 text-base rounded-xl">Make Payment</button>
                 </Dropdown>
-            </div>
+            </div> */}
         </div>
     </div>
 }

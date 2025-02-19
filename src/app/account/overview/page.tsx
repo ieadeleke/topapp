@@ -1,15 +1,29 @@
+"use client";
+
 import { AccountHero } from "@/components/account/hero";
 import AccountLayout from "@/components/account/layout";
 
+import Hero1Img from "@/assets/images/account/icons/hero1.svg";
+import Hero2Img from "@/assets/images/account/icons/hero2.svg";
+import Hero3Img from "@/assets/images/account/icons/hero3.svg";
+
+import Image from "next/image";
+import ActivateWallet from "@/components/account/activity/activate-wallet";
+import { useState } from "react";
+
 const Dashboard = () => {
+
+    const [activateWalletModal, setActivateWalletModal] = useState<boolean>(false);
+
+    const toggleActivateWallet = () => setActivateWalletModal(!activateWalletModal);
+
     return (
         <div>
             <AccountLayout>
                 <>
                     <div>
-                        <div className="account-hero h-[200px] w-full rounded-[12px]"></div>
-                        <AccountHero />
-                        <div className="mt-6 grid grid-cols-4 gap-6">
+                        <AccountHero toggleActivateWallet={toggleActivateWallet} />
+                        {/* <div className="mt-6 grid grid-cols-4 gap-6">
                             <div className="border border-solid border-[#EFEFEF] rounded-[12px] py-7 px-6">
                                 <div className="flex items-center gap-4">
                                     <div className="size-14 bg-[#FFFBEB] rounded-[12px]"></div>
@@ -46,12 +60,14 @@ const Dashboard = () => {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                         <div className="mt-6 grid grid-cols-3 gap-6">
                             <div className="bg-[#F5F5F5] rounded-[12px] py-7 px-6">
-                                <div className="grid grid-cols-2 justify-between items-center gap-4">
+                                <div className="grid grid-cols-2 justify-between items-center gap-10">
                                     <div className="flex items-center gap-3">
-                                        <div className="size-16 bg-black rounded-[12px] min-w-[51px]"></div>
+                                        <div className="h-16 w-16 bg-black rounded-[12px] min-w-[51px] flex items-center justify-center">
+                                            <Image src={Hero2Img} alt="filter icon" className="" />
+                                        </div>
                                         <div>
                                             <h5 className="text-[#1B1B1B] text-base">Utility Bills</h5>
                                         </div>
@@ -62,9 +78,11 @@ const Dashboard = () => {
                                 </div>
                             </div>
                             <div className="bg-[#F5F5F5] rounded-[12px] py-7 px-6">
-                                <div className="grid grid-cols-2 justify-between items-center gap-4">
+                                <div className="grid grid-cols-2 justify-between items-center gap-10">
                                     <div className="flex items-center gap-3">
-                                        <div className="size-16 bg-black rounded-[12px] min-w-[51px]"></div>
+                                        <div className="h-16 w-16 bg-black rounded-[12px] min-w-[51px] flex items-center justify-center">
+                                            <Image src={Hero2Img} alt="filter icon" className="" />
+                                        </div>
                                         <div>
                                             <h5 className="text-[#1B1B1B] text-base">Government Bills</h5>
                                         </div>
@@ -75,9 +93,11 @@ const Dashboard = () => {
                                 </div>
                             </div>
                             <div className="bg-[#F5F5F5] rounded-[12px] py-7 px-6">
-                                <div className="grid grid-cols-2 justify-between items-center gap-4">
+                                <div className="grid grid-cols-2 justify-between items-center gap-10">
                                     <div className="flex items-center gap-3">
-                                        <div className="size-16 bg-black rounded-[12px] min-w-[51px]"></div>
+                                        <div className="h-16 w-16 bg-black rounded-[12px] min-w-[51px] flex items-center justify-center">
+                                            <Image src={Hero3Img} alt="filter icon" className="w-[30px]" />
+                                        </div>
                                         <div>
                                             <h5 className="text-[#1B1B1B] text-base">Utility Bills</h5>
                                         </div>
@@ -89,6 +109,7 @@ const Dashboard = () => {
                             </div>
                         </div>
                     </div>
+                    <ActivateWallet toggleActivateWallet={toggleActivateWallet} open={activateWalletModal} />
                 </>
             </AccountLayout>
         </div>

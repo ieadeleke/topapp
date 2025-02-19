@@ -13,7 +13,6 @@ type RequestConfig = {
 export async function request(params: RequestConfig) {
   const url = `${BASE_URL}/${params.path}`;
   const token = await getAccessToken();
-  console.log(token)
   try {
     const response = await fetch(url, {
       method: params.method ?? "POST",

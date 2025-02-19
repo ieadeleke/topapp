@@ -34,7 +34,7 @@ const AboutPage = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="mt-2 py-5 bg-primary w-full">
+                    <div className="py-5 bg-primary w-full">
                         <div className="slider">
                             <div className="slider-track">
                                 <div className="flex gap-2 items-center">

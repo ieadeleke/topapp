@@ -16,14 +16,15 @@ export type FetchProfileResponse = {
     user: Profile
 }
 
-export type ActivateAgentWalletParams = {
+export type ActivateWalletParams = {
     bvn: string,
     phoneNumber: string,
+    email: string,
     address: string,
     dateOfBirth: string
 }
 
-export type ActivateAgentWalletResponse = {
+export type ActivateWalletResponse = {
     message?: string,
     status?: string,
     Wallet?: any
