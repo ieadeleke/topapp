@@ -11,6 +11,7 @@ import { HarmonizeReference } from "@/models/reference";
 import { PaymentLayout } from "@/components/layout/payment-layout";
 import { useVerifyHarmonizeReference } from "@/utils/apiHooks/charge/useVerifyHarmonizeReference";
 import HarmonizePaymentContent from "@/components/payment/HarmonizePaymentContent";
+import { Suspense } from "react"; // Import Suspense
 
 const TextInput = ({ className, ...props }: InputProps) => (
   <RegularTextInput className={cn("w-full md:w-96", className)} {...props} />
@@ -27,7 +28,8 @@ export default function PaymentPage() {
   const [tx_reference, setTXReference] = useState("");
   const [data, setData] = useState<HarmonizeReference>();
   const { showSnackBar } = useContext(GlobalContext);
-  // const tx_referenceParams = useSearchParams().get("tx_reference") ? useSearchParams().get("tx_reference") : useSearchParams().get("ref");
+  
+  // Wrap useSearchParams in a Suspense boundary
   const paramMeter = useSearchParams();
   const tx_referenceParams = paramMeter.get("tx_reference") || paramMeter.get("ref");
   const mdaParams = useSearchParams().get("mda");
@@ -59,7 +61,7 @@ export default function PaymentPage() {
   }, [tx_referenceParams, mdaParams]);
 
   function submitReference() {
-    if (tx_reference.trim().length == 0) {
+    if (tx_reference.trim().length === 0) {
       return alert("Reference ID can't be empty");
     }
     router.push(`/payment/harmonize?tx_reference=${tx_reference}`);
@@ -68,26 +70,29 @@ export default function PaymentPage() {
   return (
     <PaymentLayout>
       <div className="mt-12 min-h-screen flex flex-col items-center">
-        {data ? (
-          <HarmonizePaymentContent data={data} tx_reference={tx_reference} />
-        ) : (
-          <div className={cn("flex flex-col")}>
-            <h1 className="font-bold">Enter your reference ID</h1>
-            <TextInput
-              defaultValue={tx_reference}
-              onChange={(evt) => setTXReference(evt.target.value.trim())} className="h-14"
-              placeholder="XXXX-XXX-XXXXXX"
-            />
-            <Button
-              onClick={submitReference}
-              variant="contained"
-              disabled={isLoading}
-              className={cn("h-14 mt-4 w-full bg-dark text-sm")}
-            >
-              {isLoading ? "Please wait..." : "Submit"}
-            </Button>
-          </div>
-        )}
+        <Suspense fallback={<div>Loading...</div>}> {/* Add Suspense here */}
+          {data ? (
+            <HarmonizePaymentContent data={data} tx_reference={tx_reference} />
+          ) : (
+            <div className={cn("flex flex-col")}>
+              <h1 className="font-bold">Enter your reference ID</h1>
+              <TextInput
+                defaultValue={tx_reference}
+                onChange={(evt) => setTXReference(evt.target.value.trim())}
+                className="h-14"
+                placeholder="XXXX-XXX-XXXXXX"
+              />
+              <Button
+                onClick={submitReference}
+                variant="contained"
+                disabled={isLoading}
+                className={cn("h-14 mt-4 w-full bg-dark text-sm")}
+              >
+                {isLoading ? "Please wait..." : "Submit"}
+              </Button>
+            </div>
+          )}
+        </Suspense> {/* Close Suspense here */}
       </div>
     </PaymentLayout>
   );
