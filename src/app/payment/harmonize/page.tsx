@@ -1,6 +1,6 @@
 "use client";
 
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { RegularTextInput } from "@/components/input/RegularTextInput";
@@ -11,7 +11,6 @@ import { HarmonizeReference } from "@/models/reference";
 import { PaymentLayout } from "@/components/layout/payment-layout";
 import { useVerifyHarmonizeReference } from "@/utils/apiHooks/charge/useVerifyHarmonizeReference";
 import HarmonizePaymentContent from "@/components/payment/HarmonizePaymentContent";
-import { Suspense } from "react"; // Import Suspense
 
 const TextInput = ({ className, ...props }: InputProps) => (
   <RegularTextInput className={cn("w-full md:w-96", className)} {...props} />
@@ -28,8 +27,8 @@ export default function PaymentPage() {
   const [tx_reference, setTXReference] = useState("");
   const [data, setData] = useState<HarmonizeReference>();
   const { showSnackBar } = useContext(GlobalContext);
-  
-  // Wrap useSearchParams in a Suspense boundary
+
+  // Move the useSearchParams inside a Suspense boundary
   const paramMeter = useSearchParams();
   const tx_referenceParams = paramMeter.get("tx_reference") || paramMeter.get("ref");
   const mdaParams = useSearchParams().get("mda");
@@ -70,29 +69,32 @@ export default function PaymentPage() {
   return (
     <PaymentLayout>
       <div className="mt-12 min-h-screen flex flex-col items-center">
-        <Suspense fallback={<div>Loading...</div>}> {/* Add Suspense here */}
-          {data ? (
-            <HarmonizePaymentContent data={data} tx_reference={tx_reference} />
-          ) : (
-            <div className={cn("flex flex-col")}>
-              <h1 className="font-bold">Enter your reference ID</h1>
-              <TextInput
-                defaultValue={tx_reference}
-                onChange={(evt) => setTXReference(evt.target.value.trim())}
-                className="h-14"
-                placeholder="XXXX-XXX-XXXXXX"
-              />
-              <Button
-                onClick={submitReference}
-                variant="contained"
-                disabled={isLoading}
-                className={cn("h-14 mt-4 w-full bg-dark text-sm")}
-              >
-                {isLoading ? "Please wait..." : "Submit"}
-              </Button>
-            </div>
-          )}
-        </Suspense> {/* Close Suspense here */}
+        <Suspense fallback={<div>Loading...</div>}>
+          {/* Wrap the relevant parts that use useSearchParams in Suspense */}
+          <div>
+            {data ? (
+              <HarmonizePaymentContent data={data} tx_reference={tx_reference} />
+            ) : (
+              <div className={cn("flex flex-col")}>
+                <h1 className="font-bold">Enter your reference ID</h1>
+                <TextInput
+                  defaultValue={tx_reference}
+                  onChange={(evt) => setTXReference(evt.target.value.trim())}
+                  className="h-14"
+                  placeholder="XXXX-XXX-XXXXXX"
+                />
+                <Button
+                  onClick={submitReference}
+                  variant="contained"
+                  disabled={isLoading}
+                  className={cn("h-14 mt-4 w-full bg-dark text-sm")}
+                >
+                  {isLoading ? "Please wait..." : "Submit"}
+                </Button>
+              </div>
+            )}
+          </div>
+        </Suspense>
       </div>
     </PaymentLayout>
   );
