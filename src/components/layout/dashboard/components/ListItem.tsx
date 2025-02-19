@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useMemo } from "react";
+import { JSX, useMemo } from "react";
 
 export type ListItemProps = {
   name: string;

@@ -1,4 +1,6 @@
 export type Reference = {
+    maxAmountCharge: any
+    fixAmount: any
     AmountDue: string,
     Status: string,
     CreditAccount: string,
@@ -19,6 +21,8 @@ export type Reference = {
     AgencyName: string,
     RevName: string,
     settings: {
+        fixAmount: any
+        addServiceCharge: any
         percentage: number,
         min: number,
         max: number
