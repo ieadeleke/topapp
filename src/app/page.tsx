@@ -20,11 +20,11 @@ import CardImg from "@/assets/images/home/card.png";
 import ArrowHomeImg from "@/assets/images/icons/arrow-home.svg";
 import { FaArrowRightLong } from "react-icons/fa6";
 
-import Company1Img from "@/assets/images/companies/_1.svg";
-import Company2Img from "@/assets/images/companies/_2.svg";
-import Company3Img from "@/assets/images/companies/_3.svg";
-import Company4Img from "@/assets/images/companies/_4.svg";
-import Company5Img from "@/assets/images/companies/_5.svg";
+import Company1Img from "@/assets/images/companies/_6.svg";
+import Company2Img from "@/assets/images/companies/_7.svg";
+import Company3Img from "@/assets/images/companies/_8.svg";
+import Company4Img from "@/assets/images/companies/_9.svg";
+import Company5Img from "@/assets/images/companies/_10.svg";
 
 
 
@@ -90,12 +90,51 @@ export default function Home() {
               <Image src={HeroImg} alt="HeroImg" />
             </div>
           </div>
-          <div className="mt-2 py-14 bg-primary w-full">
-            <Image src={Company1Img} alt="paye" className="" />
-            <Image src={Company2Img} alt="paye" className="" />
-            <Image src={Company3Img} alt="paye" className="" />
-            <Image src={Company4Img} alt="paye" className="" />
-            <Image src={Company5Img} alt="paye" className="" />
+          <div className="mt-2 py-5 bg-primary w-full">
+            <div className="slider">
+              <div className="slider-track">
+                <div className="flex gap-2 items-center">
+                  <Image src={Company1Img} alt="paye" className="" />
+                  <h5>Lagos State</h5>
+                </div>
+                <div className="flex gap-2 items-center">
+                  <Image src={Company2Img} alt="paye" className="" />
+                  <h5>Ministry of Justice</h5>
+                </div>
+                <div className="flex gap-2 items-center">
+                  <Image src={Company3Img} alt="paye" className="" />
+                  <h5>Seerbit</h5>
+                </div>
+                <div className="flex gap-2 items-center">
+                  <Image src={Company4Img} alt="paye" className="" />
+                  <h5>Flutterwave</h5>
+                </div>
+                <div className="flex gap-2 items-center">
+                  <Image src={Company5Img} alt="paye" className="" />
+                  <h5>Providus Bank</h5>
+                </div>
+                <div className="flex gap-2 items-center">
+                  <Image src={Company1Img} alt="paye" className="" />
+                  <h5>Lagos State</h5>
+                </div>
+                <div className="flex gap-2 items-center">
+                  <Image src={Company2Img} alt="paye" className="" />
+                  <h5>Ministry of Justice</h5>
+                </div>
+                <div className="flex gap-2 items-center">
+                  <Image src={Company3Img} alt="paye" className="" />
+                  <h5>Seerbit</h5>
+                </div>
+                <div className="flex gap-2 items-center">
+                  <Image src={Company4Img} alt="paye" className="" />
+                  <h5>Flutterwave</h5>
+                </div>
+                <div className="flex gap-2 items-center">
+                  <Image src={Company5Img} alt="paye" className="" />
+                  <h5>Providus Bank</h5>
+                </div>
+              </div>
+            </div>
           </div>
           <div className="mt-20 px-5 md:px-20">
             <div className="flex flex-col md:flex-row justify-between mb-24 md:items-end max-w-[1657px]">
@@ -111,17 +150,27 @@ export default function Home() {
           // onSwiper={(swiper) => (swiperRef.current = swiper)}
           >
             <SwiperSlide key={1}>
-              <div className="w-full bg-[#003437] max-h-[400px] h-[400px] rounded-[64px] pt-20">
-                <div className="flex items-end gap-0 pl-10">
-                  <div>
-                    <div>
-                      <Image src={HandImg} alt="money icon" className="w-[200px] mb-5 font-camptonthin" />
+              <div className="w-full bg-[#003437] max-h-[400px] h-[400px] rounded-[64px]">
+                <div className="flip-card">
+                  <div className="flip-card-inner">
+                    <div className="flip-card-front flex items-end gap-0 pl-10 pt-20">
+                      <div>
+                        <div>
+                          <Image src={HandImg} alt="money icon" className="w-[200px] mb-5 font-camptonthin" />
+                        </div>
+                      </div>
+                      <div>
+                        <h2 className="text-white text-4xl pb-14 font-campton">
+                          Payment Gateway
+                        </h2>
+                      </div>
                     </div>
-                  </div>
-                  <div>
-                    <h2 className="text-white text-4xl pb-14 font-campton">
-                      Payment Gateway
-                    </h2>
+                    <div className="flip-card-back px-10">
+                      <ul className="flex flex-col gap-5">
+                        <li className="text-white text-lg md:leading-loose leading-loose">Secure fast and efficient digital payments for businesses and individuals</li>
+                        <li className="text-white text-lg md:leading-loose leading-loose">Features include invoicing, wallet systems and POS terminals</li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>

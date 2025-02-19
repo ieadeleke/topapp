@@ -7,6 +7,12 @@ import LogoImg from "@/assets/images/logo.svg";
 import UsePayImg from "@/assets/images/about/usepay.svg";
 import QuoteImg from "@/assets/images/quote.svg";
 
+import Company1Img from "@/assets/images/companies/_6.svg";
+import Company2Img from "@/assets/images/companies/_7.svg";
+import Company3Img from "@/assets/images/companies/_8.svg";
+import Company4Img from "@/assets/images/companies/_9.svg";
+import Company5Img from "@/assets/images/companies/_10.svg";
+
 const AboutPage = () => {
     return (
         <div>
@@ -28,7 +34,52 @@ const AboutPage = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="py-14 w-full bg-[#D3FFB4]"></div>
+                    <div className="mt-2 py-5 bg-primary w-full">
+                        <div className="slider">
+                            <div className="slider-track">
+                                <div className="flex gap-2 items-center">
+                                    <Image src={Company1Img} alt="paye" className="" />
+                                    <h5>Lagos State</h5>
+                                </div>
+                                <div className="flex gap-2 items-center">
+                                    <Image src={Company2Img} alt="paye" className="" />
+                                    <h5>Ministry of Justice</h5>
+                                </div>
+                                <div className="flex gap-2 items-center">
+                                    <Image src={Company3Img} alt="paye" className="" />
+                                    <h5>Seerbit</h5>
+                                </div>
+                                <div className="flex gap-2 items-center">
+                                    <Image src={Company4Img} alt="paye" className="" />
+                                    <h5>Flutterwave</h5>
+                                </div>
+                                <div className="flex gap-2 items-center">
+                                    <Image src={Company5Img} alt="paye" className="" />
+                                    <h5>Providus Bank</h5>
+                                </div>
+                                <div className="flex gap-2 items-center">
+                                    <Image src={Company1Img} alt="paye" className="" />
+                                    <h5>Lagos State</h5>
+                                </div>
+                                <div className="flex gap-2 items-center">
+                                    <Image src={Company2Img} alt="paye" className="" />
+                                    <h5>Ministry of Justice</h5>
+                                </div>
+                                <div className="flex gap-2 items-center">
+                                    <Image src={Company3Img} alt="paye" className="" />
+                                    <h5>Seerbit</h5>
+                                </div>
+                                <div className="flex gap-2 items-center">
+                                    <Image src={Company4Img} alt="paye" className="" />
+                                    <h5>Flutterwave</h5>
+                                </div>
+                                <div className="flex gap-2 items-center">
+                                    <Image src={Company5Img} alt="paye" className="" />
+                                    <h5>Providus Bank</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div className="mt-20 px-5 md:px-24">
                         <div className="about-testimonial px-5 md:px-20 py-5 md:py-20">
                             <div className="flex flex-col md:flex-row gap-5">
