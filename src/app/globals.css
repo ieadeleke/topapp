@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+
 @font-face {
   font-family: "Campton Semi-Bold";
   src: url("/campton/CamptonSemiBold.otf");
@@ -54,6 +56,9 @@
   --text-color: #003E42;
   --primary: #D3FFB4;
   --dark: #00555A;
+  --danger: #FF4842;
+  --buttonBg: #003235;
+  --offWhite: #666666;
 }
 
 body {
@@ -61,6 +66,8 @@ body {
   background: var(--background);
   background: #fff;
   font-family: "Campton Medium";
+  max-width: 2000px;
+  margin: 0px auto;
 }
 
 
@@ -71,20 +78,6 @@ h4,
 h5,
 h6 {
   font-family: "Campton Semi-Bold";
-}
-
-.dotted-line {
-  width: 100%;
-  height: 4px;
-  /* Thickness of the line */
-  background: repeating-linear-gradient(to right,
-      gray,
-      gray 30px,
-      /* Length of the dash */
-      transparent 10px,
-      transparent 40px
-      /* Space between dashes */
-    );
 }
 
 .wallet-bg {
@@ -120,4 +113,87 @@ h6 {
 .custom-dropdown .ant-dropdown-menu-item {
   padding: 0 !important;
   background: white !important;
+}
+
+
+.account-hero {
+  background: url("/account-hero.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top;
+}
+
+.ant-table-thead tr th {
+  font-family: "Campton Semi-Bold";
+  background: transparent !important;
+}
+
+.ant-table-thead .ant-table-cell {
+  padding-bottom: 0px !important;
+}
+
+.ant-table-tbody tr .ant-table-cell {
+  background: #FAFAFA !important;
+  border: none !important;
+  font-family: "Campton Medium" !important;
+}
+
+.ant-table-tbody tr .ant-table-cell:nth-child(1) {
+  border-radius: 6px 0px 0px 6px !important;
+}
+
+.ant-table-tbody tr .ant-table-cell:nth-child(8) {
+  border-radius: 0px 6px 6px 0px !important;
+}
+
+.custom-table table {
+  border-spacing: 0 20px;
+  /* Adds space between rows */
+}
+
+.ant-table-cell {
+  border: unset !important;
+}
+
+.ant-table-cell::before {
+  display: none !important;
+}
+
+.merchant-bg {}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 60px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.ant-modal-body {
+  font-family: "Campton Medium";
+}
+
+.ant-modal-close-x {
+  display: none !important;
+}
+
+.about-testimonial {
+  background: url("/about_testimonial.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 30px;
 }

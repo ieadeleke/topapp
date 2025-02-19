@@ -200,11 +200,11 @@ const Navigation = (props: NavInterface) => {
 
     return (
         <div>
-            <div className={`flex justify-between items-center px-20 py-7 w-full top-0 ${props.navPosition ? props.navPosition : "relative"}`}>
+            <div className={`flex justify-between items-center px-20 py-7 w-full max-w-[2000px] top-0 ${props.navPosition ? props.navPosition : "relative"}`}>
                 <div>
                     <Image src={LogoImg} alt="logo" />
                 </div>
-                <div>
+                <div className="hidden md:block">
                     <ul className="flex items-center gap-3 border-2 border-solid border-[#BBE998] py-1 px-2 rounded-full">
                         <li>
                             <Dropdown menu={{ items: AboutUsItems }} trigger={["click"]} overlayClassName="custom-dropdown">

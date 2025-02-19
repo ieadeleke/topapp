@@ -13,6 +13,8 @@ import MoneyImg from "@/assets/images/home/money.svg";
 import HandImg from "@/assets/images/home/hand.png";
 import SallyImg from "@/assets/images/home/saly.png";
 import CardImg from "@/assets/images/home/card.png";
+import ArrowHomeImg from "@/assets/images/icons/arrow-home.svg";
+import { FaArrowRightLong } from "react-icons/fa6";
 
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -31,8 +33,11 @@ export default function Home() {
       slidesPerView: 1
     },
     1000: {
-      slidesPerView: 3.3
-    }
+      slidesPerView: 3.4
+    },
+    1800: {
+      slidesPerView: 4.4
+    },
   }
 
   return (
@@ -73,10 +78,9 @@ export default function Home() {
               <Image src={HeroImg} alt="HeroImg" />
             </div>
           </div>
-          <div className="dotted-line"></div>
-          <div className="mt-4 py-14 bg-primary w-full"></div>
+          <div className="mt-2 py-14 bg-primary w-full"></div>
           <div className="mt-20 px-20">
-            <div className="flex justify-between mb-28 items-end max-w-[1657px]">
+            <div className="flex justify-between mb-24 items-end max-w-[1657px]">
               <h3 className="text-5xl md:leading-snug leading-snug max-w-[1190px]">
                 Join us in simplifying payments <br /> and creating opportunities for all
               </h3>
@@ -124,7 +128,7 @@ export default function Home() {
               <div className="w-full bg-[#02DB94] max-h-[400px] h-[400px] rounded-[64px] pt-10">
                 <div className="gap-0">
                   <div>
-                    <h2 className="text-4xl pb-5 text-center font-campton">
+                    <h2 className="text-4xl pb-5 text-center font-camptonsemi">
                       Data Analytics
                     </h2>
                   </div>
@@ -169,116 +173,24 @@ export default function Home() {
               </div>
             </SwiperSlide>
           </Swiper>
-          <div className="px-20 mt-32">
-            <div className="mb-20 flex justify-between items-center">
-              <h3 className="font-campton text-5xl leading-tight">
-                Why Choose Pay4it for your <br /> ___________ Needs?
-              </h3>
-              <div className="flex gap-5">
-                <button className="bg-primary rounded-full py-2 px-3 flex items-center gap-3">
-                  <div className="size-12 bg-dark rounded-full flex items-center justify-center">
-                    <Image src={LogoImg} alt="logo" className="w-[50%]" />
-                  </div>
-                  <span className="pr-4">
-                    Get Started
-                  </span>
-                </button>
-                <button className="bg-primary rounded-full py-2 px-12 flex items-center gap-3">
-                  Contact Us
-                </button>
-              </div>
-            </div>
-            <div className="pt-16 border-t border-solid border-[#D6DDD1] max-w-[1724px] mx-auto">
-              <div className="grid grid-cols-1/1.5/1.5">
-                <div>
-                  <h3 className="text-lg font-camptonsemi">01</h3>
-                </div>
-                <div>
-                  <div className="w-[60%] pb-20">
-                    <h3 className="text-lg font-camptonsemi mb-10">The All-in-One Financial Solution</h3>
-                    <p className="text-sm leading-loose md:leading-loose">
-                      Simplify your business operations with Pay4It—your go-to platform for HR solutions, payroll processing, tax compliance, and seamless payments. From handling PAYE and withholding tax APIs to offering a secure payment gateway and wallet services, we ensure your transactions are fast, secure, and hassle-free.
-                    </p>
-                  </div>
-                </div>
-                <div>
-                  <div className="h-full w-full bg-primary"></div>
-                </div>
-              </div>
-            </div>
-            <div className="pt-16 mt-16 border-t border-solid border-[#D6DDD1] max-w-[1724px] mx-auto">
-              <div className="grid grid-cols-1/1.5/1.5">
-                <div>
-                  <h3 className="text-lg font-camptonsemi">02</h3>
-                </div>
-                <div>
-                  <div className="w-[60%] pb-1">
-                    <h3 className="text-lg font-camptonsemi mb-10">The All-in-One Financial Solution</h3>
-                    {/* <p className="text-sm leading-loose md:leading-loose">
-                      Simplify your business operations with Pay4It—your go-to platform for HR solutions, payroll processing, tax compliance, and seamless payments. From handling PAYE and withholding tax APIs to offering a secure payment gateway and wallet services, we ensure your transactions are fast, secure, and hassle-free.
-                    </p> */}
-                  </div>
-                </div>
-                <div>
-                  <div className="h-full w-full bg-primary"></div>
-                </div>
-              </div>
-            </div>
-            <div className="pt-16 mt-16 border-t border-solid border-[#D6DDD1] max-w-[1724px] mx-auto">
-              <div className="grid grid-cols-1/1.5/1.5">
-                <div>
-                  <h3 className="text-lg font-camptonsemi">03</h3>
-                </div>
-                <div>
-                  <div className="w-[60%] pb-1">
-                    <h3 className="text-lg font-camptonsemi mb-10">The All-in-One Financial Solution</h3>
-                    {/* <p className="text-sm leading-loose md:leading-loose">
-                      Simplify your business operations with Pay4It—your go-to platform for HR solutions, payroll processing, tax compliance, and seamless payments. From handling PAYE and withholding tax APIs to offering a secure payment gateway and wallet services, we ensure your transactions are fast, secure, and hassle-free.
-                    </p> */}
-                  </div>
-                </div>
-                <div>
-                  <div className="h-full w-full bg-primary"></div>
-                </div>
-              </div>
-            </div>
-            <div className="pt-16 mt-16 border-t border-solid border-[#D6DDD1] max-w-[1724px] mx-auto">
-              <div className="grid grid-cols-1/1.5/1.5">
-                <div>
-                  <h3 className="text-lg font-camptonsemi">04</h3>
-                </div>
-                <div>
-                  <div className="w-[60%] pb-1">
-                    <h3 className="text-lg font-camptonsemi mb-10">The All-in-One Financial Solution</h3>
-                    {/* <p className="text-sm leading-loose md:leading-loose">
-                      Simplify your business operations with Pay4It—your go-to platform for HR solutions, payroll processing, tax compliance, and seamless payments. From handling PAYE and withholding tax APIs to offering a secure payment gateway and wallet services, we ensure your transactions are fast, secure, and hassle-free.
-                    </p> */}
-                  </div>
-                </div>
-                <div>
-                  <div className="h-full w-full bg-primary"></div>
-                </div>
-              </div>
-            </div>
-          </div>
           <div className="manual px-24 mt-24">
             <div className="grid grid-cols-3 gap-10 pt-20 pb-24 items-center">
               <div>
-                <h3 className="text-7xl text-white font-camptonsemi mb-5">Use Pay4it to pay for it</h3>
-                <p className="text-white text-2xl mb-5 font-camptonthin">
-                  Schedule the interview with this candidate now
+                <h3 className="text-7xl text-white font-campton md:leading-tight leading-tight mb-5">Use Pay4it to pay for it</h3>
+                <p className="text-white text-2xl mb-5 font-camptonthin 4xl:w-[90%]">
+                  Transactions and payments made seamlessly.
                 </p>
-                <div className="flex gap-8">
+                <div className="flex gap-5">
                   <button className="bg-white rounded-full py-2 px-3 flex items-center gap-3">
                     <div className="size-10 bg-dark rounded-full flex items-center justify-center">
                       <Image src={LogoImg} alt="logo" className="w-[50%]" />
                     </div>
                     <span className="pr-4 text-dark text-sm">
-                      Get started
+                      More Info
                     </span>
                   </button>
                   <button className="border text-white border-white border-solid rounded-full py-2 px-10 flex items-center gap-3 text-sm">
-                    Our Solutions
+                    Contact Us
                   </button>
                 </div>
               </div>
@@ -294,53 +206,68 @@ export default function Home() {
             </div>
           </div>
           <div className="bg-[#F3F3F3] py-20 pb-60">
-            <h3 className="text-center text-5xl w-[70%] mx-auto leading-snug md:leading-snug text-[#003235]">
+            <h3 className="text-center text-5xl w-[70%] 3xl:w-[50%] 4xl:w-[40%] mx-auto leading-snug md:leading-snug text-[#003235] font-campton">
               API Integration for PAYE, WHT, and Government Bill Processing
             </h3>
           </div>
           <div className="px-24">
-            <div className="bg-[#5D8BFF] py-20 px-32 rounded-b-[100px]">
-              <div className="max-w 1320px grid grid-cols-3 gap-10 -mt-[270px]">
-                <div className="min-h-[350px] border text-center border-solid border-black bg-[#5D8BFF] rounded-t-[200px] pt-28 pb-16 rounded-b-[200px]">
+            <div className="bg-[#5D8BFF] py-20 px-32 4xl:w-[75%] mx-auto rounded-b-[100px]">
+              <div className="max-w-[1320px] 3xl:w-[95%] 4xl:w-[100%] mx-auto grid grid-cols-3 gap-10 -mt-[270px]">
+                <div className="min-h-[350px] border text-center border-solid border-black bg-[#5D8BFF] rounded-t-[200px] pt-16 pb-16 rounded-b-[200px]">
                   <Image src={WithholdingImg} alt="paye" className="w-[15%] mb-7 mx-auto" />
-                  <h6 className="text-[#1B1B1B] text-sm mb-7">PAYE</h6>
-                  <h4 className="text-black text-2xl w-[60%] mx-auto">Get all digital solution <br />
-                    from our expert</h4>
-                  <div className="block w-[70px] mx-auto bg-black mt-12 h-[3px]"></div>
+                  <h6 className="text-[#1B1B1B] text-sm mb-7 uppercase font-campton">PAYE API</h6>
+                  <h4 className="text-[#3A3A3A] text-lg w-[85%] leading-loose md:leading-loose font-campton mx-auto">Automate Pay-As-You-Earn (PAYE) tax deductions and employee remittances</h4>
+                  <div className="block w-[50px] mx-auto bg-black mt-12 h-[3px]"></div>
                 </div>
-                <div className="min-h-[350px] border text-center border-solid bg-[#fff] rounded-t-[200px] pt-28 pb-16 rounded-b-[200px]">
+                <div className="min-h-[350px] border text-center border-solid bg-[#fff] rounded-t-[200px] pt-16 pb-16 rounded-b-[200px]">
                   <Image src={WithholdingImg} alt="paye" className="w-[15%] mb-7 mx-auto" />
-                  <h6 className="text-[#1B1B1B] text-sm mb-7">PAYE</h6>
-                  <h4 className="text-black text-2xl w-[60%] mx-auto">Get all digital solution <br />
-                    from our expert</h4>
-                  <div className="block w-[70px] mx-auto bg-black mt-12 h-[3px]"></div>
+                  <h6 className="text-[#1B1B1B] text-sm mb-7 uppercase font-campton">Withholding Tax API</h6>
+                  <h4 className="text-[#3A3A3A] text-lg w-[85%] leading-loose md:leading-loose font-campton mx-auto">Simplify withholding tax deductions for businesses and service providers.</h4>
+                  <div className="block w-[50px] mx-auto bg-black mt-12 h-[3px]"></div>
                 </div>
-                <div className="min-h-[350px] border text-center border-solid bg-[#fff] rounded-t-[200px] pt-28 pb-16 rounded-b-[200px]">
+                <div className="min-h-[350px] border text-center border-solid bg-[#fff] rounded-t-[200px] pt-16 pb-16 rounded-b-[200px]">
                   <Image src={WithholdingImg} alt="paye" className="w-[15%] mb-7 mx-auto" />
-                  <h6 className="text-[#1B1B1B] text-sm mb-7">PAYE</h6>
-                  <h4 className="text-black text-2xl w-[60%] mx-auto">Get all digital solution <br />
-                    from our expert</h4>
-                  <div className="block w-[70px] mx-auto bg-black mt-12 h-[3px]"></div>
+                  <h6 className="text-[#1B1B1B] text-sm mb-7 uppercase font-campton">Government Bills API</h6>
+                  <h4 className="text-[#3A3A3A] text-lg w-[90%] 4xl:w-[90%] leading-loose md:leading-loose font-campton mx-auto">Enable businesses and individuals to pay government levies, licenses, and bills effortlessly.</h4>
+                  <div className="block w-[50px] mx-auto bg-black mt-12 h-[3px]"></div>
                 </div>
               </div>
               <div className="px-0">
-                <h3 className="text-white mb-16 text-6xl leading-normal md:leading-normal font-camptonthin mt-10">
-                  Simplify <span className="text-black font-camptonsemi border-b-2 border-white border-solid">Tax and Bill
-                    Payments</span> with <span className="font-camptonsemi border-b-2 border-white border-solid">Pay4IT</span><span className="text-black font-camptonsemi"> API</span> <span className="text-black font-camptonsemi border-b-2 border-white border-solid">Integration</span>
+                <h3 className="text-white mb-16 text-6xl leading-normal md:leading-normal font-camptonthin mt-10 3xl:w-[95%] mx-auto 4xl:w-[95%]">
+                  <div className="w-max">
+                    Simplify <span className="text-black font-camptonsemi border-b-2 border-white border-solid">Tax and Bill
+                      Payments</span> with <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <span className="font-camptonsemi border-b-2 border-white border-solid"> Pay4IT</span> <span className="text-black font-camptonsemi"> API </span> <span className="text-black font-camptonsemi border-b-2 border-white border-solid">Integration
+                        </span>
+                      </div>
+                      <span className="size-24 rounded-full bg-white block flex items-center">
+                        <Image src={ArrowHomeImg} alt="paye" className="" />
+                      </span>
+                    </div>
+                  </div>
                 </h3>
               </div>
             </div>
           </div>
-          <div className="my-24 px-24">
+          <div className="my-24 px-24 3xl:px-32 3xl:px-32 4xl:w-[80%] mb-32 mx-auto">
             <div className="bg-[#DFFF5E] relative rounded-[100px] py-20 px-20 border-2 border-solid border-black min-h-[700px]">
-              <h4 className="text-6xl font-campton w-[90%]">
-                &apos;Automate salary processing, PAYE deductions, and employee benefits for streamlined HR operations.&apos;
+              <h4 className="text-6xl font-campton w-[90%] leading-tight md:leading-tight">
+                &quot;Automate salary processing, PAYE deductions, and employee benefits for streamlined HR operations.&quot;
               </h4>
-              <Image src={MaleposeImg} alt="man sitting on a chair" className="absolute right-5 -bottom-14 w-[650px]" />
+              <button className="bg-dark mt-10 rounded-[16px] py-2 px-6 flex items-center gap-1">
+                <span className="pr-4 text-white">
+                  View More
+                </span>
+                <div className="size-12 bg-white rounded-full flex items-center justify-center">
+                  <FaArrowRightLong className="text-xl" />
+                </div>
+              </button>
+              <Image src={MaleposeImg} alt="man sitting on a chair" className="absolute right-5 -bottom-24 w-[650px]" />
             </div>
           </div>
         </>
-      </Layout>
-    </div>
+      </Layout >
+    </div >
   );
 }

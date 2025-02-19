@@ -12,7 +12,10 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
         primary: "var(--primary)",
-        dark: "var(--dark)"
+        dark: "var(--dark)",
+        danger: "var(--danger)",
+        buttonBg: "var(--buttonBg)",
+        offWhite: "var(--offWhite)"
       },
       fontFamily: {
         camptonsemi: "Campton Semi-Bold",
@@ -23,12 +26,17 @@ export default {
         satoshibold: "Satoshi Bold",
         satoshilight: "Satoshi Light",
         clashDisplay: "ClashDisplay",
-        ClashDisplayRegular: "ClashDisplay Regular"
+        ClashDisplayRegular: "ClashDisplay Regular",
+        openSans: "Open Sans"
       },
       gridTemplateColumns: {
         "1/2": "1fr 2fr",
         "2/1": "2fr 1fr",
         "1/1.5/1.5": "1.5fr 3.5fr 1.5fr",
+      },
+      screens: {
+        '3xl': "1600px",
+        '4xl': "1800px"
       }
     },
   },
