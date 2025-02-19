@@ -5,9 +5,7 @@ import APIIcon from "@/assets/images/account/icons/api.svg";
 import AccountLayout from "@/components/account/layout";
 import useFetchWalletTransactions from "@/utils/apiHooks/wallets/useFetchWalletTransactions";
 
-import { Input, Select } from "antd";
 import { useContext, useEffect, useState } from "react";
-import Image from "next/image";
 import type { MenuProps } from 'antd';
 import { HiOutlineUser } from "react-icons/hi";
 import { IoSettingsOutline } from "react-icons/io5";
@@ -19,129 +17,9 @@ import UserContext from "@/context/UserContext";
 
 const Dashboard = () => {
 
-    const { fetchWalletDetails, data: walletData } = useFetchWalletTransactions();
-
-    const [selectedHistory, setSelectedHistory] = useState();
-    const [history, setHistory] = useState();
     const [currentView, setCurrentView] = useState("profile");
 
     const { user } = useContext(UserContext)
-
-    useEffect(() => {
-        if (user) {
-        }
-    }, [user])
-
-    const dataSource = [
-        {
-            key: '1039237',
-            date: '23/08/2021',
-            paymentType: "Loradine 10mg",
-            transactionId: 'UG1686288',
-            amountPaid: "34,989.00",
-            paymentStatus: <span className="bg-[#E8F6EE] uppercase text-[#11763D] text-xs p-2 px-10">Paid</span>,
-            action: <button className="bg-transparent">View Details</button>
-            // action: <button onClick={setSelectedHistory()} className="bg-transparent">View Details</button>
-        },
-        {
-            key: '1039237',
-            date: '23/08/2021',
-            paymentType: "Loradine 10mg",
-            transactionId: 'UG1686288',
-            amountPaid: "34,989.00",
-            paymentStatus: <span className="bg-[#E8F6EE] uppercase text-[#11763D] text-xs p-2 px-10">Paid</span>,
-            action: <button className="bg-transparent">View Details</button>
-        }, {
-            key: '1039237',
-            date: '23/08/2021',
-            paymentType: "Loradine 10mg",
-            transactionId: 'UG1686288',
-            amountPaid: "34,989.00",
-            paymentStatus: <span className="bg-[#E8F6EE] uppercase text-[#11763D] text-xs p-2 px-10">Paid</span>,
-            action: <button className="bg-transparent">View Details</button>
-        }
-    ];
-
-    const columns = [
-        {
-            title: '',
-            dataIndex: 'key',
-            key: 'key',
-        },
-        {
-            title: 'Transaction Date',
-            dataIndex: 'date',
-            key: 'date',
-        },
-        {
-            title: 'Payment Type',
-            dataIndex: 'paymentType',
-            key: 'paymentType',
-        },
-        {
-            title: 'Transaction ID',
-            dataIndex: 'transactionId',
-            key: 'transactionId',
-        },
-        {
-            title: 'Amount Paid',
-            dataIndex: 'amountPaid',
-            key: 'amountPaid',
-        },
-        {
-            title: 'Payment Status',
-            dataIndex: 'paymentStatus',
-            key: 'paymentStatus',
-        },
-        {
-            title: 'Action',
-            dataIndex: 'action',
-            key: 'action',
-        }
-    ];
-
-    const items: MenuProps['items'] = [
-        {
-            key: '1',
-            label: (
-                <button className="flex items-center" rel="noopener noreferrer">
-                    1st menu item
-                </button>
-            ),
-        },
-        {
-            key: '2',
-            label: (
-                <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
-                    1st menu item
-                </a>
-            ),
-        },
-        {
-            key: '3',
-            label: (
-                <a target="_blank" rel="noopener noreferrer" href="https://www.luohanacademy.com">
-                    3rd menu item (disabled)
-                </a>
-            ),
-            disabled: true,
-        },
-        {
-            key: '4',
-            danger: true,
-            label: 'a danger item',
-        },
-    ];
-
-    useEffect(() => {
-        if (walletData) {
-            setHistory(walletData);
-        };
-    }, [walletData])
-
-    useEffect(() => {
-        // fetchWalletDetails();
-    }, [])
 
     return (
         <div>

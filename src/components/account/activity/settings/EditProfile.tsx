@@ -1,11 +1,9 @@
-import { Divider } from "@/components/Divider"
-import Button from "@/components/buttons"
-import { TextField } from "@/components/input/InputText"
-import { GlobalActionContext } from "@/context/GlobalActionContext"
-import UserContext from "@/context/UserContext"
-import { useUpdateProfile } from "@/utils/apiHooks/profile/useUpdateProfile"
-import { useContext, useEffect, useState } from "react"
-import { Upload } from "antd";
+import Button from "@/components/buttons";
+import { TextField } from "@/components/input/InputText";
+import { GlobalActionContext } from "@/context/GlobalActionContext";
+import UserContext from "@/context/UserContext";
+import { useUpdateProfile } from "@/utils/apiHooks/profile/useUpdateProfile";
+import { useContext, useEffect, useState } from "react";
 import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
 
 
@@ -136,10 +134,6 @@ export const EditProfile = () => {
                 <h1 className="font-campton text-sm">Last Name</h1>
                 <TextField.Input value={lastName} onChange={(evt) => setLastName(evt.target.value)} placeholder="e.g Doe" className="outline outline-gray-100 px-2 rounded-lg" />
             </div>
-            {/* <div className="flex flex-col gap-2">
-                <h1>Email address</h1>
-                <TextField.Input disabled value={user?.email} className="outline-none bg-gray-100 px-2 rounded-lg" />
-            </div> */}
         </div>
 
         <div className="flex justify-end">

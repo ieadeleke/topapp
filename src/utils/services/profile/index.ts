@@ -1,5 +1,5 @@
 import { request } from "@/utils/request"
-import { ActivateWalletParams, ActivateWalletResponse, AvailableBillResponse, FetchProfileResponse, RefreshAgentWalletParams, RefreshAgentWalletResponse, SetAgentPinParams, SetAgentPinResponse, UpdateProfileParams, UpdateProfileResponse } from "./types"
+import { ActivateWalletParams, ActivateWalletResponse, AvailableBillResponse, FetchProfileResponse, RefreshAgentWalletParams, RefreshAgentWalletResponse, SetAgentPinParams, SetAgentPinResponse, UpdateBusinessProfileParams, UpdateBusinessProfileResponse, UpdateProfileParams, UpdateProfileResponse } from "./types"
 import { ApiResponse } from "@/models"
 import { Profile } from "@/models/profile"
 
@@ -51,7 +51,6 @@ export function ProfileService() {
 
     async function updateProfile(params: UpdateProfileParams) {
         const formData = new FormData()
-        console.log(params);
         formData.append("firstName", params.firstName);
         formData.append("lastName", params.lastName);
         // if (params.image) {
@@ -70,12 +69,22 @@ export function ProfileService() {
         return response as UpdateProfileResponse
     }
 
+    async function updateBusinessProfile(params: UpdateBusinessProfileParams) {
+        const response = await request({
+            path: `v1/merchant/UpdateMerchant`,
+            method: "PUT",
+            body: params
+        })
+        return response as UpdateBusinessProfileResponse
+    }
+
     return {
         getUser,
         updateProfile,
         activateWallet,
         refreshAgentWallet,
         setNewUserPin,
-        fetchAvailableBills
+        fetchAvailableBills,
+        updateBusinessProfile
     }
 }

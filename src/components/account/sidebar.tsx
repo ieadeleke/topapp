@@ -158,7 +158,7 @@ const SideBar = () => {
                             <span>Overview</span>
                         </Link>
                     </li>
-                    <li className={`flex items-center gap-4 text-sm px-5 py-5 ${pathName === "/account/wallet" ? "bg-[#003235] rounded-[8px] text-white" : "text-[#1B1B1B]"}`}>
+                    {/* <li className={`flex items-center gap-4 text-sm px-5 py-5 ${pathName === "/account/wallet" ? "bg-[#003235] rounded-[8px] text-white" : "text-[#1B1B1B]"}`}>
                         <Link href="/account/wallet" className={`flex items-center gap-4 text-sm font-camptonthin ${pathName === "/account/wallet" ? "text-white" : "text-[#1B1B1B]"}`}>
                             <span>
                                 <Image src={pathName === "/account/wallet" ? WalletWhiteImg : WalletImg} alt="bell icon" className="w-[18px]" />
@@ -173,7 +173,7 @@ const SideBar = () => {
                             </span>
                             <span>Transaction History</span>
                         </Link>
-                    </li >
+                    </li > */}
                     {/* <li className={`flex items-center gap-4 text-sm px-5 py-5 ${pathName === "/account/users" ? "bg-[#003235] rounded-[8px] text-white" : "text-[#1B1B1B]"}`}>
                         <Link href="/account/users" className={`flex items-center gap-4 text-sm font-camptonthin ${pathName === "/account/users" ? "text-white" : "text-[#1B1B1B]"}`}>
                             <span>
@@ -182,7 +182,7 @@ const SideBar = () => {
                             <span>Users</span>
                         </Link>
                     </li > */}
-                    {
+                    {/* {
                         userData?.profileType === "merchant" ?
                             <li className={`flex items-center gap-4 text-sm px-5 py-5 ${pathName === "/account/merchant" ? "bg-[#003235] rounded-[8px] text-white" : "text-[#1B1B1B]"}`}>
                                 <Link href="/account/merchant" className={`flex items-center gap-4 text-sm font-camptonthin ${pathName === "/account/merchant" ? "text-white" : "text-[#1B1B1B]"}`}>
@@ -192,7 +192,7 @@ const SideBar = () => {
                                     <span>Merchant Admin</span>
                                 </Link>
                             </li >
-                            : ""}
+                            : ""} */}
                     {/* <li className={`flex items-center gap-4 text-sm px-5 py-5 ${pathName === "/account/activity" ? "bg-[#003235] rounded-[8px] text-white" : "text-[#1B1B1B]"}`}>
                         <Link href="/account/activity" className={`flex items-center gap-4 text-sm font-camptonthin ${pathName === "/account/activity" ? "bg-[#003235] rounded-[8px] text-white" : "text-[#1B1B1B]"}`}>
                             <span>
@@ -218,12 +218,15 @@ const SideBar = () => {
                         <span className="font-openSans">Logout</span>
                     </Link>
                 </div>
-                <div className="merchant-bg relative overflow-hidden bg-[#D3FFB4] max-w-[206px] rounded-[12px] py-7 px-5 mt-10">
-                    <Image src={LogoColoured} alt="logo" className="w-max mx-auto mb-3" />
-                    <h4 className="text-base mb-8 text-center">Become a Merchant</h4>
-                    <button onClick={toggleMerchantModal} className="bg-[#003235] z-30 block relative py-4 w-full text-[13px] rounded-[10px] text-white text-">Get Started</button>
-                    <Image src={Ecclipse} alt="ecclipse" className="absolute -right-5 -bottom-3 w-full" />
-                </div>
+                {
+                    userData?.profileType === "merchant" ? "" :
+                        <div className="merchant-bg relative overflow-hidden bg-[#D3FFB4] max-w-[206px] rounded-[12px] py-7 px-5 mt-10">
+                            <Image src={LogoColoured} alt="logo" className="w-max mx-auto mb-3" />
+                            <h4 className="text-base mb-8 text-center">Become a Merchant</h4>
+                            <button onClick={toggleMerchantModal} className="bg-[#003235] z-30 block relative py-4 w-full text-[13px] rounded-[10px] text-white text-">Get Started</button>
+                            <Image src={Ecclipse} alt="ecclipse" className="absolute -right-5 -bottom-3 w-full" />
+                        </div>
+                }
             </div>
 
             <Modal open={openMerchantModal} onClose={toggleMerchantModal} onCancel={toggleMerchantModal} footer={null}>

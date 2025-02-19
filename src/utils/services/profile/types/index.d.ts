@@ -6,6 +6,20 @@ export type UpdateProfileParams = {
     email?: string
 }
 
+export type UpdateBusinessProfileParams = {
+    businessName: string;
+    email: string;
+    directorNIN: string;
+    directorDOB: string;
+    directorBVN: string;
+    phoneNumber: string;
+    CACReg: string;
+    address: string
+}
+
+export type UpdateBusinessProfileResponse = {
+    MerchantProfile: Profile
+}
 export type UpdateProfileResponse = {
     profile: Profile
 }
