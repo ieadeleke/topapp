@@ -329,13 +329,13 @@ export default function Home() {
             </div>
           </div>
           <div className="bg-[#F3F3F3] py-20 pb-60">
-            <h3 className="text-center text-5xl w-[70%] 3xl:w-[50%] 4xl:w-[40%] mx-auto leading-snug md:leading-snug text-[#003235] font-campton">
+            <h3 className="text-center text-3xl md:text-5xl md:w-[70%] 3xl:w-[50%] 4xl:w-[40%] mx-auto leading-snug md:leading-snug text-[#003235] font-campton">
               API Integration for PAYE, WHT, and Government Bill Processing
             </h3>
           </div>
           <div className="md:px-24 bg-[#F3F3F3] md:bg-transparent">
-            <div className="md:bg-[#5D8BFF] py-20 px-32 4xl:w-[75%] mx-auto rounded-b-[100px]">
-              <div className="max-w-[1320px] 3xl:w-[95%] 4xl:w-[100%] mx-auto grid grid-cols-3 gap-10 -mt-[270px]">
+            <div className="md:bg-[#5D8BFF] py-20 px-14 md:px-32 4xl:w-[75%] mx-auto rounded-b-[100px]">
+              <div className="max-w-[1320px] 3xl:w-[95%] 4xl:w-[100%] mx-auto flex flex-col md:grid grid-cols-3 gap-10 -mt-[270px]">
                 <div className="min-h-[350px] border text-center border-solid border-black bg-[#5D8BFF] rounded-t-[200px] pt-16 pb-16 rounded-b-[200px]">
                   <div className="min-h-[50px] mb-5">
                     <Image src={Svg1Img} alt="paye" className="w-[15%] mb-7 mx-auto" />
