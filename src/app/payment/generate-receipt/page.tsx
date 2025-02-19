@@ -114,15 +114,17 @@ function GenerateReceiptPage() {
         <div className="flex flex-col">
           {
             upperLinkNotificationData ? (
-              <GenerateReceipt
-                data={{
-                  amount: upperLinkNotificationData.amountPaid,
-                  url: upperLinkNotificationData.ReceiptNumber,
-                  billingReference: upperLinkNotificationData.paymentRef,
-                  paymentTime: new Date().toString(),
-                  senderName: upperLinkNotificationData.PayerName,
-                }}
-              />
+              <Suspense fallback={<div>Loading...</div>}>
+                <GenerateReceipt
+                  data={{
+                    amount: upperLinkNotificationData.amountPaid,
+                    url: upperLinkNotificationData.ReceiptNumber,
+                    billingReference: upperLinkNotificationData.paymentRef,
+                    paymentTime: new Date().toString(),
+                    senderName: upperLinkNotificationData.PayerName,
+                  }}
+                />
+              </Suspense>
             )
               : (
                 <form onSubmit={onFormSubmit} className={cn("flex flex-col")}>
