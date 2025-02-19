@@ -49,7 +49,7 @@ export default function Home() {
     <div className="bg-background">
       <Layout>
         <>
-          <div className="hero-sect px-20 py-20">
+          <div className="hero-sect px-5 md:px-20 py-20">
             <div className="flex flex-col md:grid grid-cols-2 max-w-[1626px] mx-auto gap-10">
               <div>
                 <div className="bg-primary rounded-lg py-3 px-5 mb-4 flex items-center gap-3 w-max">
@@ -84,9 +84,9 @@ export default function Home() {
             </div>
           </div>
           <div className="mt-2 py-14 bg-primary w-full"></div>
-          <div className="mt-20 px-20">
-            <div className="flex justify-between mb-24 items-end max-w-[1657px]">
-              <h3 className="text-5xl md:leading-snug leading-snug max-w-[1190px]">
+          <div className="mt-20 px-5 md:px-20">
+            <div className="flex flex-col md:flex-row justify-between mb-24 md:items-end max-w-[1657px]">
+              <h3 className="text-3xl md:text-5xl md:leading-snug leading-snug max-w-[1190px]">
                 Join us in simplifying payments <br /> and creating opportunities for all
               </h3>
               <Image src={ShoppersImg} alt="ShoppersImg" />

@@ -1,5 +1,5 @@
-import { Footer } from "../landing-page/Footer";
-import { NavBar } from "../landing-page/NavBar";
+import Footer from "../footer";
+import NavBar from "../nav";
 
 type LayoutProps = {
   children?: React.ReactNode;
