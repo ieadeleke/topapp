@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { ChangeEvent, useContext, useEffect, useState } from "react";
+import { ChangeEvent, useContext, useEffect, useState, Suspense } from "react";
 import { Reference } from "@/models/reference";
 import { Payment } from "@/models/payment";
 import { useUpperlinkNotification } from "@/utils/apiHooks/charge/useUpperlinkNotification";
@@ -13,7 +13,6 @@ import { cn } from "@/lib/utils";
 import Button from "@/components/buttons";
 import GlobalContext from "@/context/GlobalContext";
 import { GenerateReceipt } from "@/components/charge/GenerateReceipt";
-import { Suspense } from "react";
 import { PaymentLayout } from "@/components/layout/payment-layout";
 
 type Error = {
@@ -32,35 +31,44 @@ const TextInput = ({ className, ...props }: InputProps) => (
 );
 
 function GenerateReceiptPage() {
+  return (
+    <PaymentLayout>
+      <div className="mt-12 min-h-screen flex flex-col items-center">
+        <div className="flex flex-col">
+          <Suspense fallback={<div>Loading...</div>}>
+            <GenerateReceiptContent />
+          </Suspense>
+        </div>
+      </div>
+    </PaymentLayout>
+  );
+}
+
+function GenerateReceiptContent() {
   const router = useRouter();
-  const [payment, setPayment] = useState<
-    (Payment & { ReceiptNumber: string }) | null
-  >(null);
   const { showSnackBar } = useContext(GlobalContext);
+  const [payment, setPayment] = useState<Payment & { ReceiptNumber: string } | null>(null);
   const [reference, setReference] = useState("");
   const [mda, setMDA] = useState<string>();
   const [transactionId, setTransactionID] = useState("");
+
   const {
     isLoading: isUpperLinkNotificationLoading,
     data: upperLinkNotificationData,
     error: upperLinkNotificationError,
     upperlinkNotification,
   } = useUpperlinkNotification();
-  const referenceParams = useSearchParams().get("reference");
-  const mdaParams = useSearchParams().get("mda");
-  const tx_idParams = useSearchParams().get("tx_id");
+
+  const searchParams = useSearchParams();
+  const referenceParams = searchParams.get("reference");
+  const mdaParams = searchParams.get("mda");
+  const tx_idParams = searchParams.get("tx_id");
 
   useEffect(() => {
-    setReference((reference as string | null) ?? "");
-  }, [referenceParams]);
-
-  useEffect(() => {
-    setMDA((mdaParams as string | null) ?? "");
-  }, [mdaParams]);
-
-  useEffect(() => {
-    setTransactionID((tx_idParams as string | null) ?? "");
-  }, [tx_idParams]);
+    setReference(referenceParams ?? "");
+    setMDA(mdaParams ?? "");
+    setTransactionID(tx_idParams ?? "");
+  }, [referenceParams, mdaParams, tx_idParams]);
 
   useEffect(() => {
     if (referenceParams && tx_idParams) {
@@ -108,60 +116,41 @@ function GenerateReceiptPage() {
     submitReference();
   }
 
-  return (
-    <PaymentLayout>
-      <div className="mt-12 min-h-screen flex flex-col items-center">
-        <div className="flex flex-col">
-          {
-            upperLinkNotificationData ? (
-              <Suspense fallback={<div>Loading...</div>}>
-                <GenerateReceipt
-                  data={{
-                    amount: upperLinkNotificationData.amountPaid,
-                    url: upperLinkNotificationData.ReceiptNumber,
-                    billingReference: upperLinkNotificationData.paymentRef,
-                    paymentTime: new Date().toString(),
-                    senderName: upperLinkNotificationData.PayerName,
-                  }}
-                />
-              </Suspense>
-            )
-              : (
-                <form onSubmit={onFormSubmit} className={cn("flex flex-col")}>
-                  <h1 className="font-bold">Enter your Payment Reference</h1>
-                  <TextInput
-                    defaultValue={reference}
-                    onChange={(evt) => setReference(evt.target.value)}
-                    className="mt-2"
-                    placeholder="XXXX-XXX-XXXXXX"
-                  />
-                  <Button
-                    onClick={submitReference}
-                    variant="contained"
-                    disabled={isUpperLinkNotificationLoading}
-                    className={cn("h-10 mt-4 w-full")}
-                  >
-                    {isUpperLinkNotificationLoading
-                      ? "Please wait... Loading"
-                      : upperLinkNotificationError
-                        ? "Try again"
-                        : "Generate Receipt"}
-                  </Button>
-                  <div className="flex items-center"></div>
-                </form>
-              )}
-        </div>
-      </div>
-    </PaymentLayout>
+  return upperLinkNotificationData ? (
+    <Suspense fallback={<div>Loading...</div>}>
+      <GenerateReceipt
+        data={{
+          amount: upperLinkNotificationData.amountPaid,
+          url: upperLinkNotificationData.ReceiptNumber,
+          billingReference: upperLinkNotificationData.paymentRef,
+          paymentTime: new Date().toString(),
+          senderName: upperLinkNotificationData.PayerName,
+        }}
+      />
+    </Suspense>
+  ) : (
+    <form onSubmit={onFormSubmit} className={cn("flex flex-col")}>
+      <h1 className="font-bold">Enter your Payment Reference</h1>
+      <TextInput
+        defaultValue={reference}
+        onChange={(evt) => setReference(evt.target.value)}
+        className="mt-2"
+        placeholder="XXXX-XXX-XXXXXX"
+      />
+      <Button
+        onClick={submitReference}
+        variant="contained"
+        disabled={isUpperLinkNotificationLoading}
+        className={cn("h-10 mt-4 w-full")}
+      >
+        {isUpperLinkNotificationLoading
+          ? "Please wait... Loading"
+          : upperLinkNotificationError
+          ? "Try again"
+          : "Generate Receipt"}
+      </Button>
+    </form>
   );
 }
 
-const GenerateReceiptDefaultPage = () => {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <GenerateReceiptPage />
-    </Suspense>
-  );
-};
-
-export default GenerateReceiptDefaultPage;
+export default GenerateReceiptPage;
