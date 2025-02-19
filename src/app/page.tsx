@@ -333,7 +333,7 @@ export default function Home() {
               API Integration for PAYE, WHT, and Government Bill Processing
             </h3>
           </div>
-          <div className="px-24">
+          <div className="md:px-24">
             <div className="bg-[#5D8BFF] py-20 px-32 4xl:w-[75%] mx-auto rounded-b-[100px]">
               <div className="max-w-[1320px] 3xl:w-[95%] 4xl:w-[100%] mx-auto grid grid-cols-3 gap-10 -mt-[270px]">
                 <div className="min-h-[350px] border text-center border-solid border-black bg-[#5D8BFF] rounded-t-[200px] pt-16 pb-16 rounded-b-[200px]">
