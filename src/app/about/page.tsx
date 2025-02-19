@@ -4,9 +4,7 @@ import Image from "next/image";
 import { FaArrowRightLong } from "react-icons/fa6";
 
 import LogoImg from "@/assets/images/logo.svg";
-import LogoTextImg from "@/assets/images/about/logo-text.svg";
 import UsePayImg from "@/assets/images/about/usepay.svg";
-import TeamImg from "@/assets/images/about/team1.svg";
 import QuoteImg from "@/assets/images/quote.svg";
 
 const AboutPage = () => {

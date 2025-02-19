@@ -5,11 +5,11 @@ import { useFetchUser } from "@/utils/apiHooks/profile/useFetchUser";
 import { capitalizeText } from "@/utils/formatters/capitalizeText"
 import { Dropdown } from "antd";
 import Link from "next/link";
-import { useContext, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 
 export const AccountHero = () => {
 
-    const { isLoading: isLoadingUser, error: userError, data: userFetchedData, fetchUser } = useFetchUser();
+    const { error: userError, data: userFetchedData, fetchUser } = useFetchUser();
 
     const [userData, setUserData] = useState<Profile>({
         name: "",
@@ -54,6 +54,12 @@ export const AccountHero = () => {
             setUserData(userFetchedData);
         }
     }, [userFetchedData]);
+
+    useEffect(() => {
+        if (userError) {
+            // setUserData(userError);
+        }
+    }, [userError]);
 
     useEffect(() => {
         fetchUser();

@@ -4,18 +4,18 @@ import FilterImg from "@/assets/images/account/icons/filter.svg";
 import DownloadImg from "@/assets/images/account/icons/cloud-upload.svg";
 
 import AccountLayout from "@/components/account/layout";
-import useFetchWalletTransactions from "@/utils/apiHooks/wallets/useFetchWalletTransactions";
+// import useFetchWalletTransactions from "@/utils/apiHooks/wallets/useFetchWalletTransactions";
 
 import { Table } from "antd";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import Image from "next/image";
 
 const Dashboard = () => {
 
-    const { fetchWalletDetails, data: walletData } = useFetchWalletTransactions();
+    // const { fetchWalletDetails, data: walletData } = useFetchWalletTransactions();
 
-    const [selectedHistory, setSelectedHistory] = useState();
-    const [history, setHistory] = useState();
+    // const [selectedHistory, setSelectedHistory] = useState();
+    // const [history, setHistory] = useState();
 
     const dataSource = [
         {
@@ -85,15 +85,15 @@ const Dashboard = () => {
         }
     ];
 
-    useEffect(() => {
-        if (walletData) {
-            setHistory(walletData);
-        };
-    }, [walletData])
+    // useEffect(() => {
+    //     if (walletData) {
+    //         setHistory(walletData);
+    //     };
+    // }, [walletData])
 
-    useEffect(() => {
-        // fetchWalletDetails();
-    }, [])
+    // useEffect(() => {
+    //     fetchWalletDetails();
+    // }, [])
 
     return (
         <div>

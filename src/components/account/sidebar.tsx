@@ -3,7 +3,6 @@ import BellImg from "@/assets/images/account/icons/bell.svg";
 import HistoryImg from "@/assets/images/account/icons/history.svg";
 import LogoutImg from "@/assets/images/account/icons/logout.svg";
 import PeopleImg from "@/assets/images/account/icons/people.svg";
-import SettingsImg from "@/assets/images/account/icons/settings.svg";
 import WalletImg from "@/assets/images/account/icons/wallet.svg";
 import HomeImg from "@/assets/images/account/icons/home.svg";
 

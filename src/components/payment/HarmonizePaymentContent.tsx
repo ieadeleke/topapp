@@ -10,18 +10,17 @@ import { isEmail } from "@/utils/validation/validation";
 import { HarmonizeReference } from "@/models/reference";
 import Pay4ItLogo from "@/assets/images/pay_4_it_logo.png";
 import { useFlutterwave, closePaymentModal } from "flutterwave-react-v3";
-import { FLUTTERWAVE_LIVE_KEY, config, FLUTTERWAVE_TEST_KEY } from "@/utils/data/flutterwave.config";
+import { FLUTTERWAVE_LIVE_KEY, config } from "@/utils/data/flutterwave.config";
 import GlobalContext from "@/context/GlobalContext";
 import { useInitiateHarmonizePayment } from "@/utils/apiHooks/charge/useInitiateHarmonizePayment";
 import { useHarmonizeNotification } from "@/utils/apiHooks/useCompleteWalletPayment";
 import { generateUUID } from "@/utils/data/generateUUID";
-import { LoadingOutlined } from '@ant-design/icons';
-import { Checkbox, Modal, Spin, type CheckboxProps } from 'antd';
 import { FaTrashCan, FaXmark } from "react-icons/fa6";
 import { OTPInputBoxes } from "../auth/OTPInput";
 import { GenerateReceipt } from "../charge/GenerateReceipt";
 import { Divider } from "@/components/Divider";
 import { formatAmount } from "@/utils/formatters/formatAmount";
+import { Modal, Spin } from "antd";
 
 
 const TextInput = ({ className, ...props }: InputProps) => (

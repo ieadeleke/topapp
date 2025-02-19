@@ -1,14 +1,4 @@
-import { EyeIcon, EyeOffIcon } from "lucide-react"
-import { IconButton } from "../buttons/IconButton"
-import { TextField } from "../input/InputText"
-import Link from "next/link"
-import Button from "../buttons"
-import { useLogin } from "@/utils/apiHooks/auth/useLogin"
-import { useContext, useEffect, useState } from "react"
-import GlobalContext from "@/context/GlobalContext"
-import { isEmail } from "@/utils/validation"
-import { useRouter } from "next/navigation"
-
+import { useState } from "react"
 import OtpInput from 'react-otp-input';
 
 interface updateOTPValue {

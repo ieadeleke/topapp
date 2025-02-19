@@ -1,19 +1,14 @@
 "use client";
 
-import FilterImg from "@/assets/images/account/icons/filter.svg";
-import DownloadImg from "@/assets/images/account/icons/cloud-upload.svg";
 import APIIcon from "@/assets/images/account/icons/api.svg";
 
 import AccountLayout from "@/components/account/layout";
 import useFetchWalletTransactions from "@/utils/apiHooks/wallets/useFetchWalletTransactions";
 
-import { Dropdown, Input, Select, Table } from "antd";
+import { Input, Select } from "antd";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { DownOutlined, SmileOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
-import { BsThreeDotsVertical } from "react-icons/bs";
-import { RiUserLine } from "react-icons/ri";
 import { HiOutlineUser } from "react-icons/hi";
 import { IoSettingsOutline } from "react-icons/io5";
 

@@ -1,92 +1,24 @@
 "use client";
 
-import FilterImg from "@/assets/images/account/icons/filter.svg";
-import DownloadImg from "@/assets/images/account/icons/cloud-upload.svg";
+// import FilterImg from "@/assets/images/account/icons/filter.svg";
+// import DownloadImg from "@/assets/images/account/icons/cloud-upload.svg";
 
 import AccountLayout from "@/components/account/layout";
-import useFetchWalletTransactions from "@/utils/apiHooks/wallets/useFetchWalletTransactions";
+// import useFetchWalletTransactions from "@/utils/apiHooks/wallets/useFetchWalletTransactions";
 
-import { Dropdown, Table } from "antd";
-import { useEffect, useState } from "react";
-import Image from "next/image";
-import { DownOutlined, SmileOutlined } from '@ant-design/icons';
+import { Dropdown } from "antd";
+// import { useEffect, useState } from "react";
+// import Image from "next/image";
+// import { DownOutlined, SmileOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { BsThreeDotsVertical } from "react-icons/bs";
 
 const Dashboard = () => {
 
-    const { fetchWalletDetails, data: walletData } = useFetchWalletTransactions();
+    // const { fetchWalletDetails, data: walletData } = useFetchWalletTransactions();
 
-    const [selectedHistory, setSelectedHistory] = useState();
-    const [history, setHistory] = useState();
-
-    const dataSource = [
-        {
-            key: '1039237',
-            date: '23/08/2021',
-            paymentType: "Loradine 10mg",
-            transactionId: 'UG1686288',
-            amountPaid: "34,989.00",
-            paymentStatus: <span className="bg-[#E8F6EE] uppercase text-[#11763D] text-xs p-2 px-10">Paid</span>,
-            action: <button className="bg-transparent">View Details</button>
-            // action: <button onClick={setSelectedHistory()} className="bg-transparent">View Details</button>
-        },
-        {
-            key: '1039237',
-            date: '23/08/2021',
-            paymentType: "Loradine 10mg",
-            transactionId: 'UG1686288',
-            amountPaid: "34,989.00",
-            paymentStatus: <span className="bg-[#E8F6EE] uppercase text-[#11763D] text-xs p-2 px-10">Paid</span>,
-            action: <button className="bg-transparent">View Details</button>
-        }, {
-            key: '1039237',
-            date: '23/08/2021',
-            paymentType: "Loradine 10mg",
-            transactionId: 'UG1686288',
-            amountPaid: "34,989.00",
-            paymentStatus: <span className="bg-[#E8F6EE] uppercase text-[#11763D] text-xs p-2 px-10">Paid</span>,
-            action: <button className="bg-transparent">View Details</button>
-        }
-    ];
-
-    const columns = [
-        {
-            title: '',
-            dataIndex: 'key',
-            key: 'key',
-        },
-        {
-            title: 'Transaction Date',
-            dataIndex: 'date',
-            key: 'date',
-        },
-        {
-            title: 'Payment Type',
-            dataIndex: 'paymentType',
-            key: 'paymentType',
-        },
-        {
-            title: 'Transaction ID',
-            dataIndex: 'transactionId',
-            key: 'transactionId',
-        },
-        {
-            title: 'Amount Paid',
-            dataIndex: 'amountPaid',
-            key: 'amountPaid',
-        },
-        {
-            title: 'Payment Status',
-            dataIndex: 'paymentStatus',
-            key: 'paymentStatus',
-        },
-        {
-            title: 'Action',
-            dataIndex: 'action',
-            key: 'action',
-        }
-    ];
+    // const [selectedHistory, setSelectedHistory] = useState();
+    // const [history, setHistory] = useState();
 
     const items: MenuProps['items'] = [
         {
@@ -121,15 +53,15 @@ const Dashboard = () => {
         },
     ];
 
-    useEffect(() => {
-        if (walletData) {
-            setHistory(walletData);
-        };
-    }, [walletData])
+    // useEffect(() => {
+    //     if (walletData) {
+    //         setHistory(walletData);
+    //     };
+    // }, [walletData])
 
-    useEffect(() => {
-        // fetchWalletDetails();
-    }, [])
+    // useEffect(() => {
+    //     fetchWalletDetails();
+    // }, [])
 
     return (
         <div>

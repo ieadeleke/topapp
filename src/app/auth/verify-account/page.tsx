@@ -26,7 +26,7 @@ export default function VerifyAccount() {
         resolver: yupResolver(validator)
     });
 
-    const { isLoading, data, activateAccount, error } = useActivateAccount();
+    const { data, activateAccount, error } = useActivateAccount();
     const [loadLoginAction, setLoadLoginAction] = useState(false);
     const { showSnackBar } = useContext(GlobalActionContext);
     const router = useRouter();

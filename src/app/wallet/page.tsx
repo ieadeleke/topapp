@@ -5,7 +5,6 @@ import GlobalImg from "@/assets/images/icons/global.svg";
 import MultipleImg from "@/assets/images/icons/multiple.svg";
 import TaxImg from "@/assets/images/icons/online.svg";
 import AbstractImg from "@/assets/images/wallet/abstract.png";
-import ArrowImg from "@/assets/images/icons/arrow.svg";
 import Image from "next/image";
 import Layout from "@/components/layout";
 
