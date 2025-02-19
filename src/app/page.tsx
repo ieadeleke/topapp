@@ -9,6 +9,10 @@ import WithholdingImg from "@/assets/images/icons/withholding.svg";
 import MaleposeImg from "@/assets/images/home/malepose.svg";
 import WomanImg from "@/assets/images/home/woman.png";
 import MoneyImg from "@/assets/images/home/money.svg";
+import Svg1Img from "@/assets/images/home/svg1.svg";
+import Svg2Img from "@/assets/images/home/svg2.svg";
+import Svg3Img from "@/assets/images/home/svg3.svg";
+
 
 import HandImg from "@/assets/images/home/hand.png";
 import SallyImg from "@/assets/images/home/saly.png";
@@ -214,22 +218,28 @@ export default function Home() {
             <div className="bg-[#5D8BFF] py-20 px-32 4xl:w-[75%] mx-auto rounded-b-[100px]">
               <div className="max-w-[1320px] 3xl:w-[95%] 4xl:w-[100%] mx-auto grid grid-cols-3 gap-10 -mt-[270px]">
                 <div className="min-h-[350px] border text-center border-solid border-black bg-[#5D8BFF] rounded-t-[200px] pt-16 pb-16 rounded-b-[200px]">
-                  <Image src={WithholdingImg} alt="paye" className="w-[15%] mb-7 mx-auto" />
+                  <div className="min-h-[50px] mb-5">
+                    <Image src={Svg1Img} alt="paye" className="w-[15%] mb-7 mx-auto" />
+                  </div>
                   <h6 className="text-[#1B1B1B] text-sm mb-7 uppercase font-campton">PAYE API</h6>
                   <h4 className="text-[#3A3A3A] text-lg w-[85%] leading-loose md:leading-loose font-campton mx-auto">Automate Pay-As-You-Earn (PAYE) tax deductions and employee remittances</h4>
-                  <div className="block w-[50px] mx-auto bg-black mt-12 h-[3px]"></div>
+                  <div className="block w-[50px] mx-auto bg-black mt-12 h-[1.5px]"></div>
                 </div>
                 <div className="min-h-[350px] border text-center border-solid bg-[#fff] rounded-t-[200px] pt-16 pb-16 rounded-b-[200px]">
-                  <Image src={WithholdingImg} alt="paye" className="w-[15%] mb-7 mx-auto" />
+                  <div className="min-h-[50px] mb-5">
+                    <Image src={Svg3Img} alt="paye" className="w-[10%] mb-7 mx-auto" />
+                  </div>
                   <h6 className="text-[#1B1B1B] text-sm mb-7 uppercase font-campton">Withholding Tax API</h6>
                   <h4 className="text-[#3A3A3A] text-lg w-[85%] leading-loose md:leading-loose font-campton mx-auto">Simplify withholding tax deductions for businesses and service providers.</h4>
-                  <div className="block w-[50px] mx-auto bg-black mt-12 h-[3px]"></div>
+                  <div className="block w-[50px] mx-auto bg-black mt-12 h-[1.5px]"></div>
                 </div>
                 <div className="min-h-[350px] border text-center border-solid bg-[#fff] rounded-t-[200px] pt-16 pb-16 rounded-b-[200px]">
-                  <Image src={WithholdingImg} alt="paye" className="w-[15%] mb-7 mx-auto" />
+                  <div className="min-h-[50px] mb-5">
+                    <Image src={Svg2Img} alt="paye" className="w-[15%] mb-7 mx-auto" />
+                  </div>
                   <h6 className="text-[#1B1B1B] text-sm mb-7 uppercase font-campton">Government Bills API</h6>
                   <h4 className="text-[#3A3A3A] text-lg w-[90%] 4xl:w-[90%] leading-loose md:leading-loose font-campton mx-auto">Enable businesses and individuals to pay government levies, licenses, and bills effortlessly.</h4>
-                  <div className="block w-[50px] mx-auto bg-black mt-12 h-[3px]"></div>
+                  <div className="block w-[50px] mx-auto bg-black mt-12 h-[1.5px]"></div>
                 </div>
               </div>
               <div className="px-0">
@@ -240,7 +250,7 @@ export default function Home() {
                       <div className="flex items-center gap-2">
                         <span className="font-camptonsemi border-b-2 border-white border-solid"> Pay4IT</span> <span className="text-black font-camptonsemi"> API </span> <span className="text-black font-camptonsemi border-b-2 border-white border-solid">Integration
                         </span>
-                        
+
                       </div>
                       <span className="size-24 rounded-full bg-white block flex items-center">
                         <Image src={ArrowHomeImg} alt="paye" className="" />
