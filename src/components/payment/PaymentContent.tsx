@@ -86,7 +86,7 @@ export default function PaymentContent(props: PaymentContentProps) {
     if (props.data) {
       const total = amount * (props.data.settings.percentage / 100);
 
-      if (props.data.maxAmountCharge) {
+      if (props?.data?.maxAmountCharge) {
         return Math.min(
           props.data.settings.max,
           Math.max(props.data.settings.min, total)
@@ -136,7 +136,7 @@ export default function PaymentContent(props: PaymentContentProps) {
     });
   }
 
-  const subAccounts = data?.subaccounts;
+  // const subAccounts = data?.subaccounts;
 
   const publicKey = useMemo(() => {
     if (!props.mda) {
