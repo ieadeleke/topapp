@@ -8,6 +8,7 @@ type RequestConfig = {
   path: string;
   method?: RequestType;
   body?: any;
+  headers?: any
 };
 
 export async function request(params: RequestConfig) {
@@ -21,6 +22,7 @@ export async function request(params: RequestConfig) {
         Authorization: `Bearer ${token}`,
         Accept: "application/json",
         "Content-Type": "application/json",
+        ...params.headers,
       },
     });
     if (!response.ok) {

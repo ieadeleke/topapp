@@ -39,7 +39,9 @@ const SideBar = () => {
 
     const validator = yup.object().shape({
         businessName: yup.string().required('Please enter business name'),
-        businessEmail: yup.string().email('Email is not valid').required('Email field can not be empty'),
+        businessEmail: yup.string().email('Email is not valid').required('Business email field can not be empty'),
+        email: yup.string().required('Email field can not be empty'),
+        phoneNumber: yup.string().required('Phone number field can not be empty'),
         directorNIN: yup.string().required('Please enter director NIN'),
         directorBVN: yup.string().required('Please enter director BVN'),
         directorDOB: yup.string().required('Please enter director date of birth'),
@@ -180,14 +182,17 @@ const SideBar = () => {
                             <span>Users</span>
                         </Link>
                     </li > */}
-                    <li className={`flex items-center gap-4 text-sm px-5 py-5 ${pathName === "/account/merchant" ? "bg-[#003235] rounded-[8px] text-white" : "text-[#1B1B1B]"}`}>
-                        <Link href="/account/merchant" className={`flex items-center gap-4 text-sm font-camptonthin ${pathName === "/account/merchant" ? "text-white" : "text-[#1B1B1B]"}`}>
-                            <span>
-                                <Image src={pathName === "/account/merchant" ? PeopleWhiteImg : PeopleImg} alt="bell icon" className="w-[20px]" />
-                            </span>
-                            <span>Merchant Admin</span>
-                        </Link>
-                    </li >
+                    {
+                        userData?.profileType === "merchant" ?
+                            <li className={`flex items-center gap-4 text-sm px-5 py-5 ${pathName === "/account/merchant" ? "bg-[#003235] rounded-[8px] text-white" : "text-[#1B1B1B]"}`}>
+                                <Link href="/account/merchant" className={`flex items-center gap-4 text-sm font-camptonthin ${pathName === "/account/merchant" ? "text-white" : "text-[#1B1B1B]"}`}>
+                                    <span>
+                                        <Image src={pathName === "/account/merchant" ? PeopleWhiteImg : PeopleImg} alt="bell icon" className="w-[20px]" />
+                                    </span>
+                                    <span>Merchant Admin</span>
+                                </Link>
+                            </li >
+                            : ""}
                     {/* <li className={`flex items-center gap-4 text-sm px-5 py-5 ${pathName === "/account/activity" ? "bg-[#003235] rounded-[8px] text-white" : "text-[#1B1B1B]"}`}>
                         <Link href="/account/activity" className={`flex items-center gap-4 text-sm font-camptonthin ${pathName === "/account/activity" ? "bg-[#003235] rounded-[8px] text-white" : "text-[#1B1B1B]"}`}>
                             <span>
@@ -241,6 +246,24 @@ const SideBar = () => {
                                         <Input {...field} type="email" className="h-[3.5rem] rounded-[13px] border-2 border-solid border-[#7575754D]" name="email" />
                                     )} />
                                 {errors.businessEmail && <p className="text-sm text-danger">{errors.businessEmail.message}</p>}
+                            </div>
+                        </div>
+                        <div className="grid grid-cols-2 gap-3 mb-3">
+                            <div className="form-group">
+                                <label htmlFor="" className="text-[#1B1B1B] text-sm block mb-2">Email address</label>
+                                <Controller name="email" control={control}
+                                    render={({ field }) => (
+                                        <Input {...field} className="h-[3.5rem] rounded-[13px] border-2 border-solid border-[#7575754D]" name="email" />
+                                    )} />
+                                {errors.email && <p className="text-sm text-danger">{errors.email.message}</p>}
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="" className="text-[#1B1B1B] text-sm block mb-2">Phone number</label>
+                                <Controller name="phoneNumber" control={control}
+                                    render={({ field }) => (
+                                        <Input {...field} type="number" className="h-[3.5rem] rounded-[13px] border-2 border-solid border-[#7575754D]" name="phoneNumber" />
+                                    )} />
+                                {errors.phoneNumber && <p className="text-sm text-danger">{errors.phoneNumber.message}</p>}
                             </div>
                         </div>
                         <div className="grid grid-cols-2 gap-3 mb-3">

@@ -21,10 +21,10 @@ export const useUpdateProfile = () => {
             // email: user!!.email,
             // ...params
         }))
-        // if(response){
-        //     setData(response.profile);
-        //     updateUser(response.profile);
-        // }
+        if(response){
+            setData(response.profile);
+            updateUser(response.profile);
+        }
         setData(user)
     }
 

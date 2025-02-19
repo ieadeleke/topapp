@@ -1,5 +1,5 @@
 import { request } from "@/utils/request"
-import { ActivateWalletParams, ActivateWalletResponse, FetchProfileResponse, RefreshAgentWalletParams, RefreshAgentWalletResponse, SetAgentPinParams, SetAgentPinResponse, UpdateProfileParams, UpdateProfileResponse } from "./types"
+import { ActivateWalletParams, ActivateWalletResponse, AvailableBillResponse, FetchProfileResponse, RefreshAgentWalletParams, RefreshAgentWalletResponse, SetAgentPinParams, SetAgentPinResponse, UpdateProfileParams, UpdateProfileResponse } from "./types"
 import { ApiResponse } from "@/models"
 import { Profile } from "@/models/profile"
 
@@ -22,6 +22,15 @@ export function ProfileService() {
         return data as ActivateWalletResponse;
     }
 
+    async function fetchAvailableBills() {
+        const data = await request({
+            path: `v1/bills/AvailableBills`,
+            method: "GET",
+            body: ""
+        })
+        return data as AvailableBillResponse;
+    }
+
     async function refreshAgentWallet(params: RefreshAgentWalletParams) {
         const data = await request({
             path: `v1/wallet/RefreshWallet`,
@@ -42,6 +51,7 @@ export function ProfileService() {
 
     async function updateProfile(params: UpdateProfileParams) {
         const formData = new FormData()
+        console.log(params);
         formData.append("firstName", params.firstName);
         formData.append("lastName", params.lastName);
         // if (params.image) {
@@ -52,15 +62,12 @@ export function ProfileService() {
         //         formData.append(key, value)
         //     }
         // })
-        // const response = await request({
-        //     path: `v1/agent/UpdateProfile`,
-        //     method: "PUT",
-        //     body: formData,
-        //     headers: {
-        //         'Content-Type': 'multipart/form-data'
-        //     }
-        // })
-        // return response as UpdateProfileResponse
+        const response = await request({
+            path: `v1/auth/UpdateProfile`,
+            method: "PUT",
+            body: params
+        })
+        return response as UpdateProfileResponse
     }
 
     return {
@@ -68,6 +75,7 @@ export function ProfileService() {
         updateProfile,
         activateWallet,
         refreshAgentWallet,
-        setNewUserPin
+        setNewUserPin,
+        fetchAvailableBills
     }
 }

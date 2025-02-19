@@ -39,7 +39,7 @@ const ActivateWallet = (props: ActivateWalletProps) => {
 
     useEffect(() => {
         if (data.Wallet) {
-            window.location.reload();
+            // window.location.reload();
         }
     }, [data]);
 

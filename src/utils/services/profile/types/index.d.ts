@@ -24,6 +24,10 @@ export type ActivateWalletParams = {
     dateOfBirth: string
 }
 
+export type AvailableBillResponse = {
+    Bills: any
+}
+
 export type ActivateWalletResponse = {
     message?: string,
     status?: string,
