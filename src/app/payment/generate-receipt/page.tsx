@@ -12,7 +12,6 @@ import {
 import { cn } from "@/lib/utils";
 import Button from "@/components/buttons";
 import GlobalContext from "@/context/GlobalContext";
-import { Layout } from "@/components/layout";
 import { GenerateReceipt } from "@/components/charge/GenerateReceipt";
 import { PaymentLayout } from "@/components/layout/payment-layout";
 

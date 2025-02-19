@@ -10,7 +10,6 @@ import Button from "@/components/buttons";
 import GlobalContext from "@/context/GlobalContext";
 import { Reference } from "@/models/reference";
 import PaymentContent from "@/components/payment/PaymentContent";
-import { Layout } from "@/components/layout";
 import { PaymentLayout } from "@/components/layout/payment-layout";
 
 const TextInput = ({ className, ...props }: InputProps) => (
