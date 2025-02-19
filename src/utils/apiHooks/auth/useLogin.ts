@@ -16,9 +16,9 @@ export const useLogin = () => {
         setData(null)
         const response = await execute(async () => await AuthService().login(params))
         if (response) {
-            AuthToken().saveToken(response.token)
-            updateUser(response.profile)
-            setData(response.profile)
+            AuthToken().saveToken(response?.data?.token);
+            updateUser(response?.data?.profile);
+            setData(response?.data?.profile);
         }
     }
 

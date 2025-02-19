@@ -197,3 +197,11 @@ h6 {
   background-repeat: no-repeat;
   border-radius: 30px;
 }
+
+input {
+  font-family: "Campton Light" !important;
+}
+
+.login-box {
+  border: 2px solid #E5E7EB !important;
+}

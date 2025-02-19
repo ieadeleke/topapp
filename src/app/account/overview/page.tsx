@@ -1,3 +1,4 @@
+import { AccountHero } from "@/components/account/hero";
 import AccountLayout from "@/components/account/layout";
 
 const Dashboard = () => {
@@ -7,6 +8,7 @@ const Dashboard = () => {
                 <>
                     <div>
                         <div className="account-hero h-[200px] w-full rounded-[12px]"></div>
+                        <AccountHero />
                         <div className="mt-6 grid grid-cols-4 gap-6">
                             <div className="border border-solid border-[#EFEFEF] rounded-[12px] py-7 px-6">
                                 <div className="flex items-center gap-4">

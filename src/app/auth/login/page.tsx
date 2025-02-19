@@ -1,7 +1,8 @@
 "use client";
 
 import Button from "@/components/buttons";
-import { TextField } from "@/components/input/InputText";
+// import { TextField } from "@/components/input/InputText";
+import { Input } from "antd";
 import Image from "next/image";
 import AuthImage from '@/assets/images/auth/cover.png';
 import AuthLayout from "@/components/layout";
@@ -50,7 +51,6 @@ export default function Login() {
     useEffect(() => {
         if (data) {
             setTimeout(() => {
-                setLoadLoginAction(false);
                 router.push('/account/overview')
                 showSnackBar({ severity: 'success', message: "Login successful" })
             }, 1000)
@@ -71,25 +71,25 @@ export default function Login() {
                                 <div className="flex flex-col gap-6 mt-8">
                                     <div className="flex flex-col gap-2">
                                         {/* <label className="text-sm">Email</label> */}
-                                        <Controller name="email" control={control}
+                                        <Controller name="email" control={control} defaultValue=""
                                             render={({ field }) => (
-                                                <TextField.Input type="email"
+                                                <Input type="email"
                                                     inputMode="email" placeholder="Enter your email" {...field}
                                                     style={{ height: "4rem" }}
                                                     // value={email} onChange={onEmailEntered}
-                                                    className="rounded-lg px-2 text-sm w-full" />
+                                                    className="login-box rounded-lg px-2 text-sm w-full" />
                                             )} />
                                         {errors.email && <p className="text-sm text-danger">{errors.email.message}</p>}
                                     </div>
 
                                     <div className="flex flex-col gap-2">
                                         {/* <label className="text-sm">Password</label> */}
-                                        <Controller name="password" control={control}
+                                        <Controller name="password" control={control} defaultValue=""
                                             render={({ field }) => (
-                                                <TextField.Input type="password" placeholder="Enter your password" {...field}
+                                                <Input.Password type="password" placeholder="Enter your password" {...field}
                                                     style={{ height: "4rem" }}
                                                     // value={password} onChange={onPasswordEntered}
-                                                    className="rounded-lg px-2 text-sm" />
+                                                    className="login-box rounded-lg px-2 text-sm" />
                                             )} />
                                         {errors.password && <p className="text-sm text-danger">{errors.password.message}</p>}
                                     </div>

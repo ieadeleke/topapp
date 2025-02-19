@@ -11,7 +11,7 @@ export function AuthService() {
             method: "POST",
             data: params
         })
-        return response as LoginResponseParams
+        return response
     }
 
     async function activateAccount(params: ActivatePasswordParams) {

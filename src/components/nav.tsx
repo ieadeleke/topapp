@@ -80,7 +80,7 @@ const Navigation = (props: NavInterface) => {
 
     const SolutionItems: MenuProps["items"] = [
         {
-            key: "about-1",
+            key: "about-2",
             label: (
                 <div className="grid grid-cols-2 gap-10 shadow z-10 py-10 px-8 w-[600px] mx-auto">
                     <Link href="/hr-solution" className="flex items-start gap-4">
@@ -140,7 +140,7 @@ const Navigation = (props: NavInterface) => {
     ];
     const DeveloperItems: MenuProps["items"] = [
         {
-            key: "about-1",
+            key: "about-3",
             label: (
                 <div className="grid grid-cols-2 gap-10 shadow z-10 py-10 px-8 w-[600px] mx-auto">
                     <Link href="/" className="flex items-start gap-4">
@@ -217,7 +217,7 @@ const Navigation = (props: NavInterface) => {
                             </Dropdown>
                         </li>
                         <li>
-                            <Link className="bg-primary text-sm text-dark rounded-full py-3 px-5 flex gap-2 items-center" href="">Pay Bills <IoIosArrowDown className="text-lg" /></Link>
+                            <Link className="bg-primary text-sm text-dark rounded-full py-3 px-5 flex gap-2 items-center" href="/payment/harmonize">Pay Bills</Link>
                         </li>
                         <li>
                             <Dropdown menu={{ items: DeveloperItems }} trigger={["click"]} overlayClassName="custom-dropdown">
@@ -228,7 +228,7 @@ const Navigation = (props: NavInterface) => {
                             <Link className="bg-primary text-sm text-dark rounded-full py-3 px-5 flex gap-2 items-center" href="/contact">Contact Us</Link>
                         </li>
                         <li>
-                            <Link className="bg-dark text-sm text-primary rounded-full py-3 px-5 flex gap-2 items-center" href="/">Get Started</Link>
+                            <Link className="bg-dark text-sm text-primary rounded-full py-3 px-5 flex gap-2 items-center" href="/auth/login">Get Started</Link>
                         </li>
                     </ul>
                 </div>

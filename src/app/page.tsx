@@ -5,13 +5,13 @@ import Image from "next/image";
 import LogoImg from "@/assets/images/logo.svg";
 import HeroImg from "@/assets/images/hero.png";
 import ShoppersImg from "@/assets/images/shoppers.svg";
-import WithholdingImg from "@/assets/images/icons/withholding.svg";
 import MaleposeImg from "@/assets/images/home/malepose.svg";
 import WomanImg from "@/assets/images/home/woman.png";
 import MoneyImg from "@/assets/images/home/money.svg";
 import Svg1Img from "@/assets/images/home/svg1.svg";
 import Svg2Img from "@/assets/images/home/svg2.svg";
 import Svg3Img from "@/assets/images/home/svg3.svg";
+import { FaCreditCard } from "react-icons/fa6";
 
 
 import HandImg from "@/assets/images/home/hand.png";
@@ -23,6 +23,7 @@ import { FaArrowRightLong } from "react-icons/fa6";
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
+import Link from "next/link";
 // import { Swiper as SwiperType } from 'swiper';
 
 export default function Home() {
@@ -64,14 +65,14 @@ export default function Home() {
                   Pay4IT empowers businesses, individuals, and governments with innovative financial technology solutions. From streamlining tax collection to enabling seamless digital payments, we drive transparency, efficiency, and economic growth across diverse sectors.
                 </p>
                 <div className="mt-5 flex gap-5">
-                  <button className="bg-primary rounded-full py-2 px-3 flex items-center gap-3">
+                  <Link href="/auth/login" className="bg-primary rounded-full py-2 px-3 flex items-center gap-3">
                     <div className="size-12 bg-dark rounded-full flex items-center justify-center">
                       <Image src={LogoImg} alt="logo" className="w-[50%]" />
                     </div>
                     <span className="pr-4">
                       Get Started
                     </span>
-                  </button>
+                  </Link>
                   <button className="bg-primary rounded-full py-2 px-12 flex items-center gap-3">
                     Our Solutions
                   </button>
@@ -144,7 +145,7 @@ export default function Home() {
                 </div>
               </div>
             </SwiperSlide>
-            <SwiperSlide key={2}>
+            <SwiperSlide key={4}>
               <div className="w-full bg-[#D3FFB4] max-h-[400px] rounded-[64px] pt-20">
                 <div className="flex flex-col items-center gap-0 pl-10">
                   <div>
@@ -160,7 +161,7 @@ export default function Home() {
                 </div>
               </div>
             </SwiperSlide>
-            <SwiperSlide key={3}>
+            <SwiperSlide key={5}>
               <div className="w-full bg-[#02DB94] max-h-[400px] h-[400px] rounded-[64px] pt-10">
                 <div className="gap-0">
                   <div>
@@ -202,10 +203,128 @@ export default function Home() {
                 <Image src={WomanImg} alt="woman holding a cup" className="" />
               </div>
               <div>
-                <Image src={MoneyImg} alt="money icon" className="mb-10" />
-                <h4 className="text-3xl text-white font-camptonthin text-center">
-                  Schedule the interview with this candidate now
-                </h4>
+                <div className="grid grid-cols-3 gap-4">
+                  <div className="bg-white py-7 pb-5 px-2 rounded-[16px]">
+                    <Link href="">
+                      <div className="flex flex-col text-center">
+                        <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#D3FFB4] rounded-[8px]">
+                          <FaCreditCard />
+                        </div>
+                        <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">Buy Power</p>
+                      </div>
+                    </Link>
+                  </div>
+                  <div className="bg-white py-7 pb-5 px-2 rounded-[16px]">
+                    <Link href="">
+                      <div className="flex flex-col text-center">
+                        <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#D3FFB4] rounded-[8px]">
+                          <FaCreditCard />
+                        </div>
+                        <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">Buy Airtime</p>
+                      </div>
+                    </Link>
+                  </div>
+                  <div className="bg-white py-7 pb-5 px-2 rounded-[16px]">
+                    <Link href="">
+                      <div className="flex flex-col text-center">
+                        <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#D3FFB4] rounded-[8px]">
+                          <FaCreditCard />
+                        </div>
+                        <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">Buy Data</p>
+                      </div>
+                    </Link>
+                  </div>
+                  <div className="bg-white py-7 pb-5 px-2 rounded-[16px]">
+                    <Link href="">
+                      <div className="flex flex-col text-center">
+                        <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#D3FFB4] rounded-[8px]">
+                          <FaCreditCard />
+                        </div>
+                        <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">Pay Taxes</p>
+                      </div>
+                    </Link>
+                  </div>
+                  <div className="bg-white py-7 pb-5 px-2 rounded-[16px]">
+                    <Link href="">
+                      <div className="flex flex-col text-center">
+                        <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#D3FFB4] rounded-[8px]">
+                          <FaCreditCard />
+                        </div>
+                        <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">Cable TV</p>
+                      </div>
+                    </Link>
+                  </div>
+                  <div className="bg-white py-7 pb-5 px-2 rounded-[16px]">
+                    <Link href="">
+                      <div className="flex flex-col text-center">
+                        <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#D3FFB4] rounded-[8px]">
+                          <FaCreditCard />
+                        </div>
+                        <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">Netflix</p>
+                      </div>
+                    </Link>
+                  </div>
+                  <div className="bg-white py-7 pb-5 px-2 rounded-[16px]">
+                    <Link href="">
+                      <div className="flex flex-col text-center">
+                        <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#D3FFB4] rounded-[8px]">
+                          <FaCreditCard />
+                        </div>
+                        <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">E-commerce</p>
+                      </div>
+                    </Link>
+                  </div>
+                  <div className="bg-white py-7 pb-5 px-2 rounded-[16px]">
+                    <Link href="">
+                      <div className="flex flex-col text-center">
+                        <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#D3FFB4] rounded-[8px]">
+                          <FaCreditCard />
+                        </div>
+                        <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">Payroll</p>
+                      </div>
+                    </Link>
+                  </div>
+                  <div className="bg-white py-7 pb-5 px-2 rounded-[16px]">
+                    <Link href="">
+                      <div className="flex flex-col text-center">
+                        <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#D3FFB4] rounded-[8px]">
+                          <FaCreditCard />
+                        </div>
+                        <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">Betting</p>
+                      </div>
+                    </Link>
+                  </div>
+                  <div className="bg-white py-7 pb-5 px-2 rounded-[16px]">
+                    <Link href="">
+                      <div className="flex flex-col text-center">
+                        <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#D3FFB4] rounded-[8px]">
+                          <FaCreditCard />
+                        </div>
+                        <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">Invoice & Receipt</p>
+                      </div>
+                    </Link>
+                  </div>
+                  <div className="bg-white py-7 pb-5 px-2 rounded-[16px]">
+                    <Link href="">
+                      <div className="flex flex-col text-center">
+                        <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#D3FFB4] rounded-[8px]">
+                          <FaCreditCard />
+                        </div>
+                        <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">Debit & Credit Card</p>
+                      </div>
+                    </Link>
+                  </div>
+                  <div className="bg-white py-7 pb-5 px-2 rounded-[16px]">
+                    <Link href="">
+                      <div className="flex flex-col text-center">
+                        <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#D3FFB4] rounded-[8px]">
+                          <FaCreditCard />
+                        </div>
+                        <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">Buy JAMB</p>
+                      </div>
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
