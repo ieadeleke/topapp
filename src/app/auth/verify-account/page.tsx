@@ -34,7 +34,7 @@ export default function VerifyAccount() {
     const router = useRouter();
 
     function verifyUserSignUp(e: any) {
-        if (otp.length === 4) {
+        if (otp.length === 6) {
             if (localStorage.getItem("user_email")) {
                 setLoadLoginAction(true);
                 activateAccount({
@@ -81,7 +81,7 @@ export default function VerifyAccount() {
                                         <OTPInput
                                             value={otp}
                                             onChange={setOtp}
-                                            numInputs={4}
+                                            numInputs={6}
                                             renderSeparator={<span>-</span>}
                                             renderInput={(props) => <input {...props} />} />
                                     </div>
