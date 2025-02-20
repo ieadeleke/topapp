@@ -1,6 +1,7 @@
 "use client";
 
-import GlobalContext from "@/context/GlobalContext";
+// import { GlobalContext } from "@/context/GlobalContext";
+import { GlobalActionContext } from "@/context/GlobalActionContext";
 import {
   ControllableSnackBar,
   ControllableSnackBarRef,
@@ -28,12 +29,14 @@ export default function RootLayoutClient({
     snackBarRef.current?.open(params);
   }
 
+
+
   return (
     <div>
       <ThemeProvider theme={theme}>
         <ReduxProvider store={store}>
           <PersistGate persistor={persistor}>
-            <GlobalContext.Provider
+            <GlobalActionContext.Provider
               value={{
                 showSnackBar,
               }}
@@ -50,7 +53,7 @@ export default function RootLayoutClient({
                   <ControllableSnackBar ref={snackBarRef} />
                 </div>
               </UserContext.Provider>
-            </GlobalContext.Provider>
+            </GlobalActionContext.Provider>
           </PersistGate>
         </ReduxProvider>
       </ThemeProvider>

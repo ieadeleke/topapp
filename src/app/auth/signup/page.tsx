@@ -52,6 +52,7 @@ export default function Login() {
 
     useEffect(() => {
         if (error) {
+            console.log(error);
             setLoadLoginAction(false);
             showSnackBar({ severity: 'error', message: error })
         }
