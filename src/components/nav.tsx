@@ -47,7 +47,7 @@ const Navigation = (props: NavInterface) => {
                         </span>
                     </Link>
 
-                    <Link href="/job" className="flex items-start gap-4">
+                    {/* <Link href="/job" className="flex items-start gap-4">
                         <span className="text-xl">
                             <Image src={AboutIcon4} alt="about us" className="w-full h-full" />
                         </span>
@@ -58,7 +58,7 @@ const Navigation = (props: NavInterface) => {
                         <span>
                             <FaArrowRight className="text-[#00555A] text-xl" />
                         </span>
-                    </Link>
+                    </Link> */}
                 </div>
             ),
         },
@@ -95,18 +95,17 @@ const Navigation = (props: NavInterface) => {
                         </span>
                     </Link>
 
-                    <Link href="/" className="flex items-start gap-4">
+                    {/* <Link href="/" className="flex items-start gap-4">
                         <span className="text-xl">
                             <Image src={AboutIcon3} alt="about us" className="w-full h-full" />
                         </span>
                         <div>
                             <p className="font-camptonsemi text-base mb-1">Tax & Government API</p>
-                            {/* <p className="text-sm text-gray-500 font-camptonthin text-[#353535]">Stunning Web Design</p> */}
                         </div>
                         <span>
                             <FaArrowRight className="text-[#00555A] text-xl" />
                         </span>
-                    </Link>
+                    </Link> */}
 
                     <Link href="/wallet" className="flex items-start gap-4">
                         <span className="text-xl">
@@ -228,14 +227,14 @@ const Navigation = (props: NavInterface) => {
                     </ul>
                 </div>
                 <div className="block md:hidden">
-                    <HiOutlineMenuAlt3 className="text-3xl" onClick={toggleDrawer} />
+                    <HiOutlineMenuAlt3 className={`${props.whiteNav ? "text-white" : "text-black"} text-3xl`} onClick={toggleDrawer} />
                 </div>
             </div>
             <Drawer open={openMenu} onClose={toggleDrawer} footer={null}>
                 <div>
                     <div className="px-5 py-5 pb-10 flex items-center justify-between">
-                        <div className="w-[30px]">
-                            <Image src={LogoImg} alt="logo" className="w-[80%]" />
+                        <div className="">
+                            <Image src={LogoImg} alt="logo" className="w-[50%]" />
                         </div>
                         <div onClick={toggleDrawer}>
                             <ImCancelCircle className="text-3xl text-danger" />
@@ -262,21 +261,21 @@ const Navigation = (props: NavInterface) => {
                             <Link href="/wallet" className="font-campton text-base p-4">
                                 Wallet Services</Link>
                         </li>
-                        <li className="border-b border-solid border-black pb-4 text-black">
+                        {/* <li className="border-b border-solid border-black pb-4 text-black">
                             <Link href="/tax-and-government-api" className="font-campton text-base p-4">
                                 Tax and Government API</Link>
-                        </li>
+                        </li> */}
                         <li className="border-b border-solid border-black pb-4 text-black">
                             <Link href="/contact" className="font-campton text-base p-4">
                                 Contact Us</Link>
                         </li>
-                        <li>
-                            <Link href="/auth/login" className="text-lg font-satoshi text-white">
+                        <li className="border-b border-solid border-black pb-4 text-black">
+                            <Link href="/auth/login" className="font-campton text-base p-4">
                                 Sign In
                             </Link>
                         </li>
-                        <li>
-                            <Link href="/auth/signup" className="text-lg font-satoshi text-white">
+                        <li className="border-b border-solid border-black pb-4 text-black">
+                            <Link href="/auth/signup" className="font-campton text-base p-4">
                                 Create a Free Account
                             </Link>
                         </li>

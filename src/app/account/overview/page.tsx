@@ -69,7 +69,7 @@ const Dashboard = () => {
                         </div> */}
                         {
                             displayOption === "view" ?
-                                <div className="mt-6 grid grid-cols-2 gap-6">
+                                <div className="mt-6 md:grid grid-cols-2 gap-6">
                                     {/* <div className="bg-[#F5F5F5] rounded-[12px] py-7 px-6">
                                         <div className="grid grid-cols-2 justify-between items-center gap-10">
                                             <div className="flex items-center gap-3">
@@ -87,7 +87,7 @@ const Dashboard = () => {
                                     </div> */}
                                     <div className="bg-[#F5F5F5] rounded-[12px] py-7 px-6">
                                         <div className="grid grid-cols-2 justify-between items-center gap-10">
-                                            <div className="flex items-center gap-3">
+                                            <div className="flex items-center gap-3 ">
                                                 <div className="h-16 w-16 bg-black rounded-[12px] min-w-[51px] flex items-center justify-center">
                                                     <Image src={Hero2Img} alt="filter icon" className="" />
                                                 </div>
@@ -95,8 +95,8 @@ const Dashboard = () => {
                                                     <h5 className="text-[#1B1B1B] text-base">Government Bills</h5>
                                                 </div>
                                             </div>
-                                            <div>
-                                                <button onClick={toggleGovernmentBill} className="w-full rounded-[12px] p-3 text-sm text-[#1B1B1B] border border-solid border-[#1B1B1B]">Pay Bills</button>
+                                            <div className="items-right">
+                                                <button onClick={toggleGovernmentBill} className="md:w-full rounded-[12px] p-3 text-sm text-[#1B1B1B] border border-solid border-[#1B1B1B]">Pay Bills</button>
                                             </div>
                                         </div>
                                     </div>
