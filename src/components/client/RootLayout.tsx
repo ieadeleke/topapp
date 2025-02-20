@@ -27,6 +27,7 @@ export default function RootLayoutClient({
   function showSnackBar(params: ControllableSnackBarStateParams) {
     snackBarRef.current?.open(params);
   }
+  
 
   return (
     <div>
