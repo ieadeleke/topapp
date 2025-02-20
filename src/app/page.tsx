@@ -13,10 +13,12 @@ import Svg2Img from "@/assets/images/home/svg2.svg";
 import Svg3Img from "@/assets/images/home/svg3.svg";
 import { FaCreditCard } from "react-icons/fa6";
 
-
 import HandImg from "@/assets/images/home/hand.png";
 import SallyImg from "@/assets/images/home/saly.png";
 import CardImg from "@/assets/images/home/card.png";
+import WithholdingImg from "@/assets/images/home/withholding.png";
+import GovernmentImg from "@/assets/images/home/government.png";
+import TaxImg from "@/assets/images/home/tax.png";
 import ArrowHomeImg from "@/assets/images/icons/arrow-home.svg";
 import { FaArrowRightLong } from "react-icons/fa6";
 
@@ -72,7 +74,7 @@ export default function Home() {
                   Pay4IT empowers businesses, individuals, and governments with innovative financial technology solutions. From streamlining tax collection to enabling seamless digital payments, we drive transparency, efficiency, and economic growth across diverse sectors.
                 </p>
                 <div className="mt-5 flex gap-5">
-                  <Link href="/auth/login" className="bg-primary rounded-full py-2 px-3 flex items-center gap-3">
+                  <Link href="/auth/signup" className="bg-primary rounded-full py-2 px-3 flex items-center gap-3">
                     <div className="size-12 bg-dark rounded-full flex items-center justify-center">
                       <Image src={LogoImg} alt="logo" className="w-[50%]" />
                     </div>
@@ -80,9 +82,9 @@ export default function Home() {
                       Get Started
                     </span>
                   </Link>
-                  <button className="bg-primary rounded-full py-2 px-12 flex items-center gap-3">
+                  {/* <button className="bg-primary rounded-full py-2 px-12 flex items-center gap-3">
                     Our Solutions
-                  </button>
+                  </button> */}
                 </div>
               </div>
             </div>
@@ -167,8 +169,8 @@ export default function Home() {
                     </div>
                     <div className="flip-card-back px-10">
                       <ul className="flex flex-col gap-5">
-                        <li className="text-white text-lg md:leading-loose leading-loose">Secure fast and efficient digital payments for businesses and individuals</li>
-                        <li className="text-white text-lg md:leading-loose leading-loose">Features include invoicing, wallet systems and POS terminals</li>
+                        <li className="text-white text-lg md:leading-loose leading-loose">Accept and process payments securely across multiple channels.
+                        </li>
                       </ul>
                     </div>
                   </div>
@@ -176,64 +178,130 @@ export default function Home() {
               </div>
             </SwiperSlide>
             <SwiperSlide key={2}>
-              <div className="w-full bg-[#D3FFB4] max-h-[400px] rounded-[64px] pt-20">
-                <div className="flex flex-col items-center gap-0 pl-10">
-                  <div>
-                    <div className="mb-5 -ml-20">
-                      <Image src={SallyImg} alt="money icon" className="w-[180px] -mt-10" />
+              <div className="w-full bg-[#D3FFB4] max-h-[400px] h-[400px] rounded-[64px]">
+                <div className="flip-card">
+                  <div className="flip-card-inner">
+                    <div className="flip-card-front top flex flex-col items-center gap-0 pl-10">
+                      <div>
+                        <div className="mb-5 -ml-20">
+                          <Image src={WithholdingImg} alt="money icon" className="w-[180px]" />
+                        </div>
+                      </div>
+                      <div>
+                        <h2 className="text-3xl pb-14 font-campton">
+                          Wallet Services
+                        </h2>
+                      </div>
                     </div>
-                  </div>
-                  <div>
-                    <h2 className="text-3xl pb-14 font-campton">
-                      Informal Sector Revenue Collection Tools
-                    </h2>
+                    <div className="flip-card-back px-10">
+                      <ul className="flex flex-col gap-5">
+                        <li className="text-black text-lg md:leading-loose leading-loose">Manage digital funds, transfers, and transactions with ease.
+                        </li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
             </SwiperSlide>
             <SwiperSlide key={3}>
-              <div className="w-full bg-[#02DB94] max-h-[400px] h-[400px] rounded-[64px] pt-10">
-                <div className="gap-0">
-                  <div>
-                    <h2 className="text-4xl pb-5 text-center font-camptonsemi">
-                      Data Analytics
-                    </h2>
-                  </div>
-                  <div>
-                    <div>
-                      <Image src={CardImg} alt="money icon" className="w-[200px] mx-auto" />
+              <div className="w-full bg-[#02DB94] max-h-[400px] h-[400px] rounded-[64px]">
+                <div className="flip-card">
+                  <div className="flip-card-inner">
+                    <div className="flip-card-front flex-col pt-5 gap-0">
+                      <div>
+                        <h2 className="text-4xl pb-5 text-center font-camptonsemi">
+                          PAYE API
+                        </h2>
+                      </div>
+                      <div>
+                        <div>
+                          <Image src={CardImg} alt="money icon" className="w-[200px] mx-auto" />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="flip-card-back px-10">
+                      <ul className="flex flex-col gap-5">
+                        <li className="text-black text-lg md:leading-loose leading-loose">Automate salary deductions and ensure seamless tax remittance.
+                        </li>
+                      </ul>
                     </div>
                   </div>
                 </div>
               </div>
             </SwiperSlide>
             <SwiperSlide key={4}>
-              <div className="w-full bg-[#D3FFB4] max-h-[400px] rounded-[64px] pt-20">
-                <div className="flex flex-col items-center gap-0 pl-10">
-                  <div>
-                    <div className="mb-5 -ml-20">
-                      <Image src={SallyImg} alt="money icon" className="w-[180px] -mt-10" />
+              <div className="w-full bg-[#D3FFB4] max-h-[400px] h-[400px] rounded-[64px]">
+                <div className="flip-card">
+                  <div className="flip-card-inner">
+                    <div className="flip-card-front pt-20 flex flex-col items-center gap-0 pl-10">
+                      <div>
+                        <div className="mb-5 -ml-20">
+                          <Image src={TaxImg} alt="money icon" className="w-[180px] -mt-10" />
+                        </div>
+                      </div>
+                      <div>
+                        <h2 className="text-3xl pb-14 font-campton">
+                          Withholding Tax API
+                        </h2>
+                      </div>
                     </div>
-                  </div>
-                  <div>
-                    <h2 className="text-3xl pb-14 font-campton">
-                      Informal Sector Revenue Collection Tools
-                    </h2>
+                    <div className="flip-card-back px-10">
+                      <ul className="flex flex-col gap-5">
+                        <li className="text-black text-lg md:leading-loose leading-loose">Stay compliant with effortless tax processing.
+                        </li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
             </SwiperSlide>
             <SwiperSlide key={5}>
-              <div className="w-full bg-[#02DB94] max-h-[400px] h-[400px] rounded-[64px] pt-10">
-                <div className="gap-0">
-                  <div>
-                    <h2 className="text-4xl pb-5 text-center font-campton">
-                      Data Analytics
-                    </h2>
+              <div className="w-full bg-[#D3FFB4] max-h-[400px] h-[400px] rounded-[64px]">
+                <div className="flip-card">
+                  <div className="flip-card-inner">
+                    <div className="flip-card-front pt-20 flex flex-col items-center gap-0 pl-10">
+                      <div>
+                        <div className="mb-5 -ml-20">
+                          <Image src={SallyImg} alt="money icon" className="w-[180px] -mt-10" />
+                        </div>
+                      </div>
+                      <div>
+                        <h2 className="text-3xl pb-14 font-campton">
+                          HR Solution
+                        </h2>
+                      </div>
+                    </div>
+                    <div className="flip-card-back px-10">
+                      <ul className="flex flex-col gap-5">
+                        <li className="text-black text-lg md:leading-loose leading-loose">Streamline payroll, employee management, and benefits administration.
+                        </li>
+                      </ul>
+                    </div>
                   </div>
-                  <div>
-                    <div>
-                      <Image src={CardImg} alt="money icon" className="w-[200px] mx-auto" />
+                </div>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide key={6}>
+              <div className="w-full bg-[#D3FFB4] max-h-[400px] h-[400px] rounded-[64px]">
+                <div className="flip-card">
+                  <div className="flip-card-inner">
+                    <div className="flip-card-front pt-20 flex flex-col items-center gap-0 pl-10">
+                      <div>
+                        <div className="mb-5 -ml-20">
+                          <Image src={GovernmentImg} alt="money icon" className="w-[180px] -mt-10" />
+                        </div>
+                      </div>
+                      <div>
+                        <h2 className="text-3xl pb-14 font-campton">
+                          Government Bills Payment
+                        </h2>
+                      </div>
+                    </div>
+                    <div className="flip-card-back px-10">
+                      <ul className="flex flex-col gap-5">
+                        <li className="text-black text-lg md:leading-loose leading-loose">Enable fast and secure payments for public services.
+                        </li>
+                      </ul>
                     </div>
                   </div>
                 </div>

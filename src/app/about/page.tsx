@@ -13,6 +13,12 @@ import Company2Img from "@/assets/images/companies/_7.svg";
 import Company3Img from "@/assets/images/companies/_8.svg";
 import Company4Img from "@/assets/images/companies/_9.svg";
 import Company5Img from "@/assets/images/companies/_10.svg";
+
+import Rect1Img from "@/assets/images/about/rect1.png";
+import Rect2Img from "@/assets/images/about/rect2.png";
+import Rect3Img from "@/assets/images/about/rect3.png";
+import Rect4Img from "@/assets/images/about/rect4.png";
+
 import { useState } from "react";
 
 const AboutPage = () => {
@@ -21,7 +27,7 @@ const AboutPage = () => {
 
     return (
         <div>
-            <Layout navPosition="fixed">
+            <Layout navPosition="fixed" whiteNav={true}>
                 <>
                     <div className="about-hero flex items-center">
                         <div className="px-40 w-full">
@@ -164,14 +170,14 @@ const AboutPage = () => {
                                 </button>
                             </div> */}
                         </div>
-                        <div className="pt-16 border-t border-solid border-[#D6DDD1] max-w-[1724px] mx-auto">
+                        <div className={`pt-16 border-t border-solid border-[#D6DDD1] max-w-[1724px] mx-auto animate-bar ${currentView === 0 ? "animated-view" : "animated-hide"}`}>
                             <div className="grid grid-cols-1/1.5/1.5">
                                 <div>
                                     {
                                         currentView === 0 ?
-                                            < h3 className="text-lg font-camptonsemi">-</h3>
+                                            < h3 onClick={() => setCurrentView(1)} className="text-2xl font-camptonsemi">-</h3>
                                             :
-                                            <h3 className="text-lg font-camptonsemi">+</h3>
+                                            <h3 onClick={() => setCurrentView(0)} className="cursor-pointer text-2xl font-camptonsemi">+</h3>
                                     }
                                 </div>
                                 <div>
@@ -183,18 +189,20 @@ const AboutPage = () => {
                                     </div>
                                 </div>
                                 <div>
-                                    <div className="h-full w-full bg-primary"></div>
+                                    <div className="h-full w-full">
+                                        <Image src={Rect1Img} alt="pay for it" className="w-full" />
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div className="pt-16 mt-16 border-t border-solid border-[#D6DDD1] max-w-[1724px] mx-auto">
+                        <div className={`pt-16 mt-16 border-t border-solid border-[#D6DDD1] max-w-[1724px] mx-auto animate-bar ${currentView === 1 ? "animated-view" : "animated-hide"}`}>
                             <div className="grid grid-cols-1/1.5/1.5">
                                 <div>
                                     {
                                         currentView === 1 ?
-                                            < h3 className="text-lg font-camptonsemi">-</h3>
+                                            <h3 onClick={() => setCurrentView(0)} className="cursor-pointer text-2xl font-camptonsemi">-</h3>
                                             :
-                                            <h3 className="text-lg font-camptonsemi">+</h3>
+                                            <h3 onClick={() => setCurrentView(1)} className="cursor-pointer text-2xl font-camptonsemi">+</h3>
                                     }
                                 </div>
                                 <div>
@@ -206,18 +214,20 @@ const AboutPage = () => {
                                     </div>
                                 </div>
                                 <div>
-                                    <div className="h-full w-full bg-primary"></div>
+                                    <div className="h-full w-full">
+                                        <Image src={Rect2Img} alt="pay for it" className="w-full" />
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div className="pt-16 mt-16 border-t border-solid border-[#D6DDD1] max-w-[1724px] mx-auto">
+                        <div className={`pt-16 mt-16 border-t border-solid border-[#D6DDD1] max-w-[1724px] mx-auto animate-bar ${currentView === 2 ? "animated-view" : "animated-hide"}`}>
                             <div className="grid grid-cols-1/1.5/1.5">
                                 <div>
                                     {
                                         currentView === 2 ?
-                                            < h3 className="text-lg font-camptonsemi">-</h3>
+                                            <h3 onClick={() => setCurrentView(0)} className="cursor-pointer text-2xl font-camptonsemi">-</h3>
                                             :
-                                            <h3 className="text-lg font-camptonsemi">+</h3>
+                                            <h3 onClick={() => setCurrentView(2)} className="cursor-pointer text-2xl font-camptonsemi">+</h3>
                                     }
                                 </div>
                                 <div>
@@ -229,18 +239,20 @@ const AboutPage = () => {
                                     </div>
                                 </div>
                                 <div>
-                                    <div className="h-full w-full bg-primary"></div>
+                                    <div className="h-full w-full">
+                                        <Image src={Rect3Img} alt="pay for it" className="w-full" />
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div className="pt-16 mt-16 border-t border-solid border-[#D6DDD1] max-w-[1724px] mx-auto">
+                        <div className={`pt-16 mt-16 border-t border-solid border-[#D6DDD1] max-w-[1724px] mx-auto animate-bar ${currentView === 3 ? "animated-view" : "animated-hide"}`}>
                             <div className="grid grid-cols-1/1.5/1.5">
                                 <div>
                                     {
                                         currentView === 3 ?
-                                            < h3 className="text-lg font-camptonsemi">-</h3>
+                                            <h3 onClick={() => setCurrentView(0)} className="cursor-pointer text-2xl font-camptonsemi">-</h3>
                                             :
-                                            <h3 className="text-lg font-camptonsemi">+</h3>
+                                            <h3 onClick={() => setCurrentView(3)} className="cursor-pointer text-2xl font-camptonsemi">+</h3>
                                     }
                                 </div>
                                 <div>
@@ -252,7 +264,9 @@ const AboutPage = () => {
                                     </div>
                                 </div>
                                 <div>
-                                    <div className="h-full w-full bg-primary"></div>
+                                    <div className="h-full w-full">
+                                        <Image src={Rect4Img} alt="pay for it" className="w-full" />
+                                    </div>
                                 </div>
                             </div>
                         </div>

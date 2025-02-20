@@ -147,7 +147,7 @@ const HRSolutionPage = () => {
                                             </span>
                                         </li>
                                     </ul>
-                                    <a href="https://businex-waitlist.netlify.app/" target="_blank" className="block w-max mt-5 text-white rounded-xl bg-dark py-5 px-16">
+                                    <a href="https://businex-waitlist.netlify.app/" target="_blank" className="block w-max mt-10 text-white rounded-xl bg-dark py-5 px-16">
                                         Start Journey
                                     </a>
                                 </div>

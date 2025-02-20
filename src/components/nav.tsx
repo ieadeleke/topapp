@@ -11,9 +11,12 @@ import AboutIcon2 from "@/assets/images/nav/about-2.svg";
 import AboutIcon3 from "@/assets/images/nav/about-3.svg";
 import AboutIcon4 from "@/assets/images/nav/about-4.svg";
 
+import WhiteNavLogo from "@/assets/images/white-logo.svg";
+
 
 interface NavInterface {
     navPosition?: string
+    whiteNav?: boolean
 }
 const Navigation = (props: NavInterface) => {
 
@@ -177,7 +180,12 @@ const Navigation = (props: NavInterface) => {
             <div className={`flex justify-between items-center px-20 py-7 w-full max-w-[2000px] top-0 ${props.navPosition ? props.navPosition : "relative"}`}>
                 <div>
                     <Link href="/">
-                        <Image src={LogoImg} alt="logo" />
+                        {
+                            props.whiteNav ?
+                                <Image src={WhiteNavLogo} alt="logo" />
+                                :
+                                <Image src={LogoImg} alt="logo" />
+                        }
                     </Link>
                 </div>
                 <div className="hidden md:block">

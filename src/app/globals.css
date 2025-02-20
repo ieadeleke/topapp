@@ -215,9 +215,7 @@ input {
   border-radius: 8px !important;
 }
 
-.activate-otp-form div {
-
-}
+.activate-otp-form div {}
 
 .slider {
   overflow: hidden;
@@ -280,6 +278,7 @@ input {
   justify-content: center;
   align-items: center;
   border-radius: 10px;
+  top: 0;
 }
 
 .flip-card-front {}
@@ -290,4 +289,28 @@ input {
 
 .flip-card-back ul li {
   list-style: outside;
+}
+
+
+.animate-bar {
+  transition: max-height .5s ease-in-out;
+}
+
+.animated-hide {
+  max-height: 10rem;
+  overflow: hidden;
+}
+
+.animated-view {
+  max-height: 100rem;
+  overflow: hidden;
+}
+
+.animate-bar p {
+  opacity: 0;
+  transition: opacity .5s ease-in-out;
+}
+
+.animate-bar.animated-view p {
+  opacity: 1;
 }
