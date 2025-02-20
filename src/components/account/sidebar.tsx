@@ -10,6 +10,7 @@ import BellWhiteImg from "@/assets/images/account/icons/bell-white.svg";
 import HistoryWhiteImg from "@/assets/images/account/icons/history-white.svg";
 import PeopleWhiteImg from "@/assets/images/account/icons/people-white.svg";
 import SettingsWhiteImg from "@/assets/images/account/icons/settings-white.svg";
+import SettingsImg from "@/assets/images/account/icons/settings.svg";
 import WalletWhiteImg from "@/assets/images/account/icons/wallet-white.svg";
 import HomeWhiteImg from "@/assets/images/account/icons/home-white.svg";
 
@@ -141,7 +142,7 @@ const SideBar = () => {
                                 <Image src={userData?.imgUrl} alt="avatar" />
                                 :
                                 // <Image src={AvatarImg} alt="avatar" />
-                                <div className="size-16 rounded-full bg-black"></div>
+                                <div className="size-16 rounded-full bg-[#F5F5F5]"></div>
                         }
                     </div>
                     <div>
@@ -205,7 +206,7 @@ const SideBar = () => {
                     <li className={`flex items-center gap-4 text-sm px-5 py-5 ${pathName === "/account/settings" ? "bg-[#003235] rounded-[8px] text-white" : "text-[#1B1B1B]"}`}>
                         <Link href="/account/settings" className={`flex items-center gap-4 text-sm font-camptonthin ${pathName === "/account/settings" ? "bg-[#003235] rounded-[8px] text-white" : "text-[#1B1B1B]"}`}>
                             <span>
-                                <Image src={pathName === "/account/settings" ? SettingsWhiteImg : HomeImg} alt="bell icon" className="w-[20px]" />
+                                <Image src={pathName === "/account/settings" ? SettingsWhiteImg : SettingsImg} alt="bell icon" className="w-[20px]" />
                             </span>
                             <span>Settings</span>
                         </Link>

@@ -31,7 +31,7 @@ const Dashboard = () => {
                                 <div className="h-[8rem] w-full bg-[#F0F0F0]"></div>
                                 <div className="px-12 -mt-20">
                                     <div className="flex items-end gap-10">
-                                        <div className="size-48 rounded-full bg-black"></div>
+                                        <div className="size-48 rounded-full bg-[#F5F5F5]"></div>
                                         <div className="pb-5">
                                             <h4 className="text-2xl mb-3 mt-10">
                                                 {capitalizeText(user?.firstName ? user?.firstName : "")} {capitalizeText(user?.lastName ? user?.lastName : "")}

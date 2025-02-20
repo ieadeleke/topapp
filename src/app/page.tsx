@@ -28,6 +28,8 @@ import Company3Img from "@/assets/images/companies/_8.svg";
 import Company4Img from "@/assets/images/companies/_9.svg";
 import Company5Img from "@/assets/images/companies/_10.svg";
 
+import Hero1 from "@/assets/images/home/hero1.png";
+import Hero2 from "@/assets/images/home/hero2.png";
 
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -41,10 +43,10 @@ export default function Home() {
 
   const breakpoints = {
     0: {
-      slidesPerView: 1
+      slidesPerView: 1.4
     },
     600: {
-      slidesPerView: 1
+      slidesPerView: 2.4
     },
     1000: {
       slidesPerView: 3.4
@@ -58,10 +60,10 @@ export default function Home() {
     <div className="bg-background">
       <Layout>
         <>
-          <div className="hero-sect px-5 md:px-20 py-20">
-            <div className="flex flex-col md:grid grid-cols-2 max-w-[1626px] mx-auto gap-10">
+          <div className="hero-sect px-5 md:px-20 pt-10 pb-20 md:py-20">
+            <div className="flex flex-col md:grid grid-cols-2 max-w-[1626px] mx-auto gap-3 md:gap-10">
               <div>
-                <div className="bg-primary rounded-lg py-3 px-5 mb-4 flex items-center gap-3 w-max">
+                <div className="bg-primary rounded-lg py-3 px-5 mb-5 md:mb-4 flex items-center gap-3 w-max text-sm md:text-base">
                   A Better Way to Do It.
                 </div>
                 <h3 className="text-3xl md:text-5xl leading-tight md:leading-tight">
@@ -70,7 +72,7 @@ export default function Home() {
               </div>
               <div>
                 <p className="mb-1">Transforming Financial Services in Nigeria</p>
-                <p className="text-base leading-loose md:leading-loose">
+                <p className="text-sm md:text-base leading-loose md:leading-loose">
                   Pay4IT empowers businesses, individuals, and governments with innovative financial technology solutions. From streamlining tax collection to enabling seamless digital payments, we drive transparency, efficiency, and economic growth across diverse sectors.
                 </p>
                 <div className="mt-5 flex gap-5">
@@ -88,8 +90,11 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="mt-24">
-              <Image src={HeroImg} alt="HeroImg" />
+            <div className="mt-10 md:mt-24">
+              <div className="bg-[#00555A] rounded-[40px] p-7 gap-10 flex flex-col md:grid grid-cols-2 items-end">
+                <Image src={Hero1} alt="hero image" />
+                <Image src={Hero2} alt="hero image" />
+              </div>
             </div>
           </div>
           <div className="mt-2 py-5 bg-primary w-full">
@@ -140,8 +145,11 @@ export default function Home() {
           </div>
           <div className="mt-20 px-5 md:px-20">
             <div className="flex flex-col md:flex-row justify-between mb-24 md:items-end max-w-[1657px]">
-              <h3 className="text-3xl md:text-5xl md:leading-snug leading-snug max-w-[1190px]">
+              <h3 className="hidden md:block text-3xl md:text-5xl md:leading-snug leading-snug max-w-[1190px]">
                 Join us in simplifying payments <br /> and creating opportunities for all
+              </h3>
+              <h3 className="block md:hidden text-3xl md:text-5xl md:leading-snug leading-snug max-w-[1190px]">
+                Join us in simplifying payments and creating opportunities for all
               </h3>
               <Image src={ShoppersImg} alt="ShoppersImg" />
             </div>
@@ -152,24 +160,24 @@ export default function Home() {
           // onSwiper={(swiper) => (swiperRef.current = swiper)}
           >
             <SwiperSlide key={1}>
-              <div className="w-full bg-[#003437] max-h-[400px] h-[400px] rounded-[64px]">
+              <div className="w-full bg-[#003437] max-h-[400px] h-[250px] md:h-[350px] md:h-[400px] rounded-[64px]">
                 <div className="flip-card">
                   <div className="flip-card-inner">
                     <div className="flip-card-front flex items-end gap-0 pl-10 pt-20">
                       <div>
                         <div>
-                          <Image src={HandImg} alt="money icon" className="w-[200px] mb-5 font-camptonthin" />
+                          <Image src={HandImg} alt="money icon" className="w-[100px] md:w-[200px] mb-5 font-camptonthin" />
                         </div>
                       </div>
                       <div>
-                        <h2 className="text-white text-4xl pb-14 font-campton">
+                        <h2 className="text-white text-2xl md:text-4xl pb-14 font-campton">
                           Payment Gateway
                         </h2>
                       </div>
                     </div>
                     <div className="flip-card-back px-10">
                       <ul className="flex flex-col gap-5">
-                        <li className="text-white text-lg md:leading-loose leading-loose">Accept and process payments securely across multiple channels.
+                        <li className="text-white text-base md:text-lg md:leading-loose leading-loose">Accept and process payments securely across multiple channels.
                         </li>
                       </ul>
                     </div>
@@ -178,24 +186,24 @@ export default function Home() {
               </div>
             </SwiperSlide>
             <SwiperSlide key={2}>
-              <div className="w-full bg-[#D3FFB4] max-h-[400px] h-[400px] rounded-[64px]">
+              <div className="w-full bg-[#D3FFB4] max-h-[400px] h-[250px] md:h-[350px] md:h-[400px] rounded-[64px]">
                 <div className="flip-card">
                   <div className="flip-card-inner">
-                    <div className="flip-card-front top flex flex-col items-center gap-0 pl-10">
+                    <div className="flip-card-front top flex flex-col items-center gap-0 pl-10 pt-20 md:pt-0">
                       <div>
                         <div className="mb-5 -ml-20">
-                          <Image src={WithholdingImg} alt="money icon" className="w-[180px]" />
+                          <Image src={WithholdingImg} alt="money icon" className="w-[100px] md:w-[180px] mx-auto" />
                         </div>
                       </div>
                       <div>
-                        <h2 className="text-3xl pb-14 font-campton">
+                        <h2 className="text-xl md:text-3xl pb-14 font-campton">
                           Wallet Services
                         </h2>
                       </div>
                     </div>
                     <div className="flip-card-back px-10">
                       <ul className="flex flex-col gap-5">
-                        <li className="text-black text-lg md:leading-loose leading-loose">Manage digital funds, transfers, and transactions with ease.
+                        <li className="text-black text-base md:text-lg md:leading-loose leading-loose">Manage digital funds, transfers, and transactions with ease.
                         </li>
                       </ul>
                     </div>
@@ -204,24 +212,24 @@ export default function Home() {
               </div>
             </SwiperSlide>
             <SwiperSlide key={3}>
-              <div className="w-full bg-[#02DB94] max-h-[400px] h-[400px] rounded-[64px]">
+              <div className="w-full bg-[#02DB94] max-h-[400px] h-[250px] md:h-[350px] md:h-[400px] rounded-[64px]">
                 <div className="flip-card">
                   <div className="flip-card-inner">
                     <div className="flip-card-front flex-col pt-5 gap-0">
                       <div>
-                        <h2 className="text-4xl pb-5 text-center font-camptonsemi">
+                        <h2 className="text-2xl md:text-4xl pb-5 text-center font-camptonsemi">
                           PAYE API
                         </h2>
                       </div>
                       <div>
                         <div>
-                          <Image src={CardImg} alt="money icon" className="w-[200px] mx-auto" />
+                          <Image src={CardImg} alt="money icon" className="w-[100px] md:w-[200px] mx-auto" />
                         </div>
                       </div>
                     </div>
                     <div className="flip-card-back px-10">
                       <ul className="flex flex-col gap-5">
-                        <li className="text-black text-lg md:leading-loose leading-loose">Automate salary deductions and ensure seamless tax remittance.
+                        <li className="text-black text-base md:text-lg md:leading-loose leading-loose">Automate salary deductions and ensure seamless tax remittance.
                         </li>
                       </ul>
                     </div>
@@ -230,24 +238,24 @@ export default function Home() {
               </div>
             </SwiperSlide>
             <SwiperSlide key={4}>
-              <div className="w-full bg-[#D3FFB4] max-h-[400px] h-[400px] rounded-[64px]">
+              <div className="w-full bg-[#D3FFB4] max-h-[400px] h-[250px] md:h-[400px] rounded-[64px]">
                 <div className="flip-card">
                   <div className="flip-card-inner">
                     <div className="flip-card-front pt-20 flex flex-col items-center gap-0 pl-10">
                       <div>
                         <div className="mb-5 -ml-20">
-                          <Image src={TaxImg} alt="money icon" className="w-[180px] -mt-10" />
+                          <Image src={TaxImg} alt="money icon" className="w-[100px] w-[180px] -mt-10" />
                         </div>
                       </div>
                       <div>
-                        <h2 className="text-3xl pb-14 font-campton">
+                        <h2 className="text-xl md:text-3xl pb-14 font-campton">
                           Withholding Tax API
                         </h2>
                       </div>
                     </div>
                     <div className="flip-card-back px-10">
                       <ul className="flex flex-col gap-5">
-                        <li className="text-black text-lg md:leading-loose leading-loose">Stay compliant with effortless tax processing.
+                        <li className="text-black text-base md:text-lg md:leading-loose leading-loose">Stay compliant with effortless tax processing.
                         </li>
                       </ul>
                     </div>
@@ -256,24 +264,24 @@ export default function Home() {
               </div>
             </SwiperSlide>
             <SwiperSlide key={5}>
-              <div className="w-full bg-[#D3FFB4] max-h-[400px] h-[400px] rounded-[64px]">
+              <div className="w-full bg-[#D3FFB4] max-h-[400px] h-[250px] md:h-[400px] rounded-[64px]">
                 <div className="flip-card">
                   <div className="flip-card-inner">
                     <div className="flip-card-front pt-20 flex flex-col items-center gap-0 pl-10">
                       <div>
                         <div className="mb-5 -ml-20">
-                          <Image src={SallyImg} alt="money icon" className="w-[180px] -mt-10" />
+                          <Image src={SallyImg} alt="money icon" className="w-[100px] md:w-[180px] -mt-10" />
                         </div>
                       </div>
                       <div>
-                        <h2 className="text-3xl pb-14 font-campton">
+                        <h2 className="text-xl md:text-3xl pb-14 font-campton">
                           HR Solution
                         </h2>
                       </div>
                     </div>
                     <div className="flip-card-back px-10">
                       <ul className="flex flex-col gap-5">
-                        <li className="text-black text-lg md:leading-loose leading-loose">Streamline payroll, employee management, and benefits administration.
+                        <li className="text-black text-base md:text-lg md:leading-loose leading-loose">Streamline payroll, employee management, and benefits administration.
                         </li>
                       </ul>
                     </div>
@@ -282,24 +290,24 @@ export default function Home() {
               </div>
             </SwiperSlide>
             <SwiperSlide key={6}>
-              <div className="w-full bg-[#D3FFB4] max-h-[400px] h-[400px] rounded-[64px]">
+              <div className="w-full bg-[#D3FFB4] max-h-[400px] h-[250px] md:h-[400px] rounded-[64px]">
                 <div className="flip-card">
                   <div className="flip-card-inner">
                     <div className="flip-card-front pt-20 flex flex-col items-center gap-0 pl-10">
                       <div>
                         <div className="mb-5 -ml-20">
-                          <Image src={GovernmentImg} alt="money icon" className="w-[180px] -mt-10" />
+                          <Image src={GovernmentImg} alt="money icon" className="w-[100px] md:w-[180px] md:-mt-10" />
                         </div>
                       </div>
                       <div>
-                        <h2 className="text-3xl pb-14 font-campton">
+                        <h2 className="text-xl md:text-3xl pb-14 font-campton">
                           Government Bills Payment
                         </h2>
                       </div>
                     </div>
                     <div className="flip-card-back px-10">
                       <ul className="flex flex-col gap-5">
-                        <li className="text-black text-lg md:leading-loose leading-loose">Enable fast and secure payments for public services.
+                        <li className="text-black text-base md:text-lg md:leading-loose leading-loose">Enable fast and secure payments for public services.
                         </li>
                       </ul>
                     </div>
@@ -312,7 +320,7 @@ export default function Home() {
             <div className="flex flex-col md:grid grid-cols-3 gap-10 pt-20 pb-24 items-center">
               <div>
                 <h3 className="text-3xl md:text-7xl text-white font-campton md:leading-tight leading-tight mb-5">Use Pay4it to pay for it</h3>
-                <p className="text-white text-2xl mb-5 font-camptonthin 4xl:w-[90%]">
+                <p className="text-white text-base md:text-2xl mb-5 font-camptonthin 4xl:w-[90%]">
                   Transactions and payments made seamlessly.
                 </p>
                 <div className="flex gap-5">
@@ -459,12 +467,12 @@ export default function Home() {
             </div>
           </div>
           <div className="bg-[#F3F3F3] py-20 pb-60">
-            <h3 className="text-center text-3xl md:text-5xl md:w-[70%] 3xl:w-[50%] 4xl:w-[40%] mx-auto leading-snug md:leading-snug text-[#003235] font-campton">
+            <h3 className="text-center text-2xl md:text-5xl md:w-[70%] 3xl:w-[50%] 4xl:w-[40%] mx-auto leading-snug md:leading-snug text-[#003235] font-campton">
               API Integration for PAYE, WHT, and Government Bill Processing
             </h3>
           </div>
           <div className="md:px-24 bg-[#F3F3F3] md:bg-transparent">
-            <div className="md:bg-[#5D8BFF] py-20 px-14 md:px-32 4xl:w-[75%] mx-auto rounded-b-[100px]">
+            <div className="md:bg-[#5D8BFF] py-20 pb-0 px-14 md:px-32 4xl:w-[75%] mx-auto rounded-b-[100px]">
               <div className="max-w-[1320px] 3xl:w-[95%] 4xl:w-[100%] mx-auto flex flex-col md:grid grid-cols-3 gap-10 -mt-[270px]">
                 <div className="min-h-[350px] border text-center border-solid border-black bg-[#5D8BFF] rounded-t-[200px] pt-16 pb-16 rounded-b-[200px]">
                   <div className="min-h-[50px] mb-5">
@@ -492,7 +500,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="px-0">
-                <h3 className="text-white mb-16 text-6xl leading-normal md:leading-normal font-camptonthin mt-10 3xl:w-[95%] mx-auto 4xl:w-[95%]">
+                <h3 className="text-white mb-16 text-6xl leading-normal md:leading-normal font-camptonthin mt-10 3xl:w-[95%] mx-auto 4xl:w-[95%] hidden md:block">
                   <div className="w-ma">
                     Simplify <span className="text-black font-camptonsemi border-b-2 border-white border-solid">Tax and Bill
                       Payments</span> with <div className="flex items-center justify-between">
@@ -509,8 +517,18 @@ export default function Home() {
                 </h3>
               </div>
             </div>
+            <div className="px-5 block md:hidden pb-20">
+              <h3 className="text-black text-2xl leading-normal md:leading-normal font-camptonthin mt-10 3xl:w-[95%] mx-auto 4xl:w-[95%]">
+                <div className="">
+                  Simplify <span className="text-black font-camptonsemi border-b-2 border-white border-solid">Tax and Bill
+                    Payments</span> with
+                  <span className="font-camptonsemi border-b-2 border-white border-solid"> Pay4IT</span> <span className="text-black font-camptonsemi"> API </span> <span className="text-black font-camptonsemi border-b-2 border-white border-solid">Integration
+                  </span>
+                </div>
+              </h3>
+            </div>
           </div>
-          <div className="my-24 px-10 md:px-24 3xl:px-32 3xl:px-32 4xl:w-[80%] mb-32 mx-auto">
+          <div className="my-16 md:my-24 px-5 md:px-24 3xl:px-32 3xl:px-32 4xl:w-[80%] md:mb-32 mx-auto">
             <div className="bg-[#DFFF5E] relative rounded-[50px] md:rounded-[100px] py-10 md:py-20 px-5 md:px-20 border-2 border-solid border-black md:min-h-[700px]">
               <h4 className="text-3xl md:text-6xl font-campton md:w-[90%] leading-tight md:leading-tight">
                 &quot;Automate salary processing, PAYE deductions, and employee benefits for streamlined HR operations.&quot;

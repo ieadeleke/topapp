@@ -314,3 +314,14 @@ input {
 .animate-bar.animated-view p {
   opacity: 1;
 }
+
+@media screen and (max-width: 720px) {
+  .animated-hide {
+    /* max-height: 5rem; */
+    overflow: hidden;
+  }
+
+  .about-hero {
+    height: 600px;
+  }
+}

@@ -30,13 +30,13 @@ const AboutPage = () => {
             <Layout navPosition="fixed" whiteNav={true}>
                 <>
                     <div className="about-hero flex items-center">
-                        <div className="px-40 w-full">
-                            <div className="max-w-[763px] w-[55%]">
-                                <h3 className="leading-tight md:leading-tight mb-1 text-7xl text-white">
+                        <div className="px-5 md:px-40 w-full">
+                            <div className="max-w-[763px] w-full md:w-[55%]">
+                                <h3 className="leading-tight md:leading-tight mb-1 text-4xl md:text-7xl text-white">
                                     Your business Consultant &
                                     Solution.
                                 </h3>
-                                <p className="text-white font-satoshilight leading-normal md:leading-normal text-2xl opacity-90 mb-8">
+                                <p className="text-white font-satoshilight leading-normal md:leading-normal text-base md:text-2xl opacity-90 mb-8">
                                     Our platform provides seamless payment gateway solutions, wallet services, tax APIs, and HR solutions, all designed to make financial transactions effortless and secure.
                                 </p>
                                 <div className="py-3 px-10 font-satoshiregular flex gap-6 w-max items-center border-2 border-white border-solid text-white text-lg rounded-full">
@@ -129,9 +129,9 @@ const AboutPage = () => {
                         </div>
                     </div>
                     <div className="bg-dark py-12 w-full mt-20">
-                        <div className="flex items-center justify-between px-16">
+                        <div className="flex items-center justify-between px-5 md:px-16">
                             <div>
-                                <Image src={UsePayImg} alt="pay for it" className="w-auto md:w-max max-w-[818px]" />
+                                <Image src={UsePayImg} alt="pay for it" className="hidden md:block md:w-max max-w-[818px]" />
                             </div>
                             <div></div>
                             <div>
@@ -151,10 +151,13 @@ const AboutPage = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="px-20 py-20">
+                    <div className="px-5 md:px-20 py-20">
                         <div className="mb-20 flex justify-between items-center">
-                            <h3 className="font-campton text-4xl leading-tight">
+                            <h3 className="font-campton text-4xl leading-tight hidden md:block">
                                 Why Choose Pay4it for your <br /> ___________ Needs?
+                            </h3>
+                            <h3 className="font-campton text-3xl md:text-4xl leading-relaxed block md:hidden">
+                                Why Choose Pay4it for your _______ Needs?
                             </h3>
                             {/* <div className="flex gap-5">
                                 <button className="bg-primary rounded-full py-2 px-3 flex items-center gap-3">
@@ -170,8 +173,8 @@ const AboutPage = () => {
                                 </button>
                             </div> */}
                         </div>
-                        <div className={`pt-16 border-t border-solid border-[#D6DDD1] max-w-[1724px] mx-auto animate-bar ${currentView === 0 ? "animated-view" : "animated-hide"}`}>
-                            <div className="grid grid-cols-1/1.5/1.5">
+                        <div className={`pt-7 md:pt-16 border-t border-solid border-[#D6DDD1] max-w-[1724px] mx-auto animate-bar ${currentView === 0 ? "animated-view" : "animated-hide"}`}>
+                            <div className="flex flex-col md:grid grid-cols-1/1.5/1.5">
                                 <div>
                                     {
                                         currentView === 0 ?
@@ -181,7 +184,7 @@ const AboutPage = () => {
                                     }
                                 </div>
                                 <div>
-                                    <div className="w-[60%] pb-20">
+                                    <div className="md:w-[60%] pb-20">
                                         <h3 className="text-lg font-camptonsemi mb-10">The All-in-One Financial Solution</h3>
                                         <p className="text-sm leading-loose md:leading-loose">
                                             Simplify your business operations with Pay4It—your go-to platform for HR solutions, payroll processing, tax compliance, and seamless payments. From handling PAYE and withholding tax APIs to offering a secure payment gateway and wallet services, we ensure your transactions are fast, secure, and hassle-free.
@@ -195,8 +198,8 @@ const AboutPage = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className={`pt-16 mt-16 border-t border-solid border-[#D6DDD1] max-w-[1724px] mx-auto animate-bar ${currentView === 1 ? "animated-view" : "animated-hide"}`}>
-                            <div className="grid grid-cols-1/1.5/1.5">
+                        <div className={`pt-7 md:pt-16 mt-16 border-t border-solid border-[#D6DDD1] max-w-[1724px] mx-auto animate-bar ${currentView === 1 ? "animated-view" : "animated-hide"}`}>
+                            <div className="flex flex-col md:grid grid-cols-1/1.5/1.5">
                                 <div>
                                     {
                                         currentView === 1 ?
@@ -206,7 +209,7 @@ const AboutPage = () => {
                                     }
                                 </div>
                                 <div>
-                                    <div className="w-[60%] pb-20">
+                                    <div className="md:w-[60%] pb-20">
                                         <h3 className="text-lg font-camptonsemi mb-10">Compliance, Automation and Convenience</h3>
                                         <p className="text-sm leading-loose md:leading-loose">
                                             Managing payroll, taxes, and payments shouldn&apos;t be complicated. With built-in security, real-time processing, and effortless compliance, Pay4It is the smart choice for businesses and government agencies.
@@ -220,8 +223,8 @@ const AboutPage = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className={`pt-16 mt-16 border-t border-solid border-[#D6DDD1] max-w-[1724px] mx-auto animate-bar ${currentView === 2 ? "animated-view" : "animated-hide"}`}>
-                            <div className="grid grid-cols-1/1.5/1.5">
+                        <div className={`pt-7 md:pt-16 mt-16 border-t border-solid border-[#D6DDD1] max-w-[1724px] mx-auto animate-bar ${currentView === 2 ? "animated-view" : "animated-hide"}`}>
+                            <div className="flex flex-col md:grid grid-cols-1/1.5/1.5">
                                 <div>
                                     {
                                         currentView === 2 ?
@@ -231,7 +234,7 @@ const AboutPage = () => {
                                     }
                                 </div>
                                 <div>
-                                    <div className="w-[60%] pb-20">
+                                    <div className="md:w-[60%] pb-20">
                                         <h3 className="text-lg font-camptonsemi mb-10">Seamless payments and tax processing</h3>
                                         <p className="text-sm leading-loose md:leading-loose">
                                             Get rid of manual tax filings and fragmented payment systems. Pay4It provides a secure, API-driven ecosystem that streamlines salary payments, tax remittances, and business transactions. Our wallet services and payment gateway ensure your money moves efficiently, while our HR and tax APIs keep you compliant without the extra effort.
@@ -245,8 +248,8 @@ const AboutPage = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className={`pt-16 mt-16 border-t border-solid border-[#D6DDD1] max-w-[1724px] mx-auto animate-bar ${currentView === 3 ? "animated-view" : "animated-hide"}`}>
-                            <div className="grid grid-cols-1/1.5/1.5">
+                        <div className={`pt-7 md:pt-16 mt-16 border-t border-solid border-[#D6DDD1] max-w-[1724px] mx-auto animate-bar ${currentView === 3 ? "animated-view" : "animated-hide"}`}>
+                            <div className="flex flex-col md:grid grid-cols-1/1.5/1.5">
                                 <div>
                                     {
                                         currentView === 3 ?
@@ -256,7 +259,7 @@ const AboutPage = () => {
                                     }
                                 </div>
                                 <div>
-                                    <div className="w-[60%] pb-20">
+                                    <div className="md:w-[60%] pb-20">
                                         <h3 className="text-lg font-camptonsemi mb-10">Powering Businesses with Smarter Finance</h3>
                                         <p className="text-sm leading-loose md:leading-loose">
                                             Whether you're managing payroll, handling P.A.Y.E. and withholding tax, or processing payments, Pay4It makes it simple. Our API-powered platform connects businesses with the tools they need to automate salaries, remit taxes, and process transactions seamlessly. Say goodbye to complexity—choose Pay4It for a faster, smarter financial experience.

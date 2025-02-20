@@ -11,6 +11,8 @@ import AboutIcon2 from "@/assets/images/nav/about-2.svg";
 import AboutIcon3 from "@/assets/images/nav/about-3.svg";
 import AboutIcon4 from "@/assets/images/nav/about-4.svg";
 
+import { HiOutlineMenuAlt3 } from "react-icons/hi";
+
 import WhiteNavLogo from "@/assets/images/white-logo.svg";
 
 
@@ -177,7 +179,7 @@ const Navigation = (props: NavInterface) => {
 
     return (
         <div>
-            <div className={`flex justify-between items-center px-20 py-7 w-full max-w-[2000px] top-0 ${props.navPosition ? props.navPosition : "relative"}`}>
+            <div className={`flex justify-between items-center z-40 px-5 md:px-20 py-7 w-full max-w-[2000px] top-0 ${props.navPosition ? props.navPosition : "relative"}`}>
                 <div>
                     <Link href="/">
                         {
@@ -215,6 +217,9 @@ const Navigation = (props: NavInterface) => {
                             <Link className="bg-dark text-sm text-primary rounded-full py-3 px-5 flex gap-2 items-center" href="/auth/signup">Get Started</Link>
                         </li>
                     </ul>
+                </div>
+                <div className="block md:hidden">
+                    <HiOutlineMenuAlt3 className="text-3xl" />
                 </div>
             </div>
         </div>

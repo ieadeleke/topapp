@@ -5,10 +5,10 @@ import { SiLinkedin } from "react-icons/si";
 
 const Footer = () => {
     return (
-        <div className="bg-[#141414] pt-20 pb-5">
+        <div className="bg-[#141414] pt-10 md:pt-20 pb-5">
             <h4 className="text-center pb-14 text-white font-satoshi">©2023 damdamglobal.com</h4>
-            <div className="pt-14 pb-10 px-32 flex items-center justify-between border-t-2 border-solid border-[#1B1B1B]">
-                <ul className="flex gap-10">
+            <div className="pt-14 pb-10 px-5 md:px-32 flex gap-20 md:gap-0 flex-col md:flex-row items-center justify-between border-t-2 border-solid border-[#1B1B1B]">
+                <ul className="grid grid-cols-2 md:flex flex-col flex-row text-center gap-10">
                     <li>
                         <Link href="" className="text-lg font-satoshi text-white">
                             Home
