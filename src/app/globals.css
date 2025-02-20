@@ -207,6 +207,18 @@ input {
   border: 2px solid #E5E7EB !important;
 }
 
+.activate-otp-form input {
+  width: 5rem !important;
+  height: 4.5rem;
+  border: none !important;
+  background: #EDEFF2 !important;
+  border-radius: 8px !important;
+}
+
+.activate-otp-form div {
+
+}
+
 .slider {
   overflow: hidden;
   white-space: nowrap;
@@ -270,8 +282,7 @@ input {
   border-radius: 10px;
 }
 
-.flip-card-front {
-}
+.flip-card-front {}
 
 .flip-card-back {
   transform: rotateY(180deg);

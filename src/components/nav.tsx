@@ -204,7 +204,7 @@ const Navigation = (props: NavInterface) => {
                             <Link className="bg-primary text-sm text-dark rounded-full py-3 px-5 flex gap-2 items-center" href="/contact">Contact Us</Link>
                         </li>
                         <li>
-                            <Link className="bg-dark text-sm text-primary rounded-full py-3 px-5 flex gap-2 items-center" href="/auth/login">Get Started</Link>
+                            <Link className="bg-dark text-sm text-primary rounded-full py-3 px-5 flex gap-2 items-center" href="/auth/signup">Get Started</Link>
                         </li>
                     </ul>
                 </div>

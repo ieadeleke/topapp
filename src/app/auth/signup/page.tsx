@@ -47,6 +47,7 @@ export default function Login() {
             email: e.workEmail,
             password: e.password
         });
+        localStorage.setItem("user_email", e.workEmail);
     }
 
     useEffect(() => {
@@ -58,12 +59,9 @@ export default function Login() {
 
     useEffect(() => {
         if (data) {
-            console.log(data)
-            setTimeout(() => {
-                // setLoadLoginAction(false);
-                router.push('/auth/verify-account')
-                showSnackBar({ severity: 'success', message: "Login successful" })
-            }, 1000)
+            // setLoadLoginAction(false);
+            router.push('/auth/verify-account')
+            showSnackBar({ severity: 'success', message: "Signup successful" });
         }
     }, [data])
 
@@ -136,7 +134,7 @@ export default function Login() {
                                         {errors.password && <p className="text-sm text-danger">{errors.password.message}</p>}
                                     </div>
                                     <div className="flex justify-between">
-                                        <Link href={"/auth/signin"} className="text-offWhite text-sm">I have an account</Link>
+                                        <Link href={"/auth/login"} className="text-offWhite text-sm">I have an account</Link>
                                     </div>
                                     <div className="flex flex-col gap-6">
                                         <div className="flex flex-col">

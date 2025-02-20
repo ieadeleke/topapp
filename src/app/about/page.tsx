@@ -1,3 +1,4 @@
+"use client";
 import Layout from "@/components/layout";
 import Image from "next/image";
 
@@ -12,8 +13,12 @@ import Company2Img from "@/assets/images/companies/_7.svg";
 import Company3Img from "@/assets/images/companies/_8.svg";
 import Company4Img from "@/assets/images/companies/_9.svg";
 import Company5Img from "@/assets/images/companies/_10.svg";
+import { useState } from "react";
 
 const AboutPage = () => {
+
+    const [currentView, setCurrentView] = useState(0);
+
     return (
         <div>
             <Layout navPosition="fixed">
@@ -22,7 +27,7 @@ const AboutPage = () => {
                         <div className="px-40 w-full">
                             <div className="max-w-[763px] w-[55%]">
                                 <h3 className="leading-tight md:leading-tight mb-1 text-7xl text-white">
-                                    Your¬ business Consultant &
+                                    Your business Consultant &
                                     Solution.
                                 </h3>
                                 <p className="text-white font-satoshilight leading-normal md:leading-normal text-2xl opacity-90 mb-8">
@@ -162,7 +167,12 @@ const AboutPage = () => {
                         <div className="pt-16 border-t border-solid border-[#D6DDD1] max-w-[1724px] mx-auto">
                             <div className="grid grid-cols-1/1.5/1.5">
                                 <div>
-                                    <h3 className="text-lg font-camptonsemi">01</h3>
+                                    {
+                                        currentView === 0 ?
+                                            < h3 className="text-lg font-camptonsemi">-</h3>
+                                            :
+                                            <h3 className="text-lg font-camptonsemi">+</h3>
+                                    }
                                 </div>
                                 <div>
                                     <div className="w-[60%] pb-20">
@@ -180,14 +190,19 @@ const AboutPage = () => {
                         <div className="pt-16 mt-16 border-t border-solid border-[#D6DDD1] max-w-[1724px] mx-auto">
                             <div className="grid grid-cols-1/1.5/1.5">
                                 <div>
-                                    <h3 className="text-lg font-camptonsemi">02</h3>
+                                    {
+                                        currentView === 1 ?
+                                            < h3 className="text-lg font-camptonsemi">-</h3>
+                                            :
+                                            <h3 className="text-lg font-camptonsemi">+</h3>
+                                    }
                                 </div>
                                 <div>
-                                    <div className="w-[60%] pb-1">
-                                        <h3 className="text-lg font-camptonsemi mb-10">The All-in-One Financial Solution</h3>
-                                        {/* <p className="text-sm leading-loose md:leading-loose">
-                      Simplify your business operations with Pay4It—your go-to platform for HR solutions, payroll processing, tax compliance, and seamless payments. From handling PAYE and withholding tax APIs to offering a secure payment gateway and wallet services, we ensure your transactions are fast, secure, and hassle-free.
-                    </p> */}
+                                    <div className="w-[60%] pb-20">
+                                        <h3 className="text-lg font-camptonsemi mb-10">Compliance, Automation and Convenience</h3>
+                                        <p className="text-sm leading-loose md:leading-loose">
+                                            Managing payroll, taxes, and payments shouldn&apos;t be complicated. With built-in security, real-time processing, and effortless compliance, Pay4It is the smart choice for businesses and government agencies.
+                                        </p>
                                     </div>
                                 </div>
                                 <div>
@@ -198,14 +213,19 @@ const AboutPage = () => {
                         <div className="pt-16 mt-16 border-t border-solid border-[#D6DDD1] max-w-[1724px] mx-auto">
                             <div className="grid grid-cols-1/1.5/1.5">
                                 <div>
-                                    <h3 className="text-lg font-camptonsemi">03</h3>
+                                    {
+                                        currentView === 2 ?
+                                            < h3 className="text-lg font-camptonsemi">-</h3>
+                                            :
+                                            <h3 className="text-lg font-camptonsemi">+</h3>
+                                    }
                                 </div>
                                 <div>
-                                    <div className="w-[60%] pb-1">
-                                        <h3 className="text-lg font-camptonsemi mb-10">The All-in-One Financial Solution</h3>
-                                        {/* <p className="text-sm leading-loose md:leading-loose">
-                      Simplify your business operations with Pay4It—your go-to platform for HR solutions, payroll processing, tax compliance, and seamless payments. From handling PAYE and withholding tax APIs to offering a secure payment gateway and wallet services, we ensure your transactions are fast, secure, and hassle-free.
-                    </p> */}
+                                    <div className="w-[60%] pb-20">
+                                        <h3 className="text-lg font-camptonsemi mb-10">Seamless payments and tax processing</h3>
+                                        <p className="text-sm leading-loose md:leading-loose">
+                                            Get rid of manual tax filings and fragmented payment systems. Pay4It provides a secure, API-driven ecosystem that streamlines salary payments, tax remittances, and business transactions. Our wallet services and payment gateway ensure your money moves efficiently, while our HR and tax APIs keep you compliant without the extra effort.
+                                        </p>
                                     </div>
                                 </div>
                                 <div>
@@ -216,14 +236,19 @@ const AboutPage = () => {
                         <div className="pt-16 mt-16 border-t border-solid border-[#D6DDD1] max-w-[1724px] mx-auto">
                             <div className="grid grid-cols-1/1.5/1.5">
                                 <div>
-                                    <h3 className="text-lg font-camptonsemi">04</h3>
+                                    {
+                                        currentView === 3 ?
+                                            < h3 className="text-lg font-camptonsemi">-</h3>
+                                            :
+                                            <h3 className="text-lg font-camptonsemi">+</h3>
+                                    }
                                 </div>
                                 <div>
-                                    <div className="w-[60%] pb-1">
-                                        <h3 className="text-lg font-camptonsemi mb-10">The All-in-One Financial Solution</h3>
-                                        {/* <p className="text-sm leading-loose md:leading-loose">
-                      Simplify your business operations with Pay4It—your go-to platform for HR solutions, payroll processing, tax compliance, and seamless payments. From handling PAYE and withholding tax APIs to offering a secure payment gateway and wallet services, we ensure your transactions are fast, secure, and hassle-free.
-                    </p> */}
+                                    <div className="w-[60%] pb-20">
+                                        <h3 className="text-lg font-camptonsemi mb-10">Powering Businesses with Smarter Finance</h3>
+                                        <p className="text-sm leading-loose md:leading-loose">
+                                            Whether you're managing payroll, handling P.A.Y.E. and withholding tax, or processing payments, Pay4It makes it simple. Our API-powered platform connects businesses with the tools they need to automate salaries, remit taxes, and process transactions seamlessly. Say goodbye to complexity—choose Pay4It for a faster, smarter financial experience.
+                                        </p>
                                     </div>
                                 </div>
                                 <div>
@@ -234,7 +259,7 @@ const AboutPage = () => {
                     </div>
                 </>
             </Layout>
-        </div>
+        </div >
     )
 }
 

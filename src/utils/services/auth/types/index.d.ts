@@ -20,7 +20,7 @@ export type LoginParams = {
 }
 
 export type ActivatePasswordParams = {
-    receivedChannel: string,
+    receivedChannel: string | null,
     activationCode: string
 }
 
