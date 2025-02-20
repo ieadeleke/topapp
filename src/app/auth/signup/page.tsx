@@ -58,8 +58,9 @@ export default function Login() {
 
     useEffect(() => {
         if (data) {
+            console.log(data)
             setTimeout(() => {
-                setLoadLoginAction(false);
+                // setLoadLoginAction(false);
                 router.push('/auth/verify-account')
                 showSnackBar({ severity: 'success', message: "Login successful" })
             }, 1000)
