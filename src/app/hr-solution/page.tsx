@@ -38,7 +38,7 @@ const HRSolutionPage = () => {
                     <div className="">
                         <div className="px-5 md:px-0 py-20 relative">
                             <div className="max-w-[1293px] mx-auto">
-                                <h3 className="text-[#1B1B1B] text-3xl md:text-5xl md:w-[80%] text-center max-w-[1293px] leading-tight md:leading-tight mx-auto">
+                                <h3 className="text-[#1B1B1B] text-2xl md:text-5xl md:w-[80%] text-center max-w-[1293px] leading-tight md:leading-tight mx-auto">
                                     We are changing how businesses and individuals handle tax and bill payments.
                                 </h3>
                                 <div className="mt-4">
@@ -47,8 +47,8 @@ const HRSolutionPage = () => {
                                     </p>
                                 </div>
                             </div>
-                            <div className="pt-28 max-w-[1374px] w-[80%] mx-auto">
-                                <div className="grid grid-cols-3 gap-7 z-40 relative">
+                            <div className="pt-10 md:pt-28 max-w-[1374px] md:w-[80%] mx-auto">
+                                <div className="flex flex-col md:grid grid-cols-3 gap-7 z-40 relative">
                                     <div className="bg-white px-7 py-10 border border-solid border-[#EFEFEF] rounded-3xl">
                                         <h4 className="text-xl mb-3">Effortless Payroll Processing:</h4>
                                         <p className="text-[#666666] leading-loose md:leading-loose text-sm font-satoshiregular mb-5">
@@ -87,14 +87,14 @@ const HRSolutionPage = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="absolute bottom-0 right-0">
+                            <div className="hidden md:block absolute bottom-0 right-0">
                                 <Image src={GirlImg} alt="girl image" className="max-h-[800px] min-h-[800px] w-auto" />
                             </div>
                         </div>
                     </div>
                     <div className="bg-[#F9F9F9]">
-                        <div className="py-20 px-24">
-                            <div className="grid grid-cols-2 items-center gap-32">
+                        <div className="py-20 px-5 md:px-24">
+                            <div className="flex flex-col md:grid grid-cols-2 items-center gap-16 md:gap-32">
                                 <div>
                                     <Image src={BottomImg} alt="hero image" className="w-max mx-auto" />
                                 </div>
@@ -102,50 +102,60 @@ const HRSolutionPage = () => {
                                     <div className="px-14 mb-7 py-3 bg-primary w-max rounded-xl text-sm">
                                         Features
                                     </div>
-                                    <h3 className="text-4xl leading-normal md:leading-normal w-[90%] max-w-[718px] mb-4">
+                                    <h3 className="text-2xl md:text-4xl leading-normal md:leading-normal md:w-[90%] max-w-[718px] mb-4">
                                         Powerful Features to Simplify Payroll Management
                                     </h3>
                                     <p className="text-[#666666] font-satoshiregular leading-loose md:leading-loose mb-4">
                                         Join thousands of businesses and professionals who trust Pay4it for their payroll processing. Get started today and experience seamless, efficient, and accurate payroll management.
                                     </p>
-                                    <ul className="flex flex-col gap-5 mb-5 w-[666px]">
+                                    <ul className="flex flex-col gap-5 mb-5 md:w-[666px]">
                                         <li className="flex items-center gap-4">
-                                            <span className="size-8 rounded-full bg-[#D3FFB4] flex items-center justify-center">
-                                                <div className="size-3 rounded-full bg-[#003235]"></div>
-                                            </span>
-                                            <span className="text-base text-[#1B1B1B]">
+                                            <div>
+                                                <span className="size-8 rounded-full bg-[#D3FFB4] flex items-center justify-center">
+                                                    <div className="size-3 rounded-full bg-[#003235]"></div>
+                                                </span>
+                                            </div>
+                                            <span className="text-sm md:text-base text-[#1B1B1B] font-satoshiregular">
                                                 Employee database with detailed records.
                                             </span>
                                         </li>
                                         <li className="flex items-center gap-4">
-                                            <span className="size-8 rounded-full bg-[#D3FFB4] flex items-center justify-center">
-                                                <div className="size-3 rounded-full bg-[#003235]"></div>
-                                            </span>
-                                            <span className="text-base text-[#1B1B1B] font-satoshiregular">
+                                            <div>
+                                                <span className="size-8 rounded-full bg-[#D3FFB4] flex items-center justify-center">
+                                                    <div className="size-3 rounded-full bg-[#003235]"></div>
+                                                </span>
+                                            </div>
+                                            <span className="text-sm md:text-base text-[#1B1B1B] font-satoshiregular">
                                                 Automated salary calculation, including hours worked, overtime, bonuses, and deductions.
                                             </span>
                                         </li>
                                         <li className="flex items-center gap-4">
-                                            <span className="size-8 rounded-full bg-[#D3FFB4] flex items-center justify-center">
-                                                <div className="size-3 rounded-full bg-[#003235]"></div>
-                                            </span>
-                                            <span className="text-base text-[#1B1B1B] font-satoshiregular">
+                                            <div>
+                                                <span className="size-8 rounded-full bg-[#D3FFB4] flex items-center justify-center">
+                                                    <div className="size-3 rounded-full bg-[#003235]"></div>
+                                                </span>
+                                            </div>
+                                            <span className="text-sm md:text-base text-[#1B1B1B] font-satoshiregular">
                                                 Automatic tax calculation and deductions.
                                             </span>
                                         </li>
                                         <li className="flex items-center gap-4">
-                                            <span className="size-8 rounded-full bg-[#D3FFB4] flex items-center justify-center">
-                                                <div className="size-3 rounded-full bg-[#003235]"></div>
-                                            </span>
-                                            <span className="text-base text-[#1B1B1B] font-satoshiregular">
+                                            <div>
+                                                <span className="size-8 rounded-full bg-[#D3FFB4] flex items-center justify-center">
+                                                    <div className="size-3 rounded-full bg-[#003235]"></div>
+                                                </span>
+                                            </div>
+                                            <span className="text-sm md:text-base text-[#1B1B1B] font-satoshiregular">
                                                 Payroll scheduling and direct deposit features.
                                             </span>
                                         </li>
                                         <li className="flex items-center gap-4">
-                                            <span className="size-8 rounded-full bg-[#D3FFB4] flex items-center justify-center">
-                                                <div className="size-3 rounded-full bg-[#003235]"></div>
-                                            </span>
-                                            <span className="text-base text-[#1B1B1B] font-satoshiregular">
+                                            <div>
+                                                <span className="size-8 rounded-full bg-[#D3FFB4] flex items-center justify-center">
+                                                    <div className="size-3 rounded-full bg-[#003235]"></div>
+                                                </span>
+                                            </div>
+                                            <span className="text-sm md:text-base text-[#1B1B1B] font-satoshiregular">
                                                 Electronic payslip generation and compliance with regulations.
                                             </span>
                                         </li>
