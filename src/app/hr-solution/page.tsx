@@ -147,9 +147,9 @@ const HRSolutionPage = () => {
                                             </span>
                                         </li>
                                     </ul>
-                                    <button className="text-white rounded-xl bg-dark py-5 px-16">
+                                    <a href="https://businex-waitlist.netlify.app/" target="_blank" className="text-white rounded-xl bg-dark py-5 px-16">
                                         Start Journey
-                                    </button>
+                                    </a>
                                 </div>
                             </div>
                         </div>

@@ -176,7 +176,9 @@ const Navigation = (props: NavInterface) => {
         <div>
             <div className={`flex justify-between items-center px-20 py-7 w-full max-w-[2000px] top-0 ${props.navPosition ? props.navPosition : "relative"}`}>
                 <div>
-                    <Image src={LogoImg} alt="logo" />
+                    <Link href="/">
+                        <Image src={LogoImg} alt="logo" />
+                    </Link>
                 </div>
                 <div className="hidden md:block">
                     <ul className="flex items-center gap-3 border-2 border-solid border-[#BBE998] py-1 px-2 rounded-full">
