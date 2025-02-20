@@ -24,7 +24,7 @@ const HRSolutionPage = () => {
                                     <h2 className="block md:hidden text-4xl md:text-7xl mb-5 leading-tight md:leading-tight">
                                         Say Goodbye to Manual Tax Remittance.
                                     </h2>
-                                    <Image src={Hero2Img} alt="hero image" className="w-[5%] mt-5" />
+                                    <Image src={Hero2Img} alt="hero image" className="hidden md:block w-[5%] mt-5" />
                                 </div>
                                 <div className="md:w-[50%] mb-7 mx-auto">
                                     <p className="text-base md:text-xl leading-relaxed md:leading-relaxed font-satoshiregular text-[#1B1B1B]">
