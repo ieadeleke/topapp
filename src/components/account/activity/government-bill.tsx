@@ -5,11 +5,13 @@ import { Input, Modal } from "antd";
 import { Controller, useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useEffect, useState } from "react";
-import Button from "../../elements/button";
+import { useContext, useEffect, useState } from "react";
+import Button from "@/components/buttons";
 import { useActivateUserWallet } from "@/utils/apiHooks/profile/useActivateWallet";
 import SquareImg from "@/assets/images/account/icons/square.svg";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { GlobalActionContext } from "@/context/GlobalActionContext";
 
 interface GovernmentBillProps {
     open: boolean;
@@ -18,40 +20,25 @@ interface GovernmentBillProps {
 
 const GovernmentBillPayment = (props: GovernmentBillProps) => {
 
-    const validator = yup.object().shape({
-        bvn: yup.string().required('Please enter bvn'),
-        email: yup.string().email().required('Please enter your email'),
-        phoneNumber: yup.string().required('Please enter your mobile number'),
-        dob: yup.string().required('Please enter your date of birth'),
-        address: yup.string().required('Please enter your address'),
-    })
 
-    const { control, handleSubmit, formState: { errors } } = useForm({
-        resolver: yupResolver(validator)
-    });
-
-    const { activateUserWallet, data, isLoading, error } = useActivateUserWallet();
-
-    const [openMerchantModal, setOpenMerchantModal] = useState<boolean>(false);
+    const router = useRouter();
+    const { showSnackBar } = useContext(GlobalActionContext);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
     const [activeSelection, setActiveSelection] = useState<string>("single");
-    const toggleMerchantModal = (): void => setOpenMerchantModal(!openMerchantModal);
+    const toggleMerchantModal = (): void => props.toggleActivateWallet();
 
-    const handleNewBusinessAddition = (e: any) => {
-        activateUserWallet(e);
+    const redirectPayment = () => {
+        if (activeSelection.length) {
+            setIsLoading(true)
+            if (activeSelection === "single") {
+                router.push("/payment/collection");
+            } else {
+                router.push("/payment/collection");
+            }
+        } else {
+            showSnackBar({ severity: 'error', message: "Please select a bill type" })
+        }
     }
-
-    useEffect(() => {
-        if (data.Wallet) {
-            // window.location.reload();
-        }
-    }, [data]);
-
-    useEffect(() => {
-        if (error) {
-            // window.location.reload();
-        }
-    }, [error]);
-
 
     return (
         <div>
@@ -86,8 +73,8 @@ const GovernmentBillPayment = (props: GovernmentBillProps) => {
                             <span className="text-[#1B1B1B] text-lg">Harmonized Bill</span>
                         </div>
                     </div>
-                    <Button styling="bg-[#003235] py-5 mt-10 mx-auto w-max rounded-[8px] px-16 block text-sm text-white" isLoading={isLoading}
-                        type="submit" text="Continue" />
+                    <Button className="bg-[#003235] py-5 mt-10 mx-auto w-max rounded-[8px] px-16 block text-sm text-white" isLoading={isLoading}
+                        type="submit" onClick={redirectPayment}>Continue</Button>
                 </div>
             </Modal>
         </div>

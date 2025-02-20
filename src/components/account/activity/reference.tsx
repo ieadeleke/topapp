@@ -26,7 +26,7 @@ const BillReferencePage = (props: BillReferenceProps) => {
 
     const [openMerchantModal, setOpenMerchantModal] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState<boolean>(false);
-    const toggleMerchantModal = (): void => setOpenMerchantModal(!openMerchantModal);
+    const toggleMerchantModal = (): void => props.toggleActivateWallet();
 
     const handleBillReference = (e: any) => {
         setIsLoading(true);

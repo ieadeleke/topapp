@@ -1,26 +1,39 @@
 import axios from "axios";
-import { BASE_URL } from "./constant";
+import { BASE_URL } from "./constants/strings";
+import { getAccessToken } from "./auth/cookies";
+import ErrorBody from "./ErrorBody";
 
-interface RequestPropsInterface {
-    url: string,
-    data: any,
-    method: "POST" | "GET" | "PATCH" | "DELETE" | "PUT"
-}
+type RequestType = "GET" | "POST" | "PUT" | "DELETE";
+type RequestConfig = {
+  path: string;
+  method?: RequestType;
+  body?: any;
+  headers?: any
+};
 
-const request = async (req: RequestPropsInterface) => {
-    const url = `${BASE_URL}/${req.url}`
-    try {
-        let axiosRequest = await axios(url, {
-            method: req.method,
-            data: req.data,
-            headers: {
-                // "Authorization": token ? `Bearer ${token}` : undefined
-            }
-        })
-        return axiosRequest;
-    } catch (err) {
-        throw err;
+export async function request(params: RequestConfig) {
+  const url = `${BASE_URL}/${params.path}`;
+  const token = await getAccessToken();
+  try {
+    const response = await fetch(url, {
+      method: params.method ?? "POST",
+      body: params.body ? JSON.stringify(params.body) : undefined,
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        ...params.headers,
+      },
+    });
+    if (!response.ok) {
+      const error = await response.json();
+      throw new ErrorBody(
+        response.status,
+        error?.message ?? response.statusText
+      );
     }
+    return response.json();
+  } catch (error) {
+    throw error;
+  }
 }
-
-export default request;

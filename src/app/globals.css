@@ -315,6 +315,22 @@ input {
   opacity: 1;
 }
 
+.ant-drawer-body {
+  padding: 0px !important;
+}
+
+.ant-drawer-content {
+  width: 100% !important;
+}
+
+.ant-drawer-content-wrapper {
+  width: 100% !important;
+}
+
+.ant-drawer-header {
+  display: none !important;
+}
+
 @media screen and (max-width: 720px) {
   .animated-hide {
     max-height: 7rem;

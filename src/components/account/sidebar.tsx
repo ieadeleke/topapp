@@ -56,7 +56,7 @@ const SideBar = () => {
         resolver: yupResolver(validator)
     });
 
-    const { error: userError, data: userFetchedData, fetchUser } = useFetchUser();
+    const { isLoading: isLoadingFetchUser, error: userError, data: userFetchedData, fetchUser } = useFetchUser();
 
     const [userData, setUserData] = useState<Profile>({
         name: "",
@@ -202,7 +202,7 @@ const SideBar = () => {
                             <span>Activity Log</span>
                         </Link>
                     </li > */}
-                    
+
                     <li className={`flex items-center gap-4 text-sm px-5 py-5 ${pathName === "/account/settings" ? "bg-[#003235] rounded-[8px] text-white" : "text-[#1B1B1B]"}`}>
                         <Link href="/account/settings" className={`flex items-center gap-4 text-sm font-camptonthin ${pathName === "/account/settings" ? "bg-[#003235] rounded-[8px] text-white" : "text-[#1B1B1B]"}`}>
                             <span>
@@ -221,13 +221,14 @@ const SideBar = () => {
                     </Link>
                 </div>
                 {
-                    userData?.profileType === "merchant" ? "" :
-                        <div className="merchant-bg relative overflow-hidden bg-[#D3FFB4] max-w-[206px] rounded-[12px] py-7 px-5 mt-10">
-                            <Image src={LogoColoured} alt="logo" className="w-max mx-auto mb-3" />
-                            <h4 className="text-base mb-8 text-center">Become a Merchant</h4>
-                            <button onClick={toggleMerchantModal} className="bg-[#003235] z-30 block relative py-4 w-full text-[13px] rounded-[10px] text-white text-">Get Started</button>
-                            <Image src={Ecclipse} alt="ecclipse" className="absolute -right-5 -bottom-3 w-full" />
-                        </div>
+                    isLoadingFetchUser ? "" :
+                        userData?.profileType === "merchant" ? "" :
+                            <div className="merchant-bg relative overflow-hidden bg-[#D3FFB4] max-w-[206px] rounded-[12px] py-7 px-5 mt-10">
+                                <Image src={LogoColoured} alt="logo" className="w-max mx-auto mb-3" />
+                                <h4 className="text-base mb-8 text-center">Become a Merchant</h4>
+                                <button onClick={toggleMerchantModal} className="bg-[#003235] z-30 block relative py-4 w-full text-[13px] rounded-[10px] text-white text-">Get Started</button>
+                                <Image src={Ecclipse} alt="ecclipse" className="absolute -right-5 -bottom-3 w-full" />
+                            </div>
                 }
             </div>
 

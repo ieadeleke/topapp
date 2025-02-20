@@ -31,7 +31,7 @@ const ActivateWallet = (props: ActivateWalletProps) => {
     const { activateUserWallet, data, isLoading, error } = useActivateUserWallet();
 
     const [openMerchantModal, setOpenMerchantModal] = useState<boolean>(false);
-    const toggleMerchantModal = (): void => setOpenMerchantModal(!openMerchantModal);
+    const toggleMerchantModal = (): void => props.toggleActivateWallet();
 
     const handleNewBusinessAddition = (e: any) => {
         activateUserWallet(e);

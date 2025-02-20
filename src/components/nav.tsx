@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link";
 import { IoIosArrowDown } from "react-icons/io";
 import LogoImg from "@/assets/images/logo-full.svg";
@@ -11,9 +13,12 @@ import AboutIcon2 from "@/assets/images/nav/about-2.svg";
 import AboutIcon3 from "@/assets/images/nav/about-3.svg";
 import AboutIcon4 from "@/assets/images/nav/about-4.svg";
 
+import { ImCancelCircle } from "react-icons/im";
+
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
 
 import WhiteNavLogo from "@/assets/images/white-logo.svg";
+import { useState } from "react";
 
 
 interface NavInterface {
@@ -21,6 +26,8 @@ interface NavInterface {
     whiteNav?: boolean
 }
 const Navigation = (props: NavInterface) => {
+
+    const [openMenu, setOpenMenu] = useState(false);
 
     const AboutUsItems: MenuProps["items"] = [
         {
@@ -177,6 +184,8 @@ const Navigation = (props: NavInterface) => {
         },
     ];
 
+    const toggleDrawer = () => setOpenMenu(!openMenu);
+
     return (
         <div>
             <div className={`flex justify-between items-center z-40 px-5 md:px-20 py-7 w-full max-w-[2000px] top-0 ${props.navPosition ? props.navPosition : "relative"}`}>
@@ -219,32 +228,60 @@ const Navigation = (props: NavInterface) => {
                     </ul>
                 </div>
                 <div className="block md:hidden">
-                    <HiOutlineMenuAlt3 className="text-3xl" />
+                    <HiOutlineMenuAlt3 className="text-3xl" onClick={toggleDrawer} />
                 </div>
             </div>
-            <Drawer>
-                <ul className="flex flex-col gap-4">
-                    <li className="border-b border-solid border-black text-black">
-                        <Link href="/">
-                            Home</Link>
-                    </li>
-                    <li className="border-b border-solid border-black text-black">
-                        <Link href="/">
-                            Home</Link>
-                    </li>
-                    <li className="border-b border-solid border-black text-black">
-                        <Link href="/">
-                            Home</Link>
-                    </li>
-                    <li className="border-b border-solid border-black text-black">
-                        <Link href="/">
-                            Home</Link>
-                    </li>
-                    <li className="border-b border-solid border-black text-black">
-                        <Link href="/">
-                            Home</Link>
-                    </li>
-                </ul>
+            <Drawer open={openMenu} onClose={toggleDrawer} footer={null}>
+                <div>
+                    <div className="px-5 py-5 pb-10 flex items-center justify-between">
+                        <div className="w-[30px]">
+                            <Image src={LogoImg} alt="logo" className="w-[80%]" />
+                        </div>
+                        <div onClick={toggleDrawer}>
+                            <ImCancelCircle className="text-3xl text-danger" />
+                        </div>
+                    </div>
+                    <ul className="flex flex-col gap-4">
+                        <li className="border-b border-solid border-black pb-4 text-black">
+                            <Link href="/" className="font-campton text-base p-4">
+                                Home</Link>
+                        </li>
+                        <li className="border-b border-solid border-black pb-4 text-black">
+                            <Link href="/about" className="font-campton text-base p-4">
+                                About Us</Link>
+                        </li>
+                        <li className="border-b border-solid border-black pb-4 text-black">
+                            <Link href="/payment-gateway" className="font-campton text-base p-4">
+                                Payment Gateway</Link>
+                        </li>
+                        <li className="border-b border-solid border-black pb-4 text-black">
+                            <Link href="/hr-solution" className="font-campton text-base p-4">
+                                HR Solution</Link>
+                        </li>
+                        <li className="border-b border-solid border-black pb-4 text-black">
+                            <Link href="/wallet" className="font-campton text-base p-4">
+                                Wallet Services</Link>
+                        </li>
+                        <li className="border-b border-solid border-black pb-4 text-black">
+                            <Link href="/tax-and-government-api" className="font-campton text-base p-4">
+                                Tax and Government API</Link>
+                        </li>
+                        <li className="border-b border-solid border-black pb-4 text-black">
+                            <Link href="/contact" className="font-campton text-base p-4">
+                                Contact Us</Link>
+                        </li>
+                        <li>
+                            <Link href="/auth/login" className="text-lg font-satoshi text-white">
+                                Sign In
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="/auth/signup" className="text-lg font-satoshi text-white">
+                                Create a Free Account
+                            </Link>
+                        </li>
+                    </ul>
+                </div>
             </Drawer>
         </div>
     )
