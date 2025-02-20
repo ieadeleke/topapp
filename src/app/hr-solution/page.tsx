@@ -36,13 +36,13 @@ const HRSolutionPage = () => {
                         </div>
                     </div>
                     <div className="">
-                        <div className="py-20 relative">
+                        <div className="px-5 md:px-0 py-20 relative">
                             <div className="max-w-[1293px] mx-auto">
                                 <h3 className="text-[#1B1B1B] text-3xl md:text-5xl md:w-[80%] text-center max-w-[1293px] leading-tight md:leading-tight mx-auto">
                                     We are changing how businesses and individuals handle tax and bill payments.
                                 </h3>
                                 <div className="mt-4">
-                                    <p className="text-center max-w-[1293px] text-[#666666] w-[90%] mx-auto leading-loose md:leading-loose">
+                                    <p className="text-sm md:text-base text-center max-w-[1293px] text-[#666666] md:w-[90%] mx-auto leading-loose md:leading-loose">
                                         With seamless integration capabilities, our API empowers businesses and third-party software providers to automate payment processes while ensuring compliance with government regulations.
                                     </p>
                                 </div>
