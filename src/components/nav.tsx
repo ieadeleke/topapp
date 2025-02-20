@@ -2,7 +2,7 @@ import Link from "next/link";
 import { IoIosArrowDown } from "react-icons/io";
 import LogoImg from "@/assets/images/logo-full.svg";
 import Image from "next/image";
-import { Dropdown, MenuProps } from "antd";
+import { Dropdown, MenuProps, Drawer } from "antd";
 
 import { FaArrowRight } from "react-icons/fa6";
 
@@ -222,6 +222,30 @@ const Navigation = (props: NavInterface) => {
                     <HiOutlineMenuAlt3 className="text-3xl" />
                 </div>
             </div>
+            <Drawer>
+                <ul className="flex flex-col gap-4">
+                    <li className="border-b border-solid border-black text-black">
+                        <Link href="/">
+                            Home</Link>
+                    </li>
+                    <li className="border-b border-solid border-black text-black">
+                        <Link href="/">
+                            Home</Link>
+                    </li>
+                    <li className="border-b border-solid border-black text-black">
+                        <Link href="/">
+                            Home</Link>
+                    </li>
+                    <li className="border-b border-solid border-black text-black">
+                        <Link href="/">
+                            Home</Link>
+                    </li>
+                    <li className="border-b border-solid border-black text-black">
+                        <Link href="/">
+                            Home</Link>
+                    </li>
+                </ul>
+            </Drawer>
         </div>
     )
 }

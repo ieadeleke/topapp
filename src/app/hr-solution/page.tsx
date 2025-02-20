@@ -15,16 +15,19 @@ const HRSolutionPage = () => {
                 <div className="pb-28">
                     <div className="pt-10 px-5 md:px-20 max-w-[1814px] mx-auto">
                         <div className="flex items-center text-center">
-                            <div className="w-[90%] mx-auto">
+                            <div className="md:w-[90%] mx-auto">
                                 <div className="flex items-start justify-center gap-3">
                                     {/* <Image src={Hero1Img} alt="hero image" className="w-[5%] mt-5" /> */}
-                                    <h2 className="text-7xl mb-5 leading-tight md:leading-tight">
+                                    <h2 className="hidden md:block text-4xl md:text-7xl mb-5 leading-tight md:leading-tight">
                                         Say Goodbye to Manual <br /> Tax Remittance.
+                                    </h2>
+                                    <h2 className="block md:hidden text-4xl md:text-7xl mb-5 leading-tight md:leading-tight">
+                                        Say Goodbye to Manual Tax Remittance.
                                     </h2>
                                     <Image src={Hero2Img} alt="hero image" className="w-[5%] mt-5" />
                                 </div>
-                                <div className="w-[50%] mb-7 mx-auto">
-                                    <p className="text-xl leading-relaxed md:leading-relaxed font-satoshiregular text-[#1B1B1B]">
+                                <div className="md:w-[50%] mb-7 mx-auto">
+                                    <p className="text-base md:text-xl leading-relaxed md:leading-relaxed font-satoshiregular text-[#1B1B1B]">
                                         Our solution ensures PAYE is submitted directly to the Lagos Inland Revenue Service (LIRS), eliminating delays and errors.
                                     </p>
                                 </div>
@@ -35,7 +38,7 @@ const HRSolutionPage = () => {
                     <div className="">
                         <div className="py-20 relative">
                             <div className="max-w-[1293px] mx-auto">
-                                <h3 className="text-[#1B1B1B] text-5xl w-[80%] text-center max-w-[1293px] leading-tight md:leading-tight mx-auto">
+                                <h3 className="text-[#1B1B1B] text-3xl md:text-5xl md:w-[80%] text-center max-w-[1293px] leading-tight md:leading-tight mx-auto">
                                     We are changing how businesses and individuals handle tax and bill payments.
                                 </h3>
                                 <div className="mt-4">

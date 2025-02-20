@@ -95,11 +95,11 @@ const AboutPage = () => {
                         <div className="about-testimonial px-5 md:px-20 py-5 md:py-20">
                             <div className="flex flex-col md:flex-row gap-5">
                                 <div>
-                                    <div className="md: size-[50px] size-[70px] rounded-full bg-[#D3FFB4] flex items-center justify-center">
-                                        <Image src={QuoteImg} alt="quote icons" className="w-max h-max" />
+                                    <div className="size-[50px] md:size-[70px] rounded-full bg-[#D3FFB4] flex items-center justify-center">
+                                        <Image src={QuoteImg} alt="quote icons" className="w-[30%] md:w-max h-max" />
                                     </div>
                                 </div>
-                                <p className="text-white leading-loose md:leading-loose text-lg md:text-3xl">
+                                <p className="text-white leading-loose md:leading-loose text-base md:text-3xl">
                                     Pay4IT, a subsidiary of DamDam Global Services, is a leading fintech innovator committed to solving Nigeria&apos;s financial challenges. Our mission is to simplify payments, promote financial inclusion, and foster economic growth through cutting-edge technology.
                                 </p>
                             </div>
@@ -129,14 +129,14 @@ const AboutPage = () => {
                         </div>
                     </div>
                     <div className="bg-dark py-12 w-full mt-20">
-                        <div className="flex items-center justify-between px-5 md:px-16">
+                        <div className="md:flex items-center justify-between px-5 md:px-16">
                             <div>
                                 <Image src={UsePayImg} alt="pay for it" className="hidden md:block md:w-max max-w-[818px]" />
                             </div>
                             <div></div>
                             <div>
                                 <div className="flex gap-8">
-                                    <button className="bg-primary rounded-full py-2 px-3 flex items-center gap-3">
+                                    <button className="mx-auto md:mx-0 md:w-max bg-primary rounded-full py-2 px-3 flex items-center gap-3">
                                         <div className="size-12 bg-dark rounded-full flex items-center justify-center">
                                             <Image src={LogoImg} alt="logo" className="w-[50%]" />
                                         </div>
@@ -144,7 +144,7 @@ const AboutPage = () => {
                                             Get Started
                                         </span>
                                     </button>
-                                    <button className="bg-transparent border-white border-2 rounded-full text-white py-2 px-12 flex items-center gap-3">
+                                    <button className="hidden md:block bg-transparent border-white border-2 rounded-full text-white py-2 px-12 flex items-center gap-3">
                                         Contact Us
                                     </button>
                                 </div>
@@ -152,7 +152,7 @@ const AboutPage = () => {
                         </div>
                     </div>
                     <div className="px-5 md:px-20 py-20">
-                        <div className="mb-20 flex justify-between items-center">
+                        <div className="mb-5 md:mb-20 flex justify-between items-center">
                             <h3 className="font-campton text-4xl leading-tight hidden md:block">
                                 Why Choose Pay4it for your <br /> ___________ Needs?
                             </h3>
@@ -173,7 +173,7 @@ const AboutPage = () => {
                                 </button>
                             </div> */}
                         </div>
-                        <div className={`pt-7 md:pt-16 border-t border-solid border-[#D6DDD1] max-w-[1724px] mx-auto animate-bar ${currentView === 0 ? "animated-view" : "animated-hide"}`}>
+                        <div className={`pt-7 md:pt-16 mt-0 md:border-t border-solid border-[#D6DDD1] max-w-[1724px] mx-auto animate-bar ${currentView === 0 ? "animated-view" : "animated-hide"}`}>
                             <div className="flex flex-col md:grid grid-cols-1/1.5/1.5">
                                 <div>
                                     {
@@ -184,8 +184,8 @@ const AboutPage = () => {
                                     }
                                 </div>
                                 <div>
-                                    <div className="md:w-[60%] pb-20">
-                                        <h3 className="text-lg font-camptonsemi mb-10">The All-in-One Financial Solution</h3>
+                                    <div className="md:w-[60%] pb-10 md:pb-20">
+                                        <h3 className="text-lg font-camptonsemi mb-5 md:mb-10">The All-in-One Financial Solution</h3>
                                         <p className="text-sm leading-loose md:leading-loose">
                                             Simplify your business operations with Pay4It—your go-to platform for HR solutions, payroll processing, tax compliance, and seamless payments. From handling PAYE and withholding tax APIs to offering a secure payment gateway and wallet services, we ensure your transactions are fast, secure, and hassle-free.
                                         </p>
@@ -198,7 +198,7 @@ const AboutPage = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className={`pt-7 md:pt-16 mt-16 border-t border-solid border-[#D6DDD1] max-w-[1724px] mx-auto animate-bar ${currentView === 1 ? "animated-view" : "animated-hide"}`}>
+                        <div className={`pt-7 md:pt-16 mt-0 md:mt-16 border-t border-solid border-[#D6DDD1] max-w-[1724px] mx-auto animate-bar ${currentView === 1 ? "animated-view" : "animated-hide"}`}>
                             <div className="flex flex-col md:grid grid-cols-1/1.5/1.5">
                                 <div>
                                     {
@@ -209,8 +209,8 @@ const AboutPage = () => {
                                     }
                                 </div>
                                 <div>
-                                    <div className="md:w-[60%] pb-20">
-                                        <h3 className="text-lg font-camptonsemi mb-10">Compliance, Automation and Convenience</h3>
+                                    <div className="md:w-[60%] pb-10 md:pb-20">
+                                        <h3 className="text-lg font-camptonsemi mb-5 md:mb-10">Compliance, Automation and Convenience</h3>
                                         <p className="text-sm leading-loose md:leading-loose">
                                             Managing payroll, taxes, and payments shouldn&apos;t be complicated. With built-in security, real-time processing, and effortless compliance, Pay4It is the smart choice for businesses and government agencies.
                                         </p>
@@ -223,7 +223,7 @@ const AboutPage = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className={`pt-7 md:pt-16 mt-16 border-t border-solid border-[#D6DDD1] max-w-[1724px] mx-auto animate-bar ${currentView === 2 ? "animated-view" : "animated-hide"}`}>
+                        <div className={`pt-7 md:pt-16 mt-0 md:mt-16 border-t border-solid border-[#D6DDD1] max-w-[1724px] mx-auto animate-bar ${currentView === 2 ? "animated-view" : "animated-hide"}`}>
                             <div className="flex flex-col md:grid grid-cols-1/1.5/1.5">
                                 <div>
                                     {
@@ -234,8 +234,8 @@ const AboutPage = () => {
                                     }
                                 </div>
                                 <div>
-                                    <div className="md:w-[60%] pb-20">
-                                        <h3 className="text-lg font-camptonsemi mb-10">Seamless payments and tax processing</h3>
+                                    <div className="md:w-[60%] pb-10 md:pb-20">
+                                        <h3 className="text-lg font-camptonsemi mb-5 md:mb-10">Seamless payments and tax processing</h3>
                                         <p className="text-sm leading-loose md:leading-loose">
                                             Get rid of manual tax filings and fragmented payment systems. Pay4It provides a secure, API-driven ecosystem that streamlines salary payments, tax remittances, and business transactions. Our wallet services and payment gateway ensure your money moves efficiently, while our HR and tax APIs keep you compliant without the extra effort.
                                         </p>
@@ -248,7 +248,7 @@ const AboutPage = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className={`pt-7 md:pt-16 mt-16 border-t border-solid border-[#D6DDD1] max-w-[1724px] mx-auto animate-bar ${currentView === 3 ? "animated-view" : "animated-hide"}`}>
+                        <div className={`pt-7 md:pt-16 mt-0 md:mt-16 border-t border-solid border-[#D6DDD1] max-w-[1724px] mx-auto animate-bar ${currentView === 3 ? "animated-view" : "animated-hide"}`}>
                             <div className="flex flex-col md:grid grid-cols-1/1.5/1.5">
                                 <div>
                                     {
@@ -259,8 +259,8 @@ const AboutPage = () => {
                                     }
                                 </div>
                                 <div>
-                                    <div className="md:w-[60%] pb-20">
-                                        <h3 className="text-lg font-camptonsemi mb-10">Powering Businesses with Smarter Finance</h3>
+                                    <div className="md:w-[60%] pb-10 md:pb-20">
+                                        <h3 className="text-lg font-camptonsemi mb-5 md:mb-10">Powering Businesses with Smarter Finance</h3>
                                         <p className="text-sm leading-loose md:leading-loose">
                                             Whether you're managing payroll, handling P.A.Y.E. and withholding tax, or processing payments, Pay4It makes it simple. Our API-powered platform connects businesses with the tools they need to automate salaries, remit taxes, and process transactions seamlessly. Say goodbye to complexity—choose Pay4It for a faster, smarter financial experience.
                                         </p>
