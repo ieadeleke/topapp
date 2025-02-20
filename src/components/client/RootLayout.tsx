@@ -30,7 +30,6 @@ export default function RootLayoutClient({
   }
 
 
-
   return (
     <div>
       <ThemeProvider theme={theme}>
