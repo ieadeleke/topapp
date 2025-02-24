@@ -99,7 +99,7 @@ export default function Login() {
                                             className="py-3 rounded-[12px] w-full bg-buttonBg text-sm">Login</Button>
                                     </div>
                                     <div className="flex justify-between">
-                                        <Link href={"/reset-password"} className="text-offWhite text-sm">Forgot Password?</Link>
+                                        <Link href={"/auth/reset-password"} className="text-offWhite text-sm">Forgot Password?</Link>
                                         <Link href={"/auth/signup"} className="text-offWhite text-sm">I don&apos;t have an account</Link>
                                     </div>
                                 </div>
