@@ -52,14 +52,13 @@ export default function Login() {
 
     useEffect(() => {
         if (error) {
-            console.log(error);
             setLoadLoginAction(false);
             showSnackBar({ severity: 'error', message: error })
         }
     }, [error])
 
     useEffect(() => {
-        if (data) {
+        if (data?.status === "OK") {
             // setLoadLoginAction(false);
             router.push('/auth/verify-account')
             showSnackBar({ severity: 'success', message: "Signup successful" });

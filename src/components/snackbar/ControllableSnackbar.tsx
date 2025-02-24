@@ -29,7 +29,6 @@ const _ControllableSnackBar = forwardRef<ControllableSnackBarRef, ControllableSn
 
     useImperativeHandle(ref, () => ({
         open(payload: ControllableSnackBarStateParams) {
-            console.log('call me')
             setState(payload)
             setIsVisible(true)
         },

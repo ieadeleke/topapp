@@ -58,7 +58,7 @@ export default function VerifyAccount() {
     }, [error])
 
     useEffect(() => {
-        if (data) {
+        if (data?.status === "OK") {
             router.push('/auth/login');
             showSnackBar({ severity: 'success', message: "Account verification successful" });
             setLoadLoginAction(false);
@@ -68,8 +68,8 @@ export default function VerifyAccount() {
 
     return <AuthLayout>
         <>
-            <div className="flex flex-col gap-4 min-h-[85vh] md:min-h-[85vh] items-center justify-center">
-                <div className="max-w-[1152px] md:w-max py-10 mx-auto border-2 border-solid border-[#DADADA] rounded-[26px] px-10">
+            <div className="flex flex-col gap-4 min-h-[85vh] md:min-h-[85vh] items-center justify-center px-5 md:px-0">
+                <div className="max-w-[1152px] w-full md:w-max py-10 mx-auto border-2 border-solid border-[#DADADA] rounded-[26px] px-2 md:px-10">
                     <div className="md:px-0">
                         <div className="mx-auto block">
                             <div className="">

@@ -47,7 +47,7 @@ const Navigation = (props: NavInterface) => {
                         </span>
                     </Link>
 
-                    {/* <Link href="/job" className="flex items-start gap-4">
+                    <Link href="/job" className="flex items-start gap-4">
                         <span className="text-xl">
                             <Image src={AboutIcon4} alt="about us" className="w-full h-full" />
                         </span>
@@ -58,7 +58,7 @@ const Navigation = (props: NavInterface) => {
                         <span>
                             <FaArrowRight className="text-[#00555A] text-xl" />
                         </span>
-                    </Link> */}
+                    </Link>
                 </div>
             ),
         },
@@ -95,7 +95,7 @@ const Navigation = (props: NavInterface) => {
                         </span>
                     </Link>
 
-                    {/* <Link href="/" className="flex items-start gap-4">
+                    <Link href="/" className="flex items-start gap-4">
                         <span className="text-xl">
                             <Image src={AboutIcon3} alt="about us" className="w-full h-full" />
                         </span>
@@ -105,7 +105,7 @@ const Navigation = (props: NavInterface) => {
                         <span>
                             <FaArrowRight className="text-[#00555A] text-xl" />
                         </span>
-                    </Link> */}
+                    </Link>
 
                     <Link href="/wallet" className="flex items-start gap-4">
                         <span className="text-xl">

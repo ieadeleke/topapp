@@ -1,5 +1,5 @@
 import { request } from "@/utils/request";
-import { ActivatePasswordParams, ChangePasswordParams, ConfirmResetPasswordParams, LoginParams, LoginResponseParams, ResetPasswordParams, SignUpParams, SignUpResponseParams, VerifySignUpParams } from "./types"
+import { ActivatePasswordParams, ActivatePasswordResponseParams, ChangePasswordParams, ConfirmResetPasswordParams, LoginParams, LoginResponseParams, ResetPasswordParams, SignUpParams, SignUpResponseParams, VerifySignUpParams } from "./types"
 import { ApiResponse } from "@/models"
 
 
@@ -11,7 +11,7 @@ export function AuthService() {
             method: "POST",
             body: params
         })
-        return response
+        return response as LoginResponseParams
     }
 
     async function activateAccount(params: ActivatePasswordParams) {
@@ -20,7 +20,7 @@ export function AuthService() {
             method: "POST",
             body: params
         })
-        return response
+        return response as ActivatePasswordResponseParams
     }
 
     async function signup(params: SignUpParams) {
@@ -29,7 +29,7 @@ export function AuthService() {
             method: "POST",
             body: params
         })
-        return response;
+        return response as SignUpResponseParams;
     }
 
     async function resetPassword(params: ResetPasswordParams) {

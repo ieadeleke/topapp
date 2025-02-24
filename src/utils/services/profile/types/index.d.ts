@@ -39,7 +39,11 @@ export type ActivateWalletParams = {
 }
 
 export type AvailableBillResponse = {
-    Bills: any
+    Bills: {
+        data: [],
+        message: string,
+        status: string
+    }
 }
 
 export type ActivateWalletResponse = {

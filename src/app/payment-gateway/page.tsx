@@ -22,7 +22,7 @@ const PaymentGatewayPage = () => {
                                     Pay, Receive, and Manage Funds Effortlessly with Pay4It Wallet
                                 </p>
                             </div>
-                            <Link href="/" className="bg-white text-[#1B1B1B] font-satoshibold w-max mx-auto rounded-full py-4 px-8 text-base">Get Started</Link>
+                            <Link href="/auth/signup" className="bg-white text-[#1B1B1B] font-satoshibold w-max mx-auto rounded-full py-4 px-8 text-base">Get Started</Link>
                         </div>
                     </div>
                     <div className="z-30 relative bg-white py-20 pb-28 rounded-t-[100px] md:rounded-t-[200px]">
@@ -36,14 +36,14 @@ const PaymentGatewayPage = () => {
                         </div>
                         <div className="px-5 md:px-0 md:w-[80%] 3xl:w-[75%] 4xl:w-[60%] mt-14 w-max-[1150px] mx-auto">
                             <div className="flex flex-col md:grid grid-cols-3 gap-4">
-                                <div className="border border-solid border-[#EBF3EE] bg-[#DFFF5E] px-5 py-10 rounded-3xl">
+                                <div className="border border-solid border-[#EBF3EE] hr-benefits px-5 py-10 rounded-3xl">
                                     <Image src={TaxIcon} alt="vector" className="mb-5" />
                                     <h4 className="w-[90%] text-2xl text-[#0A4020] mb-5 min-h-[80px] leading-relaxed md:leading-relaxed">Simplify Your Payments with Pay4It</h4>
                                     <p className="text-sm text-black opacity-70 md:leading-loose leading-loose font-campton w-max-[1104px]">
                                         No more stress with bill payments! Use Pay4It to pay for electricity, internet, government taxes, and more quickly and securely. Whether you're a business or an individual, we&apos;ve got you covered.
                                     </p>
                                 </div>
-                                <div className="border border-solid border-[#EBF3EE] px-5 py-10 rounded-3xl">
+                                <div className="border border-solid border-[#EBF3EE] hr-benefits px-5 py-10 rounded-3xl">
                                     <Image src={TaxIcon} alt="vector" className="mb-5" />
                                     <h4 className="text-xl text-[#0A4020] mb-5 min-h-[80px] leading-relaxed md:leading-relaxed">Government & Utility Bills</h4>
                                     <p className="text-sm text-black opacity-70 md:leading-loose leading-loose font-satoshiregular w-max-[1104px]">
@@ -51,28 +51,28 @@ const PaymentGatewayPage = () => {
                                         With Pay4It, you can instantly pay for electricity, water, internet, TV subscriptions, and government levies from one easy-to-use platform. Fast, secure, and hassle-free!
                                     </p>
                                 </div>
-                                <div className="border border-solid border-[#EBF3EE] px-5 py-10 rounded-3xl">
+                                <div className="border border-solid border-[#EBF3EE] hr-benefits px-5 py-10 rounded-3xl">
                                     <Image src={TaxIcon} alt="vector" className="mb-5" />
                                     <h4 className="text-xl text-[#0A4020] mb-5 min-h-[80px] leading-relaxed md:leading-relaxed">Automate Your Payments with <br /> Pay4It APIs</h4>
                                     <p className="text-sm text-black opacity-70 md:leading-loose leading-loose font-satoshiregular w-max-[1104px]">
                                         Integrate Pay4It&apos;s powerful APIs into your existing software to automate payroll, tax remittance, utility payments, and more. No more manual processing, just seamless transactions!
                                     </p>
                                 </div>
-                                <div className="border border-solid border-[#EBF3EE] px-5 py-10 rounded-3xl">
+                                <div className="border border-solid border-[#EBF3EE] hr-benefits px-5 py-10 rounded-3xl">
                                     <Image src={TaxIcon} alt="vector" className="mb-5" />
                                     <h4 className="text-xl text-[#0A4020] mb-5 min-h-[80px] leading-relaxed md:leading-relaxed">Business & Government <br /> Transactions Made Easy</h4>
                                     <p className="text-sm text-black opacity-70 md:leading-loose leading-loose font-satoshiregular w-max-[1104px]">
                                         From PAYE and withholding tax to business licenses and custom duties, Pay4It ensures secure, real-time transactions. Focus on your business while we handle the payments.
                                     </p>
                                 </div>
-                                <div className="border border-solid border-[#EBF3EE] px-5 py-10 rounded-3xl">
+                                <div className="border border-solid border-[#EBF3EE] hr-benefits px-5 py-10 rounded-3xl">
                                     <Image src={TaxIcon} alt="vector" className="mb-5" />
                                     <h4 className="text-xl text-[#0A4020] mb-5 min-h-[80px] leading-relaxed md:leading-relaxed">One Platform, Endless <br /> Payment Possibilities</h4>
                                     <p className="text-sm text-black opacity-70 md:leading-loose leading-loose font-satoshiregular w-max-[1104px]">
                                         Electricity, internet, taxes, fees—whatever you need to pay, Pay4It makes it seamless. Enjoy fast transactions, secure processing, and instant confirmations. Pay with ease today!
                                     </p>
                                 </div>
-                                <div className="border border-solid border-[#EBF3EE] px-5 py-10 rounded-3xl">
+                                <div className="border border-solid border-[#EBF3EE] hr-benefits px-5 py-10 rounded-3xl">
                                     <Image src={TaxIcon} alt="vector" className="mb-5" />
                                     <h4 className="text-xl text-[#0A4020] mb-5 min-h-[80px] leading-relaxed md:leading-relaxed">Integrate Pay4It into Your <br /> Software for Seamless Transactions</h4>
                                     <p className="text-sm text-black opacity-70 md:leading-loose leading-loose font-satoshiregular w-max-[1104px]">

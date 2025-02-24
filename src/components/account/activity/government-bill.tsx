@@ -45,10 +45,10 @@ const GovernmentBillPayment = (props: GovernmentBillProps) => {
             <Modal open={props.open} onClose={toggleMerchantModal} onCancel={toggleMerchantModal} footer={null}>
                 <div>
                     <h4 className="text-center text-[#1B1B1B] text-2xl capitalize mb-1 font-campton mb-10">Select Bill Type</h4>
-                    <div className="grid grid-cols-2 gap-5 items-center">
+                    <div className="grid grid-cols-2 gap-2 md:gap-5 items-center">
                         <div
                             onClick={() => setActiveSelection("single")}
-                            className="cursor-pointer border-2 border-solid border-[#EFEFEF] w-full py-7 rounded-[10px] flex items-center justify-center gap-3">
+                            className="cursor-pointer border-2 border-solid border-[#EFEFEF] w-full py-7 rounded-[10px] flex items-center flex-col md:flex-row justify-center gap-3">
                             {/* <Image src={SquareImg} alt="square" className="w-[20px]" /> */}
                             <div className="border-solid border-black border-[3px] w-[1.5rem] h-[1.5rem] rounded-[4px] bg-transparent flex items-center justify-center">
                                 {
@@ -61,7 +61,7 @@ const GovernmentBillPayment = (props: GovernmentBillProps) => {
                         </div>
                         <div
                             onClick={() => setActiveSelection("harmonized")}
-                            className="cursor-pointer border-2 border-solid border-[#EFEFEF] w-full py-7 rounded-[10px] flex items-center justify-center gap-3">
+                            className="cursor-pointer border-2 border-solid border-[#EFEFEF] w-full py-7 rounded-[10px] flex flex-col md:flex-row items-center justify-center gap-3">
                             {/* <Image src={SquareImg} alt="square" className="w-[20px]" /> */}
                             <div className="border-solid border-black border-[3px] w-[1.5rem] h-[1.5rem] rounded-[4px] bg-transparent flex items-center justify-center">
                                 {

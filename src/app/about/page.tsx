@@ -20,6 +20,7 @@ import Rect3Img from "@/assets/images/about/rect3.png";
 import Rect4Img from "@/assets/images/about/rect4.png";
 
 import { useState } from "react";
+import Link from "next/link";
 
 const AboutPage = () => {
 
@@ -39,9 +40,9 @@ const AboutPage = () => {
                                 <p className="text-white font-satoshilight leading-normal md:leading-normal text-base md:text-2xl opacity-90 mb-8">
                                     Our platform provides seamless payment gateway solutions, wallet services, tax APIs, and HR solutions, all designed to make financial transactions effortless and secure.
                                 </p>
-                                <div className="py-3 px-10 font-satoshiregular flex gap-6 w-max items-center border-2 border-white border-solid text-white text-lg rounded-full">
+                                <Link href="/contact" className="py-3 px-10 font-satoshiregular flex gap-6 w-max items-center border-2 border-white border-solid text-white text-lg rounded-full">
                                     Let&apos;s Talk <FaArrowRightLong />
-                                </div>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -136,17 +137,17 @@ const AboutPage = () => {
                             <div></div>
                             <div>
                                 <div className="flex gap-8">
-                                    <button className="mx-auto md:mx-0 md:w-max bg-primary rounded-full py-2 px-3 flex items-center gap-3">
+                                    <Link href="/auth/signup" className="mx-auto md:mx-0 md:w-max bg-primary rounded-full py-2 px-3 flex items-center gap-3">
                                         <div className="size-12 bg-dark rounded-full flex items-center justify-center">
                                             <Image src={LogoImg} alt="logo" className="w-[50%]" />
                                         </div>
                                         <span className="pr-4">
                                             Get Started
                                         </span>
-                                    </button>
-                                    <button className="hidden md:block bg-transparent border-white border-2 rounded-full text-white py-2 px-12 flex items-center gap-3">
+                                    </Link>
+                                    <Link href="/contact" className="hidden bg-transparent border-white border-2 rounded-full text-white py-2 px-12 md:flex items-center gap-3">
                                         Contact Us
-                                    </button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>

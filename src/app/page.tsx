@@ -28,6 +28,13 @@ import Company3Img from "@/assets/images/companies/_8.svg";
 import Company4Img from "@/assets/images/companies/_9.svg";
 import Company5Img from "@/assets/images/companies/_10.svg";
 
+import Last1Img from "@/assets/images/home/last-1.png";
+import Last2Img from "@/assets/images/home/last-2.png";
+import Last3Img from "@/assets/images/home/last-3.png";
+import Last4Img from "@/assets/images/home/last-4.png";
+import ArcImg from "@/assets/images/home/arc.png";
+
+
 import Hero1 from "@/assets/images/home/hero1.png";
 import Hero2 from "@/assets/images/home/hero2.png";
 
@@ -472,9 +479,9 @@ export default function Home() {
             </h3>
           </div>
           <div className="md:px-24 bg-[#F3F3F3] md:bg-transparent">
-            <div className="md:bg-[#5D8BFF] py-20 pb-0 px-14 md:px-32 4xl:w-[75%] mx-auto rounded-b-[100px]">
+            <div className="md:bg-[#5D8BFF] py-20 pb-0 px-14 md:px-32 4xl:w-[75%] mx-auto relative rounded-b-[100px] pb-24">
               <div className="max-w-[1320px] 3xl:w-[95%] 4xl:w-[100%] mx-auto flex flex-col md:grid grid-cols-3 gap-10 -mt-[270px]">
-                <div className="min-h-[350px] border text-center border-solid border-black bg-[#5D8BFF] rounded-t-[200px] pt-16 pb-16 rounded-b-[200px]">
+                <div className="min-h-[350px] story-summary text-center bg-[#fff] rounded-t-[200px] pt-16 pb-16 rounded-b-[200px]">
                   <div className="min-h-[50px] mb-5">
                     <Image src={Svg1Img} alt="paye" className="w-[15%] mb-7 mx-auto" />
                   </div>
@@ -482,7 +489,7 @@ export default function Home() {
                   <h4 className="text-[#3A3A3A] text-lg w-[85%] leading-loose md:leading-loose font-campton mx-auto">Automate Pay-As-You-Earn (PAYE) tax deductions and employee remittances</h4>
                   <div className="block w-[50px] mx-auto bg-black mt-12 h-[1.5px]"></div>
                 </div>
-                <div className="min-h-[350px] border text-center border-solid bg-[#fff] rounded-t-[200px] pt-16 pb-16 rounded-b-[200px]">
+                <div className="min-h-[350px] story-summary text-center bg-[#fff] rounded-t-[200px] pt-16 pb-16 rounded-b-[200px]">
                   <div className="min-h-[50px] mb-5">
                     <Image src={Svg3Img} alt="paye" className="w-[10%] mb-7 mx-auto" />
                   </div>
@@ -490,7 +497,7 @@ export default function Home() {
                   <h4 className="text-[#3A3A3A] text-lg w-[85%] leading-loose md:leading-loose font-campton mx-auto">Simplify withholding tax deductions for businesses and service providers.</h4>
                   <div className="block w-[50px] mx-auto bg-black mt-12 h-[1.5px]"></div>
                 </div>
-                <div className="min-h-[350px] border text-center border-solid bg-[#fff] rounded-t-[200px] pt-16 pb-16 rounded-b-[200px]">
+                <div className="min-h-[350px] story-summary text-center bg-[#fff] rounded-t-[200px] pt-16 pb-16 rounded-b-[200px]">
                   <div className="min-h-[50px] mb-5">
                     <Image src={Svg2Img} alt="paye" className="w-[15%] mb-7 mx-auto" />
                   </div>
@@ -509,13 +516,17 @@ export default function Home() {
                         </span>
 
                       </div>
-                      <span className="size-24 rounded-full bg-white block flex items-center">
-                        <Image src={ArrowHomeImg} alt="paye" className="" />
-                      </span>
+                      <div className="flex items-center gap-0">
+                        <div className="h-[3px] w-[90px] bg-white"></div>
+                        <span className="size-24 rounded-full bg-white block flex items-center">
+                          <Image src={ArrowHomeImg} alt="paye" className="" />
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </h3>
               </div>
+              <Image src={ArcImg} alt="paye" className="hidden md:block absolute left-40 bottom-0" />
             </div>
             <div className="px-5 block md:hidden pb-20">
               <h3 className="text-black text-2xl leading-normal md:leading-normal font-camptonthin mt-10 3xl:w-[95%] mx-auto 4xl:w-[95%]">
@@ -528,21 +539,32 @@ export default function Home() {
               </h3>
             </div>
           </div>
-          <div className="my-16 md:my-24 px-5 md:px-24 3xl:px-32 3xl:px-32 4xl:w-[80%] md:mb-32 mx-auto">
-            <div className="bg-[#DFFF5E] relative rounded-[50px] md:rounded-[100px] py-10 md:py-20 px-5 md:px-20 border-2 border-solid border-black md:min-h-[700px]">
-              <h4 className="text-3xl md:text-6xl font-campton md:w-[90%] leading-tight md:leading-tight">
-                &quot;Automate salary processing, PAYE deductions, and employee benefits for streamlined HR operations.&quot;
-              </h4>
-              <button className="bg-dark mt-10 rounded-[16px] py-2 px-6 flex items-center gap-1">
-                <span className="pr-4 text-white">
-                  View More
-                </span>
-                <div className="size-12 bg-white rounded-full flex items-center justify-center">
-                  <FaArrowRightLong className="text-xl" />
+          <div className="my-16 md:my-24 md:mb-32 mx-auto">
+            <div className="px-5 md:px-24 3xl:px-32 3xl:px-32 4xl:w-[80%]">
+              <div className="bg-[#DFFF5E] relative rounded-[50px] md:rounded-[100px] py-10 md:pt-20 md:pb-0  border-2 border-solid border-black ">
+                <div className="relative px-5 md:px-20">
+                  <h4 className="text-3xl md:text-6xl font-campton md:w-[90%] leading-tight md:leading-tight">
+                    &quot;Automate salary processing, PAYE deductions, and employee benefits for streamlined HR operations.&quot;
+                  </h4>
+                  <button className="bg-dark mt-10 rounded-[16px] py-2 px-6 flex items-center gap-1">
+                    <span className="pr-4 text-white">
+                      View More
+                    </span>
+                    <div className="size-12 bg-white rounded-full flex items-center justify-center">
+                      <FaArrowRightLong className="text-xl" />
+                    </div>
+                  </button>
                 </div>
-              </button>
-              <Image src={MaleposeImg} alt="man sitting on a chair" className="hidden md:block absolute right-5 -bottom-24 w-[650px]" />
+                <div className="h-[25rem] w-[50%] relative">
+                  <Image src={Last1Img} alt="paye" className="hidden md:block absolute left-40 bottom-10" />
+                  <Image src={Last2Img} alt="paye" className="hidden md:block absolute left-5 bottom-40" />
+                  <Image src={Last3Img} alt="paye" className="hidden md:block absolute left-10 top-20" />
+                  <Image src={Last4Img} alt="paye" className="hidden md:block absolute right-[20%] top-10" />
+                </div>
+                <Image src={MaleposeImg} alt="man sitting on a chair" className="hidden md:block absolute right-0 -bottom-16 w-[750px]" />
+              </div>
             </div>
+            {/* md:min-h-[860px] */}
           </div>
         </>
       </Layout >

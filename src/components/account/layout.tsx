@@ -9,7 +9,9 @@ interface LayoutPropsInterface {
 const AccountLayout = (props: LayoutPropsInterface) => {
     return (
         <div>
-            <Navbar />
+            <div className="block md:hidden">
+                <Navbar />
+            </div>
             <div className="min-h-[70vh] md:h-screen md:overflow-hidden p-5 flex flex-col md:flex-row gap-6">
                 <div className="hidden md:block">
                     <SideBar />
