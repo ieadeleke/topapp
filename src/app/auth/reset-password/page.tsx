@@ -86,70 +86,74 @@ export default function ForgotPassword() {
         <>
             <div className="flex flex-col gap-4 min-h-[85vh] md:min-h-[85vh] items-center justify-center">
                 <div className="flex flex-col px-3 gap-4 mt-16 md:[500px] w-[40%]">
-                    {!shouldVerify ? <div className="w-full flex w-[50%] flex-col gap-4">
-                        <div className="border-2 border-solid border-[#DADADA] gap-10 rounded-xl">
+                    {!shouldVerify ? <div className="w-full flex flex-col gap-4">
+                        <div className="border-2 border-solid border-[#DADADA] p-10 pb-0 rounded-[26px]">
                             <div className="flex flex-col gap-3">
                                 <h1 className="font-bold text-2xl text-center">Forgot Password?</h1>
                                 {/* <p className="text-gray-500">{`Don’t worry about it, happens to the best of us☺️`}</p> */}
                             </div>
-                            <div className="flex flex-col gap-4 mt-5">
-                                <label className="text-sm">Email Address:</label>
+                            <div className="flex flex-col gap-4 mt-16">
+                                <label className="text-sm">Email:</label>
                                 <TextField.Input type="email"
                                     inputMode="email"
                                     value={email} placeholder="example@email.com"
                                     onChange={(evt) => setEmail(evt.target.value)} className="rounded-lg px-2 text-sm" />
                                 {/* <RegularTextInput type="email" autoComplete="email" value={email} onChange={(evt) => setEmail(evt.target.value)} 
-                                inputMode="email" placeholder="example@email.com" className="text-xs" /> */}
+                                inputMode="email" placeholder="example@email.com" className="text-sm" /> */}
                             </div>
 
                             <div className="flex flex-col gap-2">
                                 <Button disabled={isLoading} onClick={submit} className="bg-dark rounded-xl mt-5">Continue</Button>
-                                <div className="flex items-center justify-center">
-                                    <Link href="/login">
-                                        <Button variant="text" className="underline">Back to Sign in</Button>
+                                <div className="flex items-center justify-center py-5">
+                                    <Link href="/auth/login">
+                                        <Button variant="text" className="text-dark">I have an account? Log in</Button>
                                     </Link>
                                 </div>
                             </div>
                         </div>
                     </div> :
-                        <div className="self-center min-w-[500px] flex flex-col gap-8 ">
-                            <div className="">
-                                <h1 className="font-bold text-3xl">Confirm Reset Password</h1>
-                                <p className="text-gray-700 mt-4">Enter the code sent to your email</p>
+                        <div className="self-center min-w-[500px] flex flex-col gap-8 mb-20">
+                            <div className="border-2 border-solid border-[#DADADA] p-10 rounded-[26px]">
+
+                                <div className="">
+                                    <h1 className="font-bold text-3xl text-center">Set New Password</h1>
+                                    {/* <p className="text-gray-700 mt-4">Enter the code sent to your email</p> */}
+                                </div>
+
+                                <div className="mt-10 mb-4">
+                                    <label className="text-sm mb-2">OTP code</label>
+                                    <TextField.Container className="mt-1">
+                                        <TextField.Input inputMode="numeric" value={activationCode} onChange={(evt) => setActivationCode(evt.target.value)} placeholder="e.g 123456" className="text-sm px-4 rounded-xl" />
+                                    </TextField.Container>
+                                </div>
+
+                                <div className="mb-4">
+                                    <label className="text-sm mb-2">Password</label>
+                                    <TextField.Container className="mt-1">
+                                        <TextField.Input value={password} onChange={(evt) => setPassword(evt.target.value)} type={isPasswordRevealed ? "text" : "password"} placeholder="e.g password" className="text-sm px-4 rounded-xl" />
+
+                                        <IconButton onClick={revealPassword}>
+                                            {isPasswordRevealed ? <EyeOffIcon className="text-gray-500 w-4 h-4" /> : <EyeIcon className="text-gray-500 w-4 h-4" />}
+                                            {/* <EyeIcon className="text-gray-500 w-4 h-4" /> */}
+                                        </IconButton>
+                                    </TextField.Container>
+                                </div>
+
+                                <div className="mb-4">
+                                    <label className="text-sm mb-2">Confirm Password</label>
+                                    <TextField.Container className="mt-1">
+                                        <TextField.Input value={password1} onChange={(evt) => setPassword1(evt.target.value)} type={isPasswordRevealed ? "text" : "password"} placeholder="e.g password" className="text-sm px-4 rounded-xl" />
+
+                                        <IconButton onClick={revealPassword}>
+                                            {isPasswordRevealed ? <EyeOffIcon className="text-gray-500 w-4 h-4" /> : <EyeIcon className="text-gray-500 w-4 h-4" />}
+                                        </IconButton>
+                                    </TextField.Container>
+                                </div>
+
+                                <Button disabled={isVerifyLoading} onClick={submitConfirmationCode} className="w-full bg-dark rounded-xl">Confirm</Button>
                             </div>
-
-                            <div>
-                                <label className="text-sm">OTP code</label>
-                                <TextField.Container className="mt-1">
-                                    <TextField.Input inputMode="numeric" value={activationCode} onChange={(evt) => setActivationCode(evt.target.value)} placeholder="e.g 123456" className="text-xs px-4 rounded-xl" />
-                                </TextField.Container>
-                            </div>
-
-                            <div>
-                                <label className="text-sm">Password</label>
-                                <TextField.Container className="mt-1">
-                                    <TextField.Input value={password} onChange={(evt) => setPassword(evt.target.value)} type={isPasswordRevealed ? "text" : "password"} placeholder="e.g password" className="text-xs px-4 rounded-xl" />
-
-                                    <IconButton onClick={revealPassword}>
-                                        {isPasswordRevealed ? <EyeOffIcon className="text-gray-500 w-4 h-4" /> : <EyeIcon className="text-gray-500 w-4 h-4" />}
-                                        {/* <EyeIcon className="text-gray-500 w-4 h-4" /> */}
-                                    </IconButton>
-                                </TextField.Container>
-                            </div>
-
-                            <div>
-                                <label className="text-sm">Confirm Password</label>
-                                <TextField.Container className="mt-1">
-                                    <TextField.Input value={password1} onChange={(evt) => setPassword1(evt.target.value)} type={isPasswordRevealed ? "text" : "password"} placeholder="e.g password" className="text-xs px-4 rounded-xl" />
-
-                                    <IconButton onClick={revealPassword}>
-                                        {isPasswordRevealed ? <EyeOffIcon className="text-gray-500 w-4 h-4" /> : <EyeIcon className="text-gray-500 w-4 h-4" />}
-                                    </IconButton>
-                                </TextField.Container>
-                            </div>
-
-                            <Button disabled={isVerifyLoading} onClick={submitConfirmationCode} className="rounded-xl">Confirm</Button>
-                        </div>}
+                        </div>
+                    }
                 </div>
             </div>
         </>
