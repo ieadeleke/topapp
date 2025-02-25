@@ -41,8 +41,8 @@ export const ConfirmationAlertDialog = forwardRef<ConfirmationAlertDialogRef, Co
         description: ""
     })
     const [labels, setLabels] = useState<ActionLabel>()
-    const onConfirm = useRef<() => void>()
-    const onCancel = useRef<() => void>()
+    const onConfirm = useRef<(() => void) | undefined>(undefined);
+    const onCancel = useRef<(() => void) | undefined>(undefined);
 
     useImperativeHandle(ref, () => ({
         show(params: ShowParams) {
