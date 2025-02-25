@@ -32,22 +32,21 @@ const ContactUsPage = () => {
     };
     const sendMail = async (e: any) => {
         e.preventDefault();
-        let { email, phone, name, message } = contactFormData;
+        const { email, phone, name, message } = contactFormData;
         if (name.length && phone.length && message.length && email.length) {
             setSendingMail(true);
-            let mailReq = {
+            const mailReq = {
                 name: contactFormData.name,
                 phone: contactFormData.phone,
                 email: contactFormData.email,
                 message: contactFormData.message,
             }
             try {
-                let handleMail = await axios.post("/api/brand", JSON.stringify(mailReq), {
+                const handleMail = await axios.post("/api/brand", JSON.stringify(mailReq), {
                     headers: {
                         "Content-Type": "application/json"
                     }
                 });
-                console.log(handleMail);
                 if (handleMail) {
                     setContactFormData({
                         name: "",
