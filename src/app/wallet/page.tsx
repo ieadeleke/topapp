@@ -93,7 +93,7 @@ const WalletPage = () => {
                                         Digital Wallet for Secure Transactions
                                     </h3>
                                     <p className="w-[100%] text-sm md:text-xl mb-5 text-black opacity-80 font-camptonthin leading-loose md:leading-loose">
-                                        Whether you're an individual or a business, our wallet solution makes financial transactions effortless.
+                                        Whether you&apos;re an individual or a business, our wallet solution makes financial transactions effortless.
                                     </p>
                                     <Link href="/auth/signup" className="bg-[#202020] text-base py-4 px-10 rounded-full font-camptonthin text-white">Get Started</Link>
                                 </div>

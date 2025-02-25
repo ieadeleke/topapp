@@ -130,7 +130,7 @@ const TaxAndGovernmentPage = () => {
                         </div>
                     </div>
                     <div className="w-max mx-auto mt-20">
-                        <h3 className="text-6xl text-center max-w-[1029px] w-[65%] mb-20 leading-tight md:leading-tight mx-auto font-campton">We're here to help you build,
+                        <h3 className="text-6xl text-center max-w-[1029px] w-[65%] mb-20 leading-tight md:leading-tight mx-auto font-campton">We&apos;re here to help you build,
                             & protect your wealth.</h3>
                         <div className="rounded-[30px] border-2 w-[90%] border-[#EFEFEF] text-center max-w-[1320px] mx-auto">
                             <div className="grid grid-cols-3">

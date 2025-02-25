@@ -40,7 +40,7 @@ const PaymentGatewayPage = () => {
                                     <Image src={TaxIcon} alt="vector" className="mb-5" />
                                     <h4 className="w-[90%] text-2xl text-[#0A4020] mb-5 min-h-[80px] leading-relaxed md:leading-relaxed">Simplify Your Payments with Pay4It</h4>
                                     <p className="text-sm text-black opacity-70 md:leading-loose leading-loose font-campton w-max-[1104px]">
-                                        No more stress with bill payments! Use Pay4It to pay for electricity, internet, government taxes, and more quickly and securely. Whether you're a business or an individual, we&apos;ve got you covered.
+                                        No more stress with bill payments! Use Pay4It to pay for electricity, internet, government taxes, and more quickly and securely. Whether you&apos;re a business or an individual, we&apos;ve got you covered.
                                     </p>
                                 </div>
                                 <div className="border border-solid border-[#EBF3EE] hr-benefits px-5 py-10 rounded-3xl">
