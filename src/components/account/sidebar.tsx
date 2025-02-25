@@ -19,7 +19,7 @@ import Ecclipse from "@/assets/images/ellipse.svg";
 import LogoColoured from "@/assets/images/logo-colored.svg";
 import AvatarImg from "@/assets/images/account/avatar.svg";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import { Input, Modal } from "antd";
@@ -32,11 +32,15 @@ import Button from "../elements/button";
 import { Profile } from "@/models/profile";
 import { capitalizeText } from "@/utils/formatters/capitalizeText";
 import { useFetchUser } from "@/utils/apiHooks/profile/useFetchUser";
+import { ConfirmationAlertDialog, ConfirmationAlertDialogRef } from '@/components/dialogs/ConfirmationAlertDialog'
+import logOut from "@/utils/auth/logOut";
+
 
 const SideBar = () => {
 
     const pathName = usePathname();
     const router = useRouter();
+    const confirmationDialogRef = useRef<ConfirmationAlertDialogRef>(null);
 
     const validator = yup.object().shape({
         businessName: yup.string().required('Please enter business name'),
@@ -132,6 +136,27 @@ const SideBar = () => {
         fetchUser();
     }, [])
 
+    function handleLogout() {
+        confirmationDialogRef.current?.show({
+            data: {
+                title: "Are you sure you want to logout?",
+                description: "Your active session will be removed from this device",
+                label: {
+                    confirm: "Yes",
+                    cancel: "No"
+                }
+            },
+            onCancel: () => {
+                confirmationDialogRef.current?.dismiss()
+            },
+            onConfirm: () => {
+                confirmationDialogRef.current?.dismiss()
+                logOut()
+                router.push("/login")
+            }
+        })
+    }
+
     return (
         <div className="h-full overflow-scroll overflow-x-hidden">
             <div className="border border-solid border-[#EFEFEF] px-4 py-5 float-left w-[250px] rounded-[16px] h-max">
@@ -213,7 +238,7 @@ const SideBar = () => {
                     </li>
                 </ul>
                 <div className="px-5 mt-10">
-                    <Link href="/account/logout" className={`flex items-center gap-4 text-sm font-medium text-danger ${pathName === "/account/logout" ? "bg-[#003235] rounded-[8px] text-white" : "text-[#1B1B1B]"}`}>
+                    <Link href="#" onClick={handleLogout} className={`flex items-center gap-4 text-sm font-medium text-danger ${pathName === "/account/logout" ? "bg-[#003235] rounded-[8px] text-white" : "text-[#1B1B1B]"}`}>
                         <span>
                             <Image src={LogoutImg} alt="bell icon" className="w-[18px]" />
                         </span>

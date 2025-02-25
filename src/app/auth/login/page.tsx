@@ -81,7 +81,6 @@ export default function Login() {
                                             )} />
                                         {errors.email && <p className="text-sm text-danger">{errors.email.message}</p>}
                                     </div>
-
                                     <div className="flex flex-col gap-2">
                                         {/* <label className="text-sm">Password</label> */}
                                         <Controller name="password" control={control} defaultValue=""

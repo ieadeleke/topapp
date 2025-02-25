@@ -1,14 +1,80 @@
+"use client";
+
 import Layout from "@/components/layout";
 import MapImg from "@/assets/images/map.png";
 import Image from "next/image";
 import LogoImg from "@/assets/images/logo-bold.svg";
 import { GoArrowUpRight } from "react-icons/go";
 import { BsTwitterX } from "react-icons/bs";
-import { AiOutlineMedium } from "react-icons/ai";
+import { FaInstagram } from "react-icons/fa";
 import { SiLinkedin } from "react-icons/si";
+import { useContext, useState } from "react";
+import axios from "axios";
+import { notification, Spin } from "antd";
+import { LoadingOutlined, CloseCircleOutlined, CheckCircleOutlined } from '@ant-design/icons';
+import { GlobalActionContext } from "@/context/GlobalActionContext";
 
 
 const ContactUsPage = () => {
+
+    const [sendingMail, setSendingMail] = useState(false);
+    const { showSnackBar } = useContext(GlobalActionContext);
+    const [contactFormData, setContactFormData] = useState({
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+    });
+
+
+    const openNotification = (title: string, message: string) => {
+        showSnackBar({ severity: 'error', message: message });
+    };
+    const sendMail = async (e: any) => {
+        e.preventDefault();
+        let { email, phone, name, message } = contactFormData;
+        if (name.length && phone.length && message.length && email.length) {
+            setSendingMail(true);
+            let mailReq = {
+                name: contactFormData.name,
+                phone: contactFormData.phone,
+                email: contactFormData.email,
+                message: contactFormData.message,
+            }
+            try {
+                let handleMail = await axios.post("/api/brand", JSON.stringify(mailReq), {
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                });
+                console.log(handleMail);
+                if (handleMail) {
+                    setContactFormData({
+                        name: "",
+                        email: "",
+                        phone: "",
+                        message: "",
+                    })
+                    showSnackBar({ severity: 'success', message: "Mail sent successfully" });
+                } else {
+                    showSnackBar({ severity: 'error', message: "An error occurred while sending mail. Please try again." });
+                }
+                setSendingMail(false);
+            } catch (err) {
+                setSendingMail(false);
+                showSnackBar({ severity: 'error', message: "An error occurred while sending mail. Please try again." });
+            }
+        } else {
+            showSnackBar({ severity: 'error', message: "Please fill all fields." });
+        }
+    }
+    const handleFormChange = (e: any) => {
+        setContactFormData({
+            ...contactFormData,
+            [e.target.name]: e.target.value
+        })
+    }
+
     return (
         <div className="bg-white">
             <Layout>
@@ -30,15 +96,15 @@ const ContactUsPage = () => {
                         <div className="pt-6 md:pt-14 pb-8 md:pb-24">
                             <h4 className="text-[#202020] text-lg mb-4 md:mb-8 font-campton">Connect With Us</h4>
                             <ul className="grid grid-cols-3 gap-3">
-                                <li><a href="mailTo:info@usepay4it.com"
+                                <li><a href="https://x.com/pay4it_ng"
                                     className="bg-[#DDDDDD] py-4 mb-3 px-6 block w-full text-center rounded-lg text-[#202020] flex items-center justify-center gap-2 font-camptonthin items-center"><BsTwitterX className="text-xl" /></a>
                                 </li>
                                 <li>
-                                    <a href="tel:+2348054306710"
-                                        className="bg-[#DDDDDD] py-4 px-6 block w-full text-center rounded-lg text-[#202020] flex items-center justify-center gap-2 font-camptonthin items-center"><AiOutlineMedium className="text-xl" /></a>
+                                    <a href="https://www.instagram.com/pay4it_ng?igsh=cnV2bTgzODB0Zmx0"
+                                        className="bg-[#DDDDDD] py-4 px-6 block w-full text-center rounded-lg text-[#202020] flex items-center justify-center gap-2 font-camptonthin items-center"><FaInstagram className="text-xl" /></a>
                                 </li>
                                 <li>
-                                    <a href="tel:+2348054306710"
+                                    <a href="https://www.linkedin.com/company/pay4it-ng"
                                         className="bg-[#DDDDDD] py-4 px-6 block w-full text-center rounded-lg text-[#202020] flex items-center justify-center gap-2 font-camptonthin items-center"><SiLinkedin className="text-xl" /></a>
                                 </li>
                             </ul>
@@ -53,28 +119,33 @@ const ContactUsPage = () => {
                             <form action="">
                                 <div className="form-group mb-4">
                                     <label htmlFor="" className="text-[#1B1B1B] mb-1 block">Name</label>
-                                    <input type="text" className="w-full block py-5 border-2 border-solid border-[#E0E0E0] px-3 rounded-lg text-sm font-campton"
-                                        placeholder="Enter First Name" />
+                                    <input value={contactFormData.name} name="name" type="text" className="w-full block py-5 border-2 border-solid border-[#E0E0E0] px-3 rounded-lg text-sm font-campton"
+                                        placeholder="Enter Name" onChange={handleFormChange} />
                                 </div>
                                 <div className="grid grid-cols-2 gap-3 md:gap-6 mb-4">
                                     <div className="form-group">
                                         <label htmlFor="" className="text-[#1B1B1B] mb-1 block">Email</label>
-                                        <input type="text" className="w-full block py-5 border-2 border-solid border-[#E0E0E0] px-3 rounded-lg text-sm font-campton"
-                                            placeholder="Enter First Name" />
+                                        <input value={contactFormData.email} name="email" type="text" className="w-full block py-5 border-2 border-solid border-[#E0E0E0] px-3 rounded-lg text-sm font-campton"
+                                            placeholder="Enter Email" onChange={handleFormChange} />
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="" className="text-[#1B1B1B] mb-1 block">Phone Number</label>
-                                        <input type="text" className="w-full block py-5 border-2 border-solid border-[#E0E0E0] px-3 rounded-lg text-sm font-campton"
-                                            placeholder="Enter First Name" />
+                                        <input value={contactFormData.phone} name="phone" type="text" className="w-full block py-5 border-2 border-solid border-[#E0E0E0] px-3 rounded-lg text-sm font-campton"
+                                            placeholder="Enter Phone Number" onChange={handleFormChange} />
                                     </div>
                                 </div>
                                 <div className="form-group mb-4">
                                     <label htmlFor="" className="text-[#1B1B1B] mb-1 block">Message</label>
-                                    <textarea rows={5} className="w-full block py-5 border-2 border-solid border-[#E0E0E0] px-3 rounded-lg text-sm font-campton"
-                                        placeholder="Enter your Message" />
+                                    <textarea value={contactFormData.message} name="message" rows={5} className="w-full block py-5 border-2 border-solid border-[#E0E0E0] px-3 rounded-lg text-sm font-campton"
+                                        placeholder="Enter your Message" onChange={handleFormChange} />
                                 </div>
                                 <div className="mt-10">
-                                    <button className="bg-black text-white py-4 px-10 rounded-lg">Send</button>
+                                    {
+                                        sendingMail ?
+                                            <button disabled className="bg-black text-white py-4 px-10 rounded-lg">Sending<Spin indicator={<LoadingOutlined spin style={{ color: "#fff" }} />} /></button>
+                                            :
+                                            <button onClick={sendMail} className="bg-black text-white py-4 px-10 rounded-lg">Send</button>
+                                    }
                                 </div>
                             </form>
                         </div>

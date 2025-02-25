@@ -78,7 +78,7 @@ export default function Home() {
                 </h3>
               </div>
               <div>
-                <p className="mb-1">Transforming Financial Services in Nigeria</p>
+                <p className="mb-1 leading-loose md:leading-loose">Transforming Financial Services in Nigeria</p>
                 <p className="text-sm md:text-base leading-loose md:leading-loose">
                   Pay4IT empowers businesses, individuals, and governments with innovative financial technology solutions. From streamlining tax collection to enabling seamless digital payments, we drive transparency, efficiency, and economic growth across diverse sectors.
                 </p>
@@ -331,17 +331,17 @@ export default function Home() {
                   Transactions and payments made seamlessly.
                 </p>
                 <div className="flex gap-5">
-                  <button className="bg-white rounded-full py-2 px-3 flex items-center gap-3">
+                  <Link href="/auth/signup" className="bg-white rounded-full py-2 px-3 flex items-center gap-3">
                     <div className="size-10 bg-dark rounded-full flex items-center justify-center">
                       <Image src={LogoImg} alt="logo" className="w-[50%]" />
                     </div>
                     <span className="pr-4 text-dark text-sm">
-                      More Info
+                      Get Started
                     </span>
-                  </button>
-                  <button className="border text-white border-white border-solid rounded-full py-2 px-10 flex items-center gap-3 text-sm">
+                  </Link>
+                  <Link href="/contact" className="border text-white border-white border-solid rounded-full py-2 px-10 flex items-center gap-3 text-sm">
                     Contact Us
-                  </button>
+                  </Link>
                 </div>
               </div>
               <div>
@@ -540,20 +540,20 @@ export default function Home() {
             </div>
           </div>
           <div className="my-16 md:my-24 md:mb-32 mx-auto">
-            <div className="px-5 md:px-24 3xl:px-32 3xl:px-32 4xl:w-[80%]">
+            <div className="px-5 md:px-24 3xl:px-32 3xl:px-32 4xl:w-[80%] mx-auto">
               <div className="bg-[#DFFF5E] relative rounded-[50px] md:rounded-[100px] py-10 md:pt-20 md:pb-0  border-2 border-solid border-black ">
                 <div className="relative px-5 md:px-20">
                   <h4 className="text-3xl md:text-6xl font-campton md:w-[90%] leading-tight md:leading-tight">
                     &quot;Automate salary processing, PAYE deductions, and employee benefits for streamlined HR operations.&quot;
                   </h4>
-                  <button className="bg-dark mt-10 rounded-[16px] py-2 px-6 flex items-center gap-1">
+                  <Link href="/hr-solution" className="bg-dark mt-10 rounded-[16px] w-max py-2 px-6 flex items-center gap-1">
                     <span className="pr-4 text-white">
                       View More
                     </span>
                     <div className="size-12 bg-white rounded-full flex items-center justify-center">
                       <FaArrowRightLong className="text-xl" />
                     </div>
-                  </button>
+                  </Link>
                 </div>
                 <div className="h-[25rem] w-[50%] relative">
                   <Image src={Last1Img} alt="paye" className="hidden md:block absolute left-40 bottom-10" />

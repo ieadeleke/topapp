@@ -166,9 +166,9 @@ const TaxAndGovernmentPage = () => {
                             <p className="text-white text-2xl w-[70%] mx-auto font-camptonthin max-w-[744px] mb-5">
                                 Simplify tax compliance with automated calculations, reporting, and submissions.
                             </p>
-                            <button className="text-sm px-10 py-4 bg-primary rounded-xl">
+                            <Link href="/auth/signup" className="block w-max mx-auto text-sm px-10 py-4 bg-primary rounded-xl">
                                 Get Started
-                            </button>
+                            </Link>
                         </div>
                     </div>
                 </>

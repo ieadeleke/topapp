@@ -1,7 +1,7 @@
 "use client";
 
 
-import { Input, Modal } from "antd";
+import { Input, Modal, Spin } from "antd";
 import { Controller, useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -20,6 +20,10 @@ import TvImg from "@/assets/images/account/utility/tv.svg";
 import PowerImg from "@/assets/images/account/utility/power.svg";
 import InvoiceImg from "@/assets/images/account/utility/invoice.svg";
 import ReceiptImg from "@/assets/images/account/utility/receipt.svg";
+import { PiArrowArcLeftBold } from "react-icons/pi";
+
+
+import { LoadingOutlined } from '@ant-design/icons';
 
 
 import Image from "next/image";
@@ -86,15 +90,16 @@ const UtilityBillPayment = (props: UtilityBillProps) => {
     return (
         <div>
             <div className="mb-20">
-                <div className="flex items-center justify-between">
-                    <h4 className="text-[#1B1B1B] text-2xl capitalize mb-1 font-campton mb-5 mt-10">Utility Bills</h4>
-                    <div onClick={props.toggleDisplayHomeOption}>
+                <div className="flex items-center justify-between mt-10 mb-5">
+                    <h4 className="text-[#1B1B1B] text-2xl capitalize font-campton">Utility Bills</h4>
+                    <button onClick={props.toggleDisplayHomeOption} className="flex items-center gap-2 px-4 text-lg">
+                        <PiArrowArcLeftBold />
                         Back
-                    </div>
+                    </button>
                 </div>
                 <>
                     {
-                        isLoading ? "" :
+                        isLoading ? <Spin indicator={<LoadingOutlined spin />} /> :
                             <div className="flex flex-wrap gap-7">
                                 {
                                     availableBills.includes("UTILITYBILLS") &&

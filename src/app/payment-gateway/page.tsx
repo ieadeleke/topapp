@@ -95,7 +95,7 @@ const PaymentGatewayPage = () => {
                                         <li className="flex gap-2 items-center text-xl">Get started today and experience the ease of Pay4It!</li>
                                     </ul>
                                 </div>
-                                <Link href="/" className="bg-dark block text-[#1B1B1B] font-satoshibold mt-10 w-max text-white rounded-full py-4 px-14 text-base">Get Started</Link>
+                                <Link href="/auth/signup" className="bg-dark block text-[#1B1B1B] font-satoshibold mt-10 w-max text-white rounded-full py-4 px-14 text-base">Get Started</Link>
                             </div>
                         </div>
                     </div>

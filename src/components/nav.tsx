@@ -4,8 +4,9 @@ import Link from "next/link";
 import { IoIosArrowDown } from "react-icons/io";
 import LogoImg from "@/assets/images/logo-full.svg";
 import Image from "next/image";
-import { Dropdown, MenuProps, Drawer } from "antd";
+import { Dropdown, MenuProps, Drawer, Modal } from "antd";
 
+import { FaCreditCard } from "react-icons/fa6";
 import { FaArrowRight } from "react-icons/fa6";
 
 import AboutIcon1 from "@/assets/images/nav/about.svg";
@@ -18,7 +19,8 @@ import { ImCancelCircle } from "react-icons/im";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
 
 import WhiteNavLogo from "@/assets/images/white-logo.svg";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import UserContext from "@/context/UserContext";
 
 
 interface NavInterface {
@@ -28,6 +30,7 @@ interface NavInterface {
 const Navigation = (props: NavInterface) => {
 
     const [openMenu, setOpenMenu] = useState(false);
+    const [openBillModal, setOpenBillModal] = useState(false);
 
     const AboutUsItems: MenuProps["items"] = [
         {
@@ -95,7 +98,7 @@ const Navigation = (props: NavInterface) => {
                         </span>
                     </Link>
 
-                    <Link href="/" className="flex items-start gap-4">
+                    <Link href="/tax-and-government" className="flex items-start gap-4">
                         <span className="text-xl">
                             <Image src={AboutIcon3} alt="about us" className="w-full h-full" />
                         </span>
@@ -123,6 +126,7 @@ const Navigation = (props: NavInterface) => {
             ),
         },
     ];
+
     const DeveloperItems: MenuProps["items"] = [
         {
             key: "about-3",
@@ -165,25 +169,20 @@ const Navigation = (props: NavInterface) => {
                             <FaArrowRight className="text-[#00555A] text-xl" />
                         </span>
                     </Link>
-
-                    <Link href="/careers" className="flex items-start gap-4">
-                        <span className="text-xl">
-                            <Image src={AboutIcon4} alt="about us" className="w-full h-full" />
-                        </span>
-                        <div>
-                            <p className="font-camptonsemi text-base mb-1">Careers</p>
-                            {/* <p className="text-sm text-gray-500 font-camptonthin text-[#353535]">Join our wonderful team</p> */}
-                        </div>
-                        <span>
-                            <FaArrowRight className="text-[#00555A] text-xl" />
-                        </span>
-                    </Link>
                 </div>
             ),
         },
     ];
 
     const toggleDrawer = () => setOpenMenu(!openMenu);
+    const toggleBillModalDisplay = () => setOpenBillModal(!openBillModal);
+
+    const { user } = useContext(UserContext)
+
+    useEffect(() => {
+        console.log("hi there")
+        console.log(user);
+    }, [])
 
     return (
         <div>
@@ -211,7 +210,7 @@ const Navigation = (props: NavInterface) => {
                             </Dropdown>
                         </li>
                         <li>
-                            <Link className="bg-primary text-sm text-dark rounded-full py-3 px-5 flex gap-2 items-center" href="/payment/harmonize">Pay Bills</Link>
+                            <Link onClick={toggleBillModalDisplay} className="bg-primary text-sm text-dark rounded-full py-3 px-5 flex gap-2 items-center" href="#">Pay Bills</Link>
                         </li>
                         <li>
                             <Dropdown menu={{ items: DeveloperItems }} trigger={["click"]} overlayClassName="custom-dropdown">
@@ -222,7 +221,12 @@ const Navigation = (props: NavInterface) => {
                             <Link className="bg-primary text-sm text-dark rounded-full py-3 px-5 flex gap-2 items-center" href="/contact">Contact Us</Link>
                         </li>
                         <li>
-                            <Link className="bg-dark text-sm text-primary rounded-full py-3 px-5 flex gap-2 items-center" href="/auth/signup">Get Started</Link>
+                            {
+                                user?.firstName.length ?
+                                    <Link className="bg-dark text-sm text-primary rounded-full py-3 px-5 flex gap-2 items-center" href="/account/overview">Dashboard</Link>
+                                    :
+                                    <Link className="bg-dark text-sm text-primary rounded-full py-3 px-5 flex gap-2 items-center" href="/auth/options">Get Started</Link>
+                            }
                         </li>
                     </ul>
                 </div>
@@ -230,6 +234,133 @@ const Navigation = (props: NavInterface) => {
                     <HiOutlineMenuAlt3 className={`${props.whiteNav ? "text-white" : "text-black"} text-3xl`} onClick={toggleDrawer} />
                 </div>
             </div>
+            <Modal open={openBillModal} onCancel={toggleBillModalDisplay} onClose={toggleBillModalDisplay} footer={null}>
+                <div className="pt-4 pb-8">
+                    <h4 className="text-2xl text-[#1B1B1B] text-center">Pay Bills</h4>
+                </div>
+                <div className="grid grid-cols-3 gap-4">
+                    <div className="bg-[#F2F2F2] py-7 pb-5 px-2 rounded-[16px]">
+                        <Link href="">
+                            <div className="flex flex-col text-center">
+                                <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#C6C6C6] rounded-[8px]">
+                                    <FaCreditCard />
+                                </div>
+                                <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">Buy Power</p>
+                            </div>
+                        </Link>
+                    </div>
+                    <div className="bg-[#F2F2F2] py-7 pb-5 px-2 rounded-[16px]">
+                        <Link href="">
+                            <div className="flex flex-col text-center">
+                                <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#C6C6C6] rounded-[8px]">
+                                    <FaCreditCard />
+                                </div>
+                                <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">Buy Airtime</p>
+                            </div>
+                        </Link>
+                    </div>
+                    <div className="bg-[#F2F2F2] py-7 pb-5 px-2 rounded-[16px]">
+                        <Link href="">
+                            <div className="flex flex-col text-center">
+                                <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#C6C6C6] rounded-[8px]">
+                                    <FaCreditCard />
+                                </div>
+                                <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">Buy Data</p>
+                            </div>
+                        </Link>
+                    </div>
+                    <div className="bg-[#F2F2F2] py-7 pb-5 px-2 rounded-[16px]">
+                        <Link href="">
+                            <div className="flex flex-col text-center">
+                                <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#C6C6C6] rounded-[8px]">
+                                    <FaCreditCard />
+                                </div>
+                                <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">Pay Taxes</p>
+                            </div>
+                        </Link>
+                    </div>
+                    <div className="bg-[#F2F2F2] py-7 pb-5 px-2 rounded-[16px]">
+                        <Link href="">
+                            <div className="flex flex-col text-center">
+                                <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#C6C6C6] rounded-[8px]">
+                                    <FaCreditCard />
+                                </div>
+                                <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">Cable TV</p>
+                            </div>
+                        </Link>
+                    </div>
+                    <div className="bg-[#F2F2F2] py-7 pb-5 px-2 rounded-[16px]">
+                        <Link href="">
+                            <div className="flex flex-col text-center">
+                                <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#C6C6C6] rounded-[8px]">
+                                    <FaCreditCard />
+                                </div>
+                                <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">Netflix</p>
+                            </div>
+                        </Link>
+                    </div>
+                    <div className="bg-[#F2F2F2] py-7 pb-5 px-2 rounded-[16px]">
+                        <Link href="">
+                            <div className="flex flex-col text-center">
+                                <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#C6C6C6] rounded-[8px]">
+                                    <FaCreditCard />
+                                </div>
+                                <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">E-commerce</p>
+                            </div>
+                        </Link>
+                    </div>
+                    <div className="bg-[#F2F2F2] py-7 pb-5 px-2 rounded-[16px]">
+                        <Link href="">
+                            <div className="flex flex-col text-center">
+                                <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#C6C6C6] rounded-[8px]">
+                                    <FaCreditCard />
+                                </div>
+                                <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">Payroll</p>
+                            </div>
+                        </Link>
+                    </div>
+                    <div className="bg-[#F2F2F2] py-7 pb-5 px-2 rounded-[16px]">
+                        <Link href="">
+                            <div className="flex flex-col text-center">
+                                <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#C6C6C6] rounded-[8px]">
+                                    <FaCreditCard />
+                                </div>
+                                <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">Betting</p>
+                            </div>
+                        </Link>
+                    </div>
+                    <div className="bg-[#F2F2F2] py-7 pb-5 px-2 rounded-[16px]">
+                        <Link href="">
+                            <div className="flex flex-col text-center">
+                                <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#C6C6C6] rounded-[8px]">
+                                    <FaCreditCard />
+                                </div>
+                                <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">Invoice & Receipt</p>
+                            </div>
+                        </Link>
+                    </div>
+                    <div className="bg-[#F2F2F2] py-7 pb-5 px-2 rounded-[16px]">
+                        <Link href="">
+                            <div className="flex flex-col text-center">
+                                <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#C6C6C6] rounded-[8px]">
+                                    <FaCreditCard />
+                                </div>
+                                <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">Debit & Credit Card</p>
+                            </div>
+                        </Link>
+                    </div>
+                    <div className="bg-[#F2F2F2] py-7 pb-5 px-2 rounded-[16px]">
+                        <Link href="">
+                            <div className="flex flex-col text-center">
+                                <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#C6C6C6] rounded-[8px]">
+                                    <FaCreditCard />
+                                </div>
+                                <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">Buy JAMB</p>
+                            </div>
+                        </Link>
+                    </div>
+                </div>
+            </Modal>
             <Drawer open={openMenu} onClose={toggleDrawer} footer={null}>
                 <div>
                     <div className="px-5 py-5 pb-10 flex items-center justify-between">
