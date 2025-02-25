@@ -28,6 +28,7 @@ const Footer = (props: FooterProps) => {
                         <Link href="/contact" className="text-lg font-satoshi text-white">
                             Contact Us
                         </Link>
+                        
                     </li>
                     {/* <li>
                         <Link href="" className="text-lg font-satoshi text-white">
