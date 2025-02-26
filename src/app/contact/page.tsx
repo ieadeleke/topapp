@@ -11,6 +11,7 @@ import { SiLinkedin } from "react-icons/si";
 import { useContext, useState } from "react";
 import axios from "axios";
 import { notification, Spin } from "antd";
+import { BASE_URL } from "@/utils/constants/strings";
 import { LoadingOutlined, CloseCircleOutlined, CheckCircleOutlined } from '@ant-design/icons';
 import { GlobalActionContext } from "@/context/GlobalActionContext";
 
@@ -20,7 +21,8 @@ const ContactUsPage = () => {
     const [sendingMail, setSendingMail] = useState(false);
     const { showSnackBar } = useContext(GlobalActionContext);
     const [contactFormData, setContactFormData] = useState({
-        name: "",
+        firstName: "",
+        lastName: "",
         email: "",
         phone: "",
         message: "",
@@ -32,29 +34,31 @@ const ContactUsPage = () => {
     };
     const sendMail = async (e: any) => {
         e.preventDefault();
-        const { email, phone, name, message } = contactFormData;
-        if (name.length && phone.length && message.length && email.length) {
+        const { email, phone, firstName, lastName, message } = contactFormData;
+        if (firstName.length && lastName.length && phone.length && message.length && email.length) {
             setSendingMail(true);
             const mailReq = {
-                name: contactFormData.name,
-                phone: contactFormData.phone,
+                firstName: contactFormData.firstName,
+                lastName: contactFormData.lastName,
+                phoneNumber: contactFormData.phone,
                 email: contactFormData.email,
                 message: contactFormData.message,
             }
             try {
-                const handleMail = await axios.post("/api/brand", JSON.stringify(mailReq), {
+                const handleMail = await axios.post(`${BASE_URL}/v1/support/contactus`, JSON.stringify(mailReq), {
                     headers: {
                         "Content-Type": "application/json"
                     }
                 });
                 if (handleMail) {
                     setContactFormData({
-                        name: "",
+                        firstName: "",
+                        lastName: "",
                         email: "",
                         phone: "",
                         message: "",
                     })
-                    showSnackBar({ severity: 'success', message: "Mail sent successfully" });
+                    showSnackBar({ severity: 'success', message: handleMail?.data?.message });
                 } else {
                     showSnackBar({ severity: 'error', message: "An error occurred while sending mail. Please try again." });
                 }
@@ -89,7 +93,7 @@ const ContactUsPage = () => {
                         <div className="md:border-r-2 border-solid border-[#DDDDDD] pt-6 md:pt-14 pb-8 md:pb-24">
                             <h4 className="text-[#202020] text-lg mb-4 md:mb-8 font-campton">Our Office</h4>
                             <p className="text-[#333333] text-sm mb-4">Shop 19, Trocadero Square, The Rock Dr, Lekki Phase I, Lagos 106104</p>
-                            <a href="mailTo:info@usepay4it.com"
+                            <a href="https://www.google.com/maps/search/?api=1&query=Shop 19, Trocadero Square, The Rock Dr, Lekki Phase I, Lagos 106104" target="_blank"
                                 className="bg-[#DDDDDD] py-4 mb-3 px-6 block w-max rounded-lg text-[#202020] flex gap-2 font-camptonthin items-center">Get Directions <GoArrowUpRight className="text-2xl" /></a>
                         </div>
                         <div className="pt-6 md:pt-14 pb-8 md:pb-24">
@@ -116,10 +120,17 @@ const ContactUsPage = () => {
                         </div>
                         <div className="md:border-l-2 border-[#DDDDDD] px-0 md:px-16 md:py-14">
                             <form action="">
-                                <div className="form-group mb-4">
-                                    <label htmlFor="" className="text-[#1B1B1B] mb-1 block">Name</label>
-                                    <input value={contactFormData.name} name="name" type="text" className="w-full block py-5 border-2 border-solid border-[#E0E0E0] px-3 rounded-lg text-sm font-campton"
-                                        placeholder="Enter Name" onChange={handleFormChange} />
+                                <div className="grid grid-cols-2 gap-3 md:gap-6 mb-4">
+                                    <div className="form-group mb-4">
+                                        <label htmlFor="" className="text-[#1B1B1B] mb-1 block">First Name</label>
+                                        <input value={contactFormData.firstName} name="firstName" type="text" className="w-full block py-5 border-2 border-solid border-[#E0E0E0] px-3 rounded-lg text-sm font-campton"
+                                            placeholder="Enter Name" onChange={handleFormChange} />
+                                    </div>
+                                    <div className="form-group mb-4">
+                                        <label htmlFor="" className="text-[#1B1B1B] mb-1 block">Last Name</label>
+                                        <input value={contactFormData.lastName} name="lastName" type="text" className="w-full block py-5 border-2 border-solid border-[#E0E0E0] px-3 rounded-lg text-sm font-campton"
+                                            placeholder="Enter Name" onChange={handleFormChange} />
+                                    </div>
                                 </div>
                                 <div className="grid grid-cols-2 gap-3 md:gap-6 mb-4">
                                     <div className="form-group">
