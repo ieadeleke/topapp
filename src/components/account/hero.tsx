@@ -110,7 +110,7 @@ export const AccountHero = (props: AccountHeroInterface) => {
             <div>
                 {
                     isLoading ? "" :
-                        userFetchedData.isActive ? "" :
+                        // userFetchedData.isActive ? "" :
                             <button onClick={props.toggleActivateWallet} className="text-sm text-black rounded-lg py-3 px-4 bg-primary flex items-center gap-2">Activate Wallet</button>
                 }
             </div>
