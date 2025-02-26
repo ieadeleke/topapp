@@ -10,7 +10,7 @@ export const useFetchAvailableBills = () => {
     async function fetchAvailableBillOptions() {
         const response = await execute(async () => await ProfileService().fetchAvailableBills())
         if (response) {
-            setData(response.Bills.data);
+            setData(response?.Bills?.data);
         }
     }
 

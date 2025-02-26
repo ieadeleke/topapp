@@ -19,24 +19,29 @@ import Ecclipse from "@/assets/images/ellipse.svg";
 import LogoColoured from "@/assets/images/logo-colored.svg";
 import AvatarImg from "@/assets/images/account/avatar.svg";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
-import { Input, Modal } from "antd";
+import { DatePicker, DatePickerProps, Input, Modal } from "antd";
 
 import { Controller, useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useAddNewMerchant from "@/utils/apiHooks/merchants/useAddNewMerchant";
-import Button from "../elements/button";
+import Button from "@/components/buttons";
 import { Profile } from "@/models/profile";
 import { capitalizeText } from "@/utils/formatters/capitalizeText";
 import { useFetchUser } from "@/utils/apiHooks/profile/useFetchUser";
 import { ConfirmationAlertDialog, ConfirmationAlertDialogRef } from '@/components/dialogs/ConfirmationAlertDialog'
 import logOut from "@/utils/auth/logOut";
+import { GlobalActionContext } from "@/context/GlobalActionContext";
 
 
-const SideBar = () => {
+interface SidebarInterface {
+    togglePageSpinner: () => void;
+}
+
+const SideBar = (props: SidebarInterface) => {
 
     const pathName = usePathname();
     const router = useRouter();
@@ -49,7 +54,7 @@ const SideBar = () => {
         phoneNumber: yup.string().required('Phone number field can not be empty'),
         directorNIN: yup.string().required('Please enter director NIN'),
         directorBVN: yup.string().required('Please enter director BVN'),
-        directorDOB: yup.string().required('Please enter director date of birth'),
+        // directorDOB: yup.string().required('Please enter director date of birth'),
         CACReg: yup.string().required('Please enter your CAC registration number'),
         address: yup.string().required('Please enter your business address'),
     })
@@ -100,24 +105,39 @@ const SideBar = () => {
         }
     });
 
+    const [userSelectedDate, setUserSelectedDate] = useState<string>("");
+
     const [openMerchantModal, setOpenMerchantModal] = useState<boolean>(false);
 
     const toggleMerchantModal = (): void => setOpenMerchantModal(!openMerchantModal);
 
+    const { showSnackBar } = useContext(GlobalActionContext);
+
+    const dateFormat = 'YYYY/MM/DD';
+
+
     useEffect(() => {
         if (data) {
             router.push("/");
+            showSnackBar({ severity: "success", message: "Account upgraded successfully" });
         }
     }, [data])
 
     useEffect(() => {
         if (error) {
-            console.log(error);
+            showSnackBar({ severity: "error", message: error });
         }
     }, [error])
 
     const handleNewBusinessAddition = (e: any) => {
-        addNewMerchant(e);
+        if (userSelectedDate.length) {
+            addNewMerchant({
+                ...e,
+                directorDOB: userSelectedDate
+            });
+        } else {
+            showSnackBar({ severity: "error", message: "Please select your date of birth" });
+        }
     }
 
     useEffect(() => {
@@ -128,7 +148,7 @@ const SideBar = () => {
 
     useEffect(() => {
         if (userError) {
-            // setUserData(userError);
+            showSnackBar({ severity: "error", message: userError });
         }
     }, [userError]);
 
@@ -137,25 +157,32 @@ const SideBar = () => {
     }, [])
 
     function handleLogout() {
-        confirmationDialogRef.current?.show({
-            data: {
-                title: "Are you sure you want to logout?",
-                description: "Your active session will be removed from this device",
-                label: {
-                    confirm: "Yes",
-                    cancel: "No"
-                }
-            },
-            onCancel: () => {
-                confirmationDialogRef.current?.dismiss()
-            },
-            onConfirm: () => {
-                confirmationDialogRef.current?.dismiss()
-                logOut()
-                router.push("/login")
-            }
-        })
+        props.togglePageSpinner();
+        logOut()
+        router.push("/auth/login")
+        // confirmationDialogRef.current?.show({
+        //     data: {
+        //         title: "Are you sure you want to logout?",
+        //         description: "Your active session will be removed from this device",
+        //         label: {
+        //             confirm: "Yes",
+        //             cancel: "No"
+        //         }
+        //     },
+        //     onCancel: () => {
+        //         confirmationDialogRef.current?.dismiss()
+        //     },
+        //     onConfirm: () => {
+        //         confirmationDialogRef.current?.dismiss()
+        //         logOut()
+        //         router.push("/auth/login")
+        //     }
+        // })
     }
+
+    const onChange: DatePickerProps['onChange'] = (date, dateString) => {
+        setUserSelectedDate(String(dateString));
+    };
 
     return (
         <div className="h-full overflow-scroll overflow-x-hidden">
@@ -167,7 +194,9 @@ const SideBar = () => {
                                 <Image src={userData?.imgUrl} alt="avatar" />
                                 :
                                 // <Image src={AvatarImg} alt="avatar" />
-                                <div className="size-16 rounded-full bg-[#F5F5F5]"></div>
+                                <div className="size-16 rounded-full bg-[#F5F5F5] flex items-center justify-center">
+                                    <h2>{userData?.firstName?.substr(0, 1).toUpperCase()}{userData?.lastName?.substr(0, 1).toUpperCase()}</h2>
+                                </div>
                         }
                     </div>
                     <div>
@@ -184,7 +213,7 @@ const SideBar = () => {
                             <span>Overview</span>
                         </Link>
                     </li>
-                    {/* <li className={`flex items-center gap-4 text-sm px-5 py-5 ${pathName === "/account/wallet" ? "bg-[#003235] rounded-[8px] text-white" : "text-[#1B1B1B]"}`}>
+                    <li className={`flex items-center gap-4 text-sm px-5 py-5 ${pathName === "/account/wallet" ? "bg-[#003235] rounded-[8px] text-white" : "text-[#1B1B1B]"}`}>
                         <Link href="/account/wallet" className={`flex items-center gap-4 text-sm font-camptonthin ${pathName === "/account/wallet" ? "text-white" : "text-[#1B1B1B]"}`}>
                             <span>
                                 <Image src={pathName === "/account/wallet" ? WalletWhiteImg : WalletImg} alt="bell icon" className="w-[18px]" />
@@ -199,7 +228,7 @@ const SideBar = () => {
                             </span>
                             <span>Transaction History</span>
                         </Link>
-                    </li > */}
+                    </li >
                     {/* <li className={`flex items-center gap-4 text-sm px-5 py-5 ${pathName === "/account/users" ? "bg-[#003235] rounded-[8px] text-white" : "text-[#1B1B1B]"}`}>
                         <Link href="/account/users" className={`flex items-center gap-4 text-sm font-camptonthin ${pathName === "/account/users" ? "text-white" : "text-[#1B1B1B]"}`}>
                             <span>
@@ -260,7 +289,7 @@ const SideBar = () => {
             <Modal open={openMerchantModal} onClose={toggleMerchantModal} onCancel={toggleMerchantModal} footer={null}>
                 <div>
                     <h4 className="text-center text-[#1B1B1B] text-2xl capitalize mb-10">Become a merchant</h4>
-                    <form onSubmit={handleSubmit(handleNewBusinessAddition)}>
+                    <form onSubmit={handleSubmit(handleNewBusinessAddition)} className="activate-wallet">
                         <div className="grid grid-cols-2 gap-3 mb-3">
                             <div className="form-group">
                                 <label htmlFor="" className="text-[#1B1B1B] text-sm block mb-2">Business Name</label>
@@ -316,14 +345,25 @@ const SideBar = () => {
                             </div>
                         </div>
                         <div className="grid grid-cols-2 gap-3 mb-3">
-                            <div className="form-group mb-4">
+                            <div className="">
+                                <div className="form-group mb-4">
+                                    <label htmlFor="" className="text-[#1B1B1B] text-sm block mb-2">Director DOB</label>
+                                    {/* <Controller name="dob" control={control}
+                                    render={({ field }) => ( */}
+                                    <DatePicker onChange={onChange} format={dateFormat} />
+                                    {/* <Input {...field} className="h-[3.5rem] rounded-[13px] border-2 border-solid border-[#7575754D]" name="dob" />
+                                    )} />
+                                {errors.dob && <p className="text-sm text-danger">{errors.dob.message}</p>} */}
+                                </div>
+                            </div>
+                            {/* <div className="form-group mb-4">
                                 <label htmlFor="" className="text-[#1B1B1B] text-sm block mb-2">Director DOB</label>
                                 <Controller name="directorDOB" control={control}
                                     render={({ field }) => (
                                         <Input {...field} className="h-[3.5rem] rounded-[13px] border-2 border-solid border-[#7575754D]" name="directorDOB" />
                                     )} />
                                 {errors.directorDOB && <p className="text-sm text-danger">{errors.directorDOB.message}</p>}
-                            </div>
+                            </div> */}
                             <div className="form-group mb-4">
                                 <label htmlFor="" className="text-[#1B1B1B] text-sm block mb-2">CAC Registration Number</label>
                                 <Controller name="CACReg" control={control}
@@ -359,8 +399,8 @@ const SideBar = () => {
                                 <button className="bg-[#003235] py-3 rounded-[8px] px-10 text-sm text-white">Upload</button>
                             </div>
                         </div> */}
-                        <Button styling="bg-[#003235] py-5 mt-10 mx-auto w-max rounded-[8px] px-16 block text-sm text-white" isLoading={isLoading}
-                            type="submit" text="Become a Merchant" />
+                        <Button className="bg-[#003235] py-5 mt-10 mx-auto w-max rounded-[8px] px-16 block text-sm text-white" isLoading={isLoading}
+                            type="submit">Become a Merchant</Button>
                     </form>
                 </div>
             </Modal>

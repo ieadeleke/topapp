@@ -353,6 +353,21 @@ input {
   background-position: center top;
 }
 
+.activate-wallet .ant-picker {
+  border: 2px solid #7575754D !important;
+  width: 100% !important;
+  padding: 15px !important;
+  border-radius: 13px !important;
+}
+
+.ant-select-item-option-content {
+  font-family: "Campton Medium";
+}
+
+.ant-select-item.ant-select-item-option {
+  padding: 15px 12px !important;
+}
+
 @media screen and (max-width: 720px) {
   .animated-hide {
     max-height: 7rem;

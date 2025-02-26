@@ -77,7 +77,7 @@ export default function PaymentPage() {
   }
 
   return (
-    <PaymentLayout>
+    // <PaymentLayout>
       <div className="mt-12 min-h-screen flex flex-col items-center">
         {data ? (
           <PaymentContent data={data} mda={mda} tx_reference={tx_reference} />
@@ -85,7 +85,7 @@ export default function PaymentPage() {
           <div className={cn("flex flex-col")}>
             <h1 className="font-bold">Enter your reference ID</h1>
             <TextInput
-              defaultValue={tx_reference}
+              defaultValue={tx_reference} className="h-[4rem]"
               onChange={(evt) => setTXReference(evt.target.value.trim())}
               placeholder="XXXX-XXX-XXXXXX"
             />
@@ -93,13 +93,13 @@ export default function PaymentPage() {
               onClick={submitReference}
               variant="contained"
               disabled={isLoading}
-              className={cn("h-10 mt-4 w-full")}
+              className={cn("mt-4 w-full bg-dark py-3")}
             >
               {isLoading ? "Please wait..." : "Submit"}
             </Button>
           </div>
         )}
       </div>
-    </PaymentLayout>
+    // {/* </PaymentLayout> */}
   );
 }
