@@ -2,5 +2,6 @@ import { ControllableSnackBarStateParams } from "@/components/snackbar/Controlla
 import { createContext } from "react";
 
 export const GlobalActionContext = createContext({
-    showSnackBar: (payload: ControllableSnackBarStateParams) => { }
+    showSnackBar: (payload: ControllableSnackBarStateParams) => {
+    }
 })

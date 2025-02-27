@@ -58,7 +58,7 @@ export default function Login() {
     }, [error])
 
     useEffect(() => {
-        if (data) {
+        if (data?.status === "OK") {
             // setLoadLoginAction(false);
             router.push('/auth/verify-account')
             showSnackBar({ severity: 'success', message: "Signup successful" });
@@ -67,10 +67,10 @@ export default function Login() {
 
     return <AuthLayout>
         <>
-            <div className="flex flex-col gap-4 min-h-[85vh] md:min-h-[85vh] items-center justify-center">
-                <div className="max-w-[1152px] w-[70%] py-20 mx-auto grid grid-cols-2 gap-20 items-center">
+            <div className="flex flex-col gap-4 min-h-[65vh] md:min-h-[85vh] md:items-center justify-center">
+                <div className="max-w-[1152px] md:w-[70%] md:py-20 pt-10 pb-0 md:pb-20 mx-auto flex flex-col-reverse md:grid grid-cols-2 gap-20 md:items-center">
                     <Image src={AuthImage} alt="auth" />
-                    <div className="md:px-0">
+                    <div className="px-5 md:px-0">
                         <div className="mx-auto block">
                             <div className="">
                                 <h1 className="font-bold text-2xl md:text-3xl text-center">Get Started</h1>

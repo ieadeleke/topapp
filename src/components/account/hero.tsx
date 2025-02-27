@@ -1,11 +1,12 @@
 "use client";
 
+import { GlobalActionContext } from "@/context/GlobalActionContext";
 import { Profile } from "@/models/profile";
 import { useFetchUser } from "@/utils/apiHooks/profile/useFetchUser";
 import { capitalizeText } from "@/utils/formatters/capitalizeText"
-import { Dropdown } from "antd";
+import { Dropdown, message } from "antd";
 import Link from "next/link";
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 
 interface AccountHeroInterface {
     toggleActivateWallet: () => void
@@ -13,7 +14,8 @@ interface AccountHeroInterface {
 
 export const AccountHero = (props: AccountHeroInterface) => {
 
-    const { error: userError, data: userFetchedData, fetchUser } = useFetchUser();
+    const { error: userError, data: userFetchedData, fetchUser, isLoading } = useFetchUser();
+    const { showSnackBar } = useContext(GlobalActionContext);
 
     const [userData, setUserData] = useState<Profile>({
         name: "",
@@ -61,9 +63,15 @@ export const AccountHero = (props: AccountHeroInterface) => {
 
     useEffect(() => {
         if (userError) {
-            // setUserData(userError);
+            showSnackBar({ severity: "error", message: userError });
         }
     }, [userError]);
+
+    useEffect(() => {
+        if (userFetchedData) {
+            setUserData(userFetchedData);
+        }
+    }, [userFetchedData]);
 
     useEffect(() => {
         fetchUser();
@@ -93,14 +101,18 @@ export const AccountHero = (props: AccountHeroInterface) => {
             <div className="flex flex-col h-full justify-between">
                 <div>
                     <p className="text-sm text-white">Wallet Balance</p>
-                    <h1 className="text-3xl mb-3 text-white font-bold leading-relaxed"><span className="text-sm">NGN</span>0.00</h1>
+                    <h1 className="text-3xl mb-3 text-white font-bold leading-relaxed"><span className="text-sm">NGN</span>****</h1>
                 </div>
                 <div>
-                    <button className="text-sm text-black rounded-lg py-3 px-4 bg-primary flex items-center gap-2">Fund Wallet</button>
+                    {/* <button className="text-sm text-black rounded-lg py-3 px-4 bg-primary flex items-center gap-2">Fund Wallet</button> */}
                 </div>
             </div>
             <div>
-                <button onClick={props.toggleActivateWallet} className="text-sm text-black rounded-lg py-3 px-4 bg-primary flex items-center gap-2">Activate Wallet</button>
+                {
+                    isLoading ? "" :
+                        // userFetchedData.isActive ? "" :
+                            <button onClick={props.toggleActivateWallet} className="text-sm text-black rounded-lg py-3 px-4 bg-primary flex items-center gap-2">Activate Wallet</button>
+                }
             </div>
             {/* <div>
                 <Dropdown

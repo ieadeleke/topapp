@@ -19,9 +19,21 @@ export type LoginParams = {
     password: string
 }
 
+export type LoginResponseParams = {
+    message: string,
+    profile: any,
+    token: string
+}
+
 export type ActivatePasswordParams = {
     receivedChannel: string | null,
     activationCode: string
+}
+
+export type ActivatePasswordResponseParams = {
+    message: string,
+    status: string,
+    token: string
 }
 
 export type ResetPasswordParams = {
@@ -40,7 +52,8 @@ export type ConfirmResetPasswordParams = {
 }
 
 export type SignUpResponseParams = ApiResponse & {
-
+    status: string?;
+    message: string?;
 }
 
 export type LoginResponseParams = ApiResponse & {

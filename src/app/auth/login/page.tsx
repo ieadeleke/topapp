@@ -59,11 +59,11 @@ export default function Login() {
 
     return <AuthLayout>
         <>
-            <div className="flex flex-col gap-4 min-h-[85vh] md:min-h-[85vh] items-center justify-center">
-                <div className="max-w-[1152px] w-[70%] py-20 mx-auto grid grid-cols-2 gap-20 items-center">
+            <div className="flex flex-col gap-4 min-h-[65vh] md:min-h-[85vh] md:items-center justify-center">
+                <div className="max-w-[1152px] md:w-[70%] md:py-20 pt-10 pb-0 md:pb-20 mx-auto flex flex-col-reverse md:grid grid-cols-2 gap-20 md:items-center">
                     <Image src={AuthImage} alt="auth" />
-                    <div className="md:px-0">
-                        <div className="mx-auto block">
+                    <div className="px-5 md:px-0">
+                        <div className="md:w-[80%] mx-auto block">
                             <div className="">
                                 <h1 className="font-bold text-2xl md:text-3xl text-center">Login</h1>
                             </div>
@@ -81,7 +81,6 @@ export default function Login() {
                                             )} />
                                         {errors.email && <p className="text-sm text-danger">{errors.email.message}</p>}
                                     </div>
-
                                     <div className="flex flex-col gap-2">
                                         {/* <label className="text-sm">Password</label> */}
                                         <Controller name="password" control={control} defaultValue=""
@@ -99,7 +98,7 @@ export default function Login() {
                                             className="py-3 rounded-[12px] w-full bg-buttonBg text-sm">Login</Button>
                                     </div>
                                     <div className="flex justify-between">
-                                        <Link href={"/reset-password"} className="text-offWhite text-sm">Forgot Password?</Link>
+                                        <Link href={"/auth/reset-password"} className="text-offWhite text-sm">Forgot Password?</Link>
                                         <Link href={"/auth/signup"} className="text-offWhite text-sm">I don&apos;t have an account</Link>
                                     </div>
                                 </div>

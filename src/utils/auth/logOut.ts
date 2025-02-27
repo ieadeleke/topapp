@@ -5,5 +5,5 @@ import { clearAccessToken } from "./cookies"
 
 export default async function logOut() {
     clearAccessToken();
-    return redirect("/login")
+    return redirect("/auth/login")
 }

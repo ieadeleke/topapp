@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
 @font-face {
   font-family: "Campton Semi-Bold";
@@ -313,4 +314,84 @@ input {
 
 .animate-bar.animated-view p {
   opacity: 1;
+}
+
+.ant-drawer-body {
+  padding: 0px !important;
+}
+
+.ant-drawer-content {
+  width: 100% !important;
+}
+
+.ant-drawer-content-wrapper {
+  width: 100% !important;
+}
+
+.ant-drawer-header {
+  display: none !important;
+}
+
+.hr-benefits,
+.story-summary {
+  transition: background .4s ease-in-out, border .4s ease-in-out;
+}
+
+.story-summary:hover {
+  border: 1px solid #000;
+  background: #5D8BFF;
+}
+
+.hr-benefits:hover {
+  background: #DFFF5E;
+}
+
+.government {
+  background: url("/government.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top;
+}
+
+.activate-wallet .ant-picker {
+  border: 2px solid #7575754D !important;
+  width: 100% !important;
+  padding: 15px !important;
+  border-radius: 13px !important;
+}
+
+.ant-select-item-option-content {
+  font-family: "Campton Medium";
+}
+
+.ant-select-item.ant-select-item-option {
+  padding: 15px 12px !important;
+}
+
+@media screen and (max-width: 720px) {
+  .animated-hide {
+    max-height: 7rem;
+    overflow: hidden;
+  }
+
+  .about-hero {
+    height: 600px;
+  }
+
+  .activate-otp-form input {
+    width: 3rem !important;
+    height: 3rem !important;
+  }
+
+  .government {
+    background: url("/government_mobile.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+  }
+
+  /* .activate-otp-form div {
+    display: grid !important;
+    grid-template-columns: repeat(6, 1fr);
+  } */
 }

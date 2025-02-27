@@ -8,7 +8,7 @@ import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
 
 
 export const EditProfile = () => {
-    const { isLoading, data, error, updateProfile } = useUpdateProfile()
+    const { isLoading, data, error, updateProfile } = useUpdateProfile();
     const { showSnackBar } = useContext(GlobalActionContext)
     const { user } = useContext(UserContext)
     const [firstName, setFirstName] = useState(user?.firstName);

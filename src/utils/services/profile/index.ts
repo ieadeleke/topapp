@@ -1,5 +1,5 @@
 import { request } from "@/utils/request"
-import { ActivateWalletParams, ActivateWalletResponse, AvailableBillResponse, FetchProfileResponse, RefreshAgentWalletParams, RefreshAgentWalletResponse, SetAgentPinParams, SetAgentPinResponse, UpdateBusinessProfileParams, UpdateBusinessProfileResponse, UpdateProfileParams, UpdateProfileResponse } from "./types"
+import { ActivateWalletParams, ActivateWalletResponse, AvailableBillCustomerResponse, AvailableBillResponse, BillCustomerInfoParams, BillInfoParams, BillPaymentParams, BillPaymentResponse, FetchProfileResponse, RefreshAgentWalletParams, RefreshAgentWalletResponse, SetAgentPinParams, SetAgentPinResponse, UpdateBusinessProfileParams, UpdateBusinessProfileResponse, UpdateProfileParams, UpdateProfileResponse } from "./types"
 import { ApiResponse } from "@/models"
 import { Profile } from "@/models/profile"
 
@@ -29,6 +29,42 @@ export function ProfileService() {
             body: ""
         })
         return data as AvailableBillResponse;
+    }
+
+    async function fetchBillInformation(params: BillInfoParams) {
+        const data = await request({
+            path: `v1/bills/GetBillInformation`,
+            method: "PUT",
+            body: params
+        })
+        return data as AvailableBillResponse;
+    }
+
+    async function fetchBillCustomerInformation(params: BillCustomerInfoParams) {
+        const data = await request({
+            path: `v1/bills/ValidateCustomerDetails`,
+            method: "PUT",
+            body: params
+        })
+        return data as AvailableBillCustomerResponse;
+    }
+
+    async function initiateCustomerBillPayment(params: BillPaymentParams) {
+        const data = await request({
+            path: `v1/bills/InitialBillPayment`,
+            method: "POST",
+            body: params
+        })
+        return data as BillPaymentResponse;
+    }
+
+    async function completeCustomerBillPayment(params: BillCustomerInfoParams) {
+        const data = await request({
+            path: `v1/bills/ValidateCustomerDetails`,
+            method: "PUT",
+            body: params
+        })
+        return data as AvailableBillCustomerResponse;
     }
 
     async function refreshAgentWallet(params: RefreshAgentWalletParams) {
@@ -85,6 +121,9 @@ export function ProfileService() {
         refreshAgentWallet,
         setNewUserPin,
         fetchAvailableBills,
-        updateBusinessProfile
+        updateBusinessProfile,
+        fetchBillInformation,
+        fetchBillCustomerInformation,
+        initiateCustomerBillPayment
     }
 }

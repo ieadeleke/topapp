@@ -89,6 +89,17 @@ export function ChargeService() {
     return data as InitiateHarmonizedPaymentResponse;
   }
 
+  async function initiateHarmonizedGovernmentPayment(
+    payload: InitiateHarmonizedPaymentParams
+  ) {
+    const data = await request({
+      path: `v1/lasg/HarmonizedInitiatePayment`,
+      body: payload,
+      method: "POST",
+    });
+    return data as InitiateHarmonizedPaymentResponse;
+  }
+
   async function harmonizeFlutterwaveNotification(
     payload: UpperLinkPaymentNotificationParams
   ) {
@@ -111,6 +122,17 @@ export function ChargeService() {
     return data as HarmonizedPaymentNotificationResponse;
   }
 
+  async function harmonizeGovernmentWalletNotification(
+    payload: UpperLinkWalletPaymentNotificationParams
+  ) {
+    const data = await request({
+      path: `v1/lasg/HarmonizedWalletPaymentNotification`,
+      body: payload,
+      method: "POST",
+    });
+    return data as HarmonizedPaymentNotificationResponse;
+  }
+
   async function upperLinkNotification(
     payload: UpperLinkPaymentNotificationParams
   ) {
@@ -127,6 +149,17 @@ export function ChargeService() {
   ) {
     const data = await request({
       path: `v1/abc/InitiateFlutterwave`,
+      body: payload,
+      method: "POST",
+    });
+    return data as InitiatePaymentWithUpperLinkResponse;
+  }
+
+  async function initiateGovernmentPaymentWithFlutterwave(
+    payload: InitiatePaymentWithUpperLinkParams
+  ) {
+    const data = await request({
+      path: `v1/lasg/InitiateFlutterwave`,
       body: payload,
       method: "POST",
     });
@@ -176,6 +209,9 @@ export function ChargeService() {
     verifyHarmonizeReference,
     initiateHarmonizedPayment,
     harmonizeFlutterwaveNotification,
-    harmonizeWalletNotification
+    harmonizeWalletNotification,
+    initiateHarmonizedGovernmentPayment,
+    harmonizeGovernmentWalletNotification,
+    initiateGovernmentPaymentWithFlutterwave
   };
 }

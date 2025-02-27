@@ -6,6 +6,7 @@ interface LayoutInterface {
     navPosition?: string
     children: React.ReactElement
     whiteNav?: boolean
+    footerMargin?: boolean
 }
 
 const Layout = (props: LayoutInterface) => {
@@ -13,7 +14,7 @@ const Layout = (props: LayoutInterface) => {
         <div>
             <Navigation navPosition={props.navPosition} whiteNav={props.whiteNav} />
             {props.children}
-            <Footer />
+            <Footer footerMargin={props.footerMargin} />
         </div>
     )
 }

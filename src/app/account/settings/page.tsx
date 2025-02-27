@@ -1,9 +1,6 @@
 "use client";
 
-import APIIcon from "@/assets/images/account/icons/api.svg";
-
 import AccountLayout from "@/components/account/layout";
-import useFetchWalletTransactions from "@/utils/apiHooks/wallets/useFetchWalletTransactions";
 
 import { useContext, useEffect, useState } from "react";
 import type { MenuProps } from 'antd';
@@ -19,7 +16,7 @@ const Dashboard = () => {
 
     const [currentView, setCurrentView] = useState("profile");
 
-    const { user } = useContext(UserContext)
+    const { user } = useContext(UserContext);
 
     return (
         <div>
@@ -31,7 +28,9 @@ const Dashboard = () => {
                                 <div className="h-[8rem] w-full bg-[#F0F0F0]"></div>
                                 <div className="px-12 -mt-20">
                                     <div className="flex items-end gap-10">
-                                        <div className="size-48 rounded-full bg-black"></div>
+                                        <div className="size-48 rounded-full bg-[#F5F5F5] flex items-center justify-center">
+                                            <h2 className="text-3xl">{user?.firstName?.substr(0, 1)?.toUpperCase()}{user?.lastName?.substr(0, 1)?.toUpperCase()}</h2>
+                                        </div>
                                         <div className="pb-5">
                                             <h4 className="text-2xl mb-3 mt-10">
                                                 {capitalizeText(user?.firstName ? user?.firstName : "")} {capitalizeText(user?.lastName ? user?.lastName : "")}
