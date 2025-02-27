@@ -13,12 +13,23 @@ import * as yup from "yup";
 import { useFetchBillCustomerInfo } from "@/utils/apiHooks/profile/useFetchBillPaymentCustomer";
 import { useInitiateBillPayment } from "@/utils/apiHooks/profile/useInitiateBillPayment";
 import { generateUUID } from "@/utils/data/generateUUID";
+import { useFlutterwave, closePaymentModal } from "flutterwave-react-v3";
+import {
+    FLUTTERWAVE_LIVE_KEY,
+    FLUTTERWAVE_TEST_KEY,
+    config,
+} from "@/utils/data/flutterwave.config";
+import UserContext from "@/context/UserContext";
+import { Payment } from "@/models/payment";
+import BillPaymentAction from "./billpaymentaction";
+
 
 interface BillPaymentInterface {
     title: string
     openBillModal: boolean
     closeBillModal: () => void
     currentBill: any
+    toggleBillDisplay?: () => void
 }
 
 const BillPayment = (props: BillPaymentInterface) => {
@@ -34,6 +45,7 @@ const BillPayment = (props: BillPaymentInterface) => {
         initiateBillPayment,
     } = useInitiateBillPayment();
 
+    const { user } = useContext(UserContext);
     const [billerCode, setBillerCode] = useState<string>("");
     const [transactionKey] = useState<string>(generateUUID());
     const [currentBillData, setCurrentBillData] = useState<any>({});
@@ -144,7 +156,8 @@ const BillPayment = (props: BillPaymentInterface) => {
     }, [customerData]);
 
     useEffect(() => {
-        if (paymentData) {
+        if (paymentData?.Transaction?.length) {
+            completePayment();
             // charge from user wallet
         }
     }, [paymentData]);
@@ -179,61 +192,68 @@ const BillPayment = (props: BillPaymentInterface) => {
         initiateBillPayment(setup);
     }
 
+    function completePayment() {
+        payNow({
+            callback(data) {
+                closePaymentModal();
+                setTimeout(() => {
+                    if (data.status == "successful" || data.status == "completed") {
+                        // router.
+                        showSnackBar({
+                            severity: "success",
+                            message: `Payment completed successfully`,
+                        });
+                        window.location.reload();
+                    } else {
+                        showSnackBar({
+                            severity: "error",
+                            message: `Could not complete transaction`,
+                        });
+                    }
+                }, 1000);
+            },
+            onClose() {
+                showSnackBar({
+                    severity: "error",
+                    message: `Transaction cancelled`,
+                });
+            },
+        });
+    }
+
+    // const subAccounts = data?.subaccounts;
+
+    // const publicKey = FLUTTERWAVE_LIVE_KEY;
+    const publicKey = FLUTTERWAVE_TEST_KEY;
+
+    const payNow = useFlutterwave({
+        ...config,
+        public_key: publicKey,
+        amount: paymentDetail.amount,
+        tx_ref: data?.paymentRef ?? new Date().toISOString(),
+        customer: {
+            ...config.customer,
+            id: transactionKey,
+            name: user?.firstName + " " + user?.lastName,
+            email: user?.email,
+            phone_number: user?.phoneNumber,
+        },
+        customizations: {
+            title: paymentDetail.name,
+            description: props?.currentBill?.description,
+            // logo: Pay4ItLogo.src,
+        }
+    } as any);
+
+
     return (
         <div>
-            <Modal open={props.openBillModal} onCancel={closePaymentModal} footer={null}>
-                {/* {
-                    isLoading ?
-                        <Spin indicator={<LoadingOutlined spin />} />
-                        : */}
-                <div>
-                    <h4 className="text-center mx-auto text-2xl">{props.title}</h4>
-                    <div className="mt-10">
-                        <form action="" onSubmit={completeBillPaymentStages}>
-                            <div className="form-group mb-4">
-                                <label htmlFor="">Select Option</label>
-                                <Select disabled={extraSelectionOption.length ? true : false} className="w-full block h-[4rem]" value={billerCode} onChange={changeValueOfBillerCode}>
-                                    {currentBillData?.billerInfo?.map((bill: any, index: number) => (
-                                        <Select.Option value={bill.biller_code} key={index}>{bill.name}</Select.Option>
-                                    ))}
-                                </Select>
-                            </div>
-                            {
-                                extraSelectionOption.length ?
-                                    <>
-                                        <div className="form-group mb-4">
-                                            <label htmlFor="">Select Option</label>
-                                            <Select className="w-full block h-[4rem]" value={`${paymentDetail?.item_code}----${paymentDetail?.amount}----${paymentDetail?.name}`} onChange={updatePaymentDetailItemCode}>
-                                                {extraSelectionOption?.map((bill: any, index: number) => (
-                                                    <Select.Option value={`${bill.item_code}----${bill.amount}----${bill.name}`} key={index}>{bill.biller_name}</Select.Option>
-                                                ))}
-                                            </Select>
-                                        </div>
-                                        <div className="form-group mb-4">
-                                            <div className="flex justify-between items-center">
-                                                <label htmlFor="customer">Customer Information</label>
-                                                <div>
-                                                    <Spin indicator={<LoadingOutlined spin />} spinning={customerLoading} />
-                                                </div>
-                                            </div>
-                                            <Input className="w-full block h-[4rem]" name="customer" value={paymentDetail.customer} onChange={updatePaymentDetail} />
-                                        </div>
-                                    </>
-                                    : ""}
-                            < div className="mt-6">
-                                {
-                                    !extraSelectionOption.length ?
-                                        <Button isLoading={isLoading}
-                                            className="cursor-pointer py-3 rounded-[12px] w-full bg-buttonBg text-sm">Continue</Button>
-                                        :
-                                        <Button isLoading={isPaymentLoading} disabled={currentPaymentStage === "payment" ? false : true}
-                                            className="cursor-pointer py-3 rounded-[12px] w-full bg-buttonBg text-sm">Complete Payment</Button>
-                                }
-                            </div>
-                        </form>
-                    </div>
-                </div >
-                {/* } */}
+            <Modal open={props.openBillModal} footer={null}>
+                <BillPaymentAction title={props.title}
+                    openBillModal={props.openBillModal}
+                    closeBillModal={props.closeBillModal}
+                    currentBill={props.currentBill}
+                    toggleBillDisplay={props.toggleBillDisplay} />
             </Modal >
         </div >
     )

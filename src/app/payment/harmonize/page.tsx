@@ -71,7 +71,7 @@ export default function PaymentPage() {
         {data ? (
           <HarmonizePaymentContent data={data} tx_reference={tx_reference} />
         ) : (
-          <div className={cn("flex flex-col")}>
+          <div className={cn("flex flex-col px-5 md:px-0 w-full md:w-max")}>
             <h1 className="font-bold">Enter your reference ID</h1>
             <TextInput
               defaultValue={tx_reference} className="h-[4rem]"

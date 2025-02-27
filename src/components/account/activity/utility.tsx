@@ -106,7 +106,9 @@ const UtilityBillPayment = (props: UtilityBillProps) => {
                 </div>
                 <>
                     {
-                        isLoading ? <Spin indicator={<LoadingOutlined spin />} /> :
+                        isLoading ? <div className="w-full h-[10rem] flex items-center justify-center">
+                            <Spin indicator={<LoadingOutlined spin />} size="large" />
+                        </div> :
                             availableBills.length ?
                                 <div className="flex flex-wrap gap-7">
                                     {
@@ -238,6 +240,137 @@ const UtilityBillPayment = (props: UtilityBillProps) => {
                                     <HiOutlineInbox className="w-max mx-auto text-6xl mb-2" />
                                     <p className="text-base text-center">No bill available at this time</p>
                                 </div>
+                        // availableBills.length ?
+                        //     <div className="flex flex-wrap gap-7">
+                        //         {
+                        //             availableBills.includes("UTILITYBILLS") &&
+                        //             <div onClick={() => {
+                        //                 selectCurrentBillType("UTILITYBILLS")
+                        //                 setCurrentTitle("Buy Power");
+                        //                 toggleBillModalDisplay();
+                        //             }} className="cursor-pointer border py-10 rounded-[14px] px-16 border-solid border-[#EFEFEF]">
+                        //                 <div className="flex flex-col gap-5">
+                        //                     <div className="size-16 rounded-[16px] mx-auto bg-[#E4F3EA] flex items-center justify-center">
+                        //                         <Image src={PowerImg} alt="power" className="w-[50%]" />
+                        //                     </div>
+                        //                     <h4 className="text-[#1B1B1B] font-campton">Buy Power</h4>
+                        //                 </div>
+                        //             </div>}
+                        //         {
+                        //             availableBills.includes("AIRTIME") &&
+                        //             <div onClick={() => {
+                        //                 selectCurrentBillType("AIRTIME")
+                        //                 setCurrentTitle("Buy Airtime");
+                        //                 toggleBillModalDisplay();
+                        //             }} className="cursor-pointer border py-10 rounded-[14px] px-16 border-solid border-[#EFEFEF]">
+                        //                 <div className="flex flex-col gap-5">
+                        //                     <div className="size-16 rounded-[16px] mx-auto bg-[#EDF1FC] flex items-center justify-center">
+                        //                         <Image src={PhoneImg} alt="phone" className="w-[35%]" />
+                        //                     </div>
+                        //                     <h4 className="text-[#1B1B1B] font-campton">Buy Airtime</h4>
+                        //                 </div>
+                        //             </div>
+                        //         }{
+                        //             availableBills.includes("MOBILEDATA") &&
+                        //             <div onClick={() => {
+                        //                 selectCurrentBillType("MOBILEDATA")
+                        //                 setCurrentTitle("Buy Data");
+                        //                 toggleBillModalDisplay();
+                        //             }} className="cursor-pointer border py-10 rounded-[14px] px-16 border-solid border-[#EFEFEF]">
+                        //                 <div className="flex flex-col gap-5">
+                        //                     <div className="size-16 rounded-[16px] mx-auto bg-[#FFF6E4] flex items-center justify-center">
+                        //                         <Image src={DataImg} alt="phone" className="w-[60%]" />
+                        //                     </div>
+                        //                     <h4 className="text-[#1B1B1B] font-campton">Buy Data</h4>
+                        //                 </div>
+                        //             </div>
+                        //         }{
+                        //             availableBills.includes("TAX") &&
+                        //             <div onClick={() => {
+                        //                 selectCurrentBillType("TAX")
+                        //                 setCurrentTitle("Pay Taxes");
+                        //                 toggleBillModalDisplay();
+                        //             }} className="cursor-pointer border py-10 rounded-[14px] px-16 border-solid border-[#EFEFEF]">
+                        //                 <div className="flex flex-col gap-5">
+                        //                     <div className="size-16 rounded-[16px] mx-auto bg-[#F4E2FF] flex items-center justify-center">
+                        //                         <Image src={ReceiptImg} alt="phone" className="w-[50%]" />
+                        //                     </div>
+                        //                     <h4 className="text-[#1B1B1B] font-campton">Pay Taxes</h4>
+                        //                 </div>
+                        //             </div>
+                        //         }{
+                        //             availableBills.includes("CABLEBILLS") &&
+                        //             <div onClick={() => {
+                        //                 selectCurrentBillType("CABLEBILLS")
+                        //                 setCurrentTitle("Cable TV");
+                        //                 toggleBillModalDisplay();
+                        //             }} className="cursor-pointer border py-10 rounded-[14px] px-16 border-solid border-[#EFEFEF]">
+                        //                 <div className="flex flex-col gap-5">
+                        //                     <div className="size-16 rounded-[16px] mx-auto bg-[#E4F3EA] flex items-center justify-center">
+                        //                         <Image src={TvImg} alt="phone" className="w-[50%]" />
+                        //                     </div>
+                        //                     <h4 className="text-[#1B1B1B] font-campton">Cable Tv</h4>
+                        //                 </div>
+                        //             </div>
+                        //         }{
+                        //             availableBills.includes("NETFLIX") &&
+                        //             <div onClick={() => {
+                        //                 selectCurrentBillType("NETFLIX")
+                        //                 setCurrentTitle("Netflix");
+                        //                 toggleBillModalDisplay();
+                        //             }} className="cursor-pointer border py-10 rounded-[14px] px-16 border-solid border-[#EFEFEF]">
+                        //                 <div className="flex flex-col gap-5">
+                        //                     <Image src={NetflixImg} alt="phone" className="size-16 mx-auto" />
+                        //                     <h4 className="text-[#1B1B1B] font-campton">Netflix</h4>
+                        //                 </div>
+                        //             </div>
+                        //         }{
+                        //             availableBills.includes("BETTING") &&
+                        //             <div onClick={() => {
+                        //                 selectCurrentBillType("BETTING")
+                        //                 setCurrentTitle("Betting");
+                        //                 toggleBillModalDisplay();
+                        //             }} className="cursor-pointer border py-10 rounded-[14px] px-16 border-solid border-[#EFEFEF]">
+                        //                 <div className="flex flex-col gap-5">
+                        //                     <div className="size-16 rounded-[16px] mx-auto bg-[#E4F3EA] flex items-center justify-center">
+                        //                         <Image src={BettingImg} alt="phone" className="w-[25%]" />
+                        //                     </div>
+                        //                     <h4 className="text-[#1B1B1B] font-campton">Betting</h4>
+                        //                 </div>
+                        //             </div>
+                        //         }{
+                        //             availableBills.includes("RELINST") &&
+                        //             <div onClick={() => {
+                        //                 selectCurrentBillType("RELINST")
+                        //                 setCurrentTitle("Religious Institutions");
+                        //                 toggleBillModalDisplay();
+                        //             }} className="cursor-pointer border py-10 rounded-[14px] px-16 border-solid border-[#EBEBEB]">
+                        //                 <div className="flex flex-col gap-5">
+                        //                     <div className="size-16 rounded-[16px] mx-auto bg-[#E4F3EA] flex items-center justify-center">
+                        //                         <Image src={InvoiceImg} alt="phone" className="w-[50%]" />
+                        //                     </div>
+                        //                     <h4 className="text-[#1B1B1B] font-campton">Religious Institutions</h4>
+                        //                 </div>
+                        //             </div>
+                        //         }{
+                        //             availableBills.includes("JAMB") &&
+                        //             <div onClick={() => {
+                        //                 selectCurrentBillType("JAMB")
+                        //                 setCurrentTitle("Buy JAMB");
+                        //                 toggleBillModalDisplay();
+                        //             }} className="cursor-pointer border py-10 rounded-[14px] px-16 border-solid border-[#EFEFEF]">
+                        //                 <div className="flex flex-col gap-5">
+                        //                     <Image src={JAMBImg} alt="phone" className="size-16 mx-auto" />
+                        //                     <h4 className="text-[#1B1B1B] font-campton">Buy JAMB</h4>
+                        //                 </div>
+                        //             </div>
+                        //         }
+                        //     </div>
+                        //     :
+                        //     <div className="py-5">
+                        //         <HiOutlineInbox className="w-max mx-auto text-6xl mb-2" />
+                        //         <p className="text-base text-center">No bill available at this time</p>
+                        //     </div>
                     }
                 </>
                 <BillPayment openBillModal={openBillModal} title={currentTitle} closeBillModal={toggleBillModalDisplay} currentBill={activeSelection} />

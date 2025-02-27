@@ -42,11 +42,17 @@ import Hero2 from "@/assets/images/home/hero2.png";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import Link from "next/link";
+import { useContext, useEffect, useState } from "react";
+import UserContext from "@/context/UserContext";
+import { Modal } from "antd";
+import BillPaymentAction from "@/components/account/activity/billpaymentaction";
+import { useFetchAvailableBills } from "@/utils/apiHooks/profile/useFetchAvailableBills";
 // import { Swiper as SwiperType } from 'swiper';
 
 export default function Home() {
 
   // const swiperRef = useRef<SwiperType | null>(null);
+  const { fetchAvailableBillOptions, data, isLoading, error } = useFetchAvailableBills();
 
   const breakpoints = {
     0: {
@@ -62,6 +68,41 @@ export default function Home() {
       slidesPerView: 4.4
     },
   }
+
+  const [currentTitle, setCurrentTitle] = useState("");
+  const [activeSelection, setActiveSelection] = useState<string>("single");
+  const [billOptions, setBillOptions] = useState<any[]>([]);
+  const [availableBills, setAvailableBills] = useState<string[]>([]);
+  const [openBillModal, setOpenBillModal] = useState(false);
+
+  const toggleBillModalDisplay = () => {
+    setOpenBillModal(!openBillModal);
+  };
+
+  const { user } = useContext(UserContext);
+  const selectCurrentBillType = (e: string) => {
+    let data = billOptions.find(bill => {
+      if (bill.code === e) {
+        return bill
+      }
+    })
+    setActiveSelection(data);
+  }
+  useEffect(() => {
+    if (data) {
+      let availableData = data.map((bill: any) => {
+        return bill.code;
+      })
+      setBillOptions(data);
+      setAvailableBills(availableData);
+    }
+  }, [data]);
+  useEffect(() => {
+    const fetchAvailableBillPaymentOptions = () => {
+      fetchAvailableBillOptions();
+    }
+    fetchAvailableBillPaymentOptions();
+  }, []);
 
   return (
     <div className="bg-background">
@@ -349,126 +390,78 @@ export default function Home() {
               </div>
               <div>
                 <div className="grid grid-cols-3 gap-4">
-                  <div className="bg-white py-7 pb-5 px-2 rounded-[16px]">
-                    <Link href="">
-                      <div className="flex flex-col text-center">
-                        <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#D3FFB4] rounded-[8px]">
-                          <FaCreditCard />
+                  {
+                    availableBills.includes("UTILITYBILLS") &&
+                    <div className="bg-white py-7 pb-5 px-2 rounded-[16px]">
+                      <Link href="#" onClick={() => {
+                        selectCurrentBillType("CABLEBILLS")
+                        setCurrentTitle("Cable TV");
+                        toggleBillModalDisplay();
+                      }}>
+
+                        <div className="flex flex-col text-center">
+                          <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#D3FFB4] rounded-[8px]">
+                            <FaCreditCard />
+                          </div>
+                          <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">Buy Power</p>
                         </div>
-                        <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">Buy Power</p>
-                      </div>
-                    </Link>
-                  </div>
-                  <div className="bg-white py-7 pb-5 px-2 rounded-[16px]">
-                    <Link href="">
-                      <div className="flex flex-col text-center">
-                        <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#D3FFB4] rounded-[8px]">
-                          <FaCreditCard />
+                      </Link>
+                    </div>
+                  }
+                  {
+                    availableBills.includes("AIRTIME") &&
+                    <div className="bg-white py-7 pb-5 px-2 rounded-[16px]">
+                      <Link href="#" onClick={() => {
+                        selectCurrentBillType("AIRTIME")
+                        setCurrentTitle("Buy Airtime");
+                        toggleBillModalDisplay();
+                      }}>
+
+                        <div className="flex flex-col text-center">
+                          <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#D3FFB4] rounded-[8px]">
+                            <FaCreditCard />
+                          </div>
+                          <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">Buy Airtime</p>
                         </div>
-                        <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">Buy Airtime</p>
-                      </div>
-                    </Link>
-                  </div>
-                  <div className="bg-white py-7 pb-5 px-2 rounded-[16px]">
-                    <Link href="">
-                      <div className="flex flex-col text-center">
-                        <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#D3FFB4] rounded-[8px]">
-                          <FaCreditCard />
+                      </Link>
+                    </div>
+                  }
+                  {
+                    availableBills.includes("MOBILEDATA") &&
+                    <div className="bg-white py-7 pb-5 px-2 rounded-[16px]">
+                      <Link href="#" onClick={() => {
+                        selectCurrentBillType("MOBILEDATA")
+                        setCurrentTitle("Buy Data");
+                        toggleBillModalDisplay();
+                      }}>
+
+                        <div className="flex flex-col text-center">
+                          <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#D3FFB4] rounded-[8px]">
+                            <FaCreditCard />
+                          </div>
+                          <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">Buy Data</p>
                         </div>
-                        <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">Buy Data</p>
-                      </div>
-                    </Link>
-                  </div>
-                  <div className="bg-white py-7 pb-5 px-2 rounded-[16px]">
-                    <Link href="">
-                      <div className="flex flex-col text-center">
-                        <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#D3FFB4] rounded-[8px]">
-                          <FaCreditCard />
+                      </Link>
+                    </div>
+                  }
+                  {
+                    availableBills.includes("CABLEBILLS") &&
+                    <div className="bg-white py-7 pb-5 px-2 rounded-[16px]">
+                      <Link href="#" onClick={() => {
+                        selectCurrentBillType("CABLEBILLS")
+                        setCurrentTitle("Cable TV");
+                        toggleBillModalDisplay();
+                      }}>
+
+                        <div className="flex flex-col text-center">
+                          <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#D3FFB4] rounded-[8px]">
+                            <FaCreditCard />
+                          </div>
+                          <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">Cable TV</p>
                         </div>
-                        <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">Pay Taxes</p>
-                      </div>
-                    </Link>
-                  </div>
-                  <div className="bg-white py-7 pb-5 px-2 rounded-[16px]">
-                    <Link href="">
-                      <div className="flex flex-col text-center">
-                        <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#D3FFB4] rounded-[8px]">
-                          <FaCreditCard />
-                        </div>
-                        <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">Cable TV</p>
-                      </div>
-                    </Link>
-                  </div>
-                  <div className="bg-white py-7 pb-5 px-2 rounded-[16px]">
-                    <Link href="">
-                      <div className="flex flex-col text-center">
-                        <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#D3FFB4] rounded-[8px]">
-                          <FaCreditCard />
-                        </div>
-                        <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">Netflix</p>
-                      </div>
-                    </Link>
-                  </div>
-                  <div className="bg-white py-7 pb-5 px-2 rounded-[16px]">
-                    <Link href="">
-                      <div className="flex flex-col text-center">
-                        <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#D3FFB4] rounded-[8px]">
-                          <FaCreditCard />
-                        </div>
-                        <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">E-commerce</p>
-                      </div>
-                    </Link>
-                  </div>
-                  <div className="bg-white py-7 pb-5 px-2 rounded-[16px]">
-                    <Link href="">
-                      <div className="flex flex-col text-center">
-                        <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#D3FFB4] rounded-[8px]">
-                          <FaCreditCard />
-                        </div>
-                        <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">Payroll</p>
-                      </div>
-                    </Link>
-                  </div>
-                  <div className="bg-white py-7 pb-5 px-2 rounded-[16px]">
-                    <Link href="">
-                      <div className="flex flex-col text-center">
-                        <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#D3FFB4] rounded-[8px]">
-                          <FaCreditCard />
-                        </div>
-                        <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">Betting</p>
-                      </div>
-                    </Link>
-                  </div>
-                  <div className="bg-white py-7 pb-5 px-2 rounded-[16px]">
-                    <Link href="">
-                      <div className="flex flex-col text-center">
-                        <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#D3FFB4] rounded-[8px]">
-                          <FaCreditCard />
-                        </div>
-                        <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">Invoice & Receipt</p>
-                      </div>
-                    </Link>
-                  </div>
-                  <div className="bg-white py-7 pb-5 px-2 rounded-[16px]">
-                    <Link href="">
-                      <div className="flex flex-col text-center">
-                        <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#D3FFB4] rounded-[8px]">
-                          <FaCreditCard />
-                        </div>
-                        <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">Debit & Credit Card</p>
-                      </div>
-                    </Link>
-                  </div>
-                  <div className="bg-white py-7 pb-5 px-2 rounded-[16px]">
-                    <Link href="">
-                      <div className="flex flex-col text-center">
-                        <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#D3FFB4] rounded-[8px]">
-                          <FaCreditCard />
-                        </div>
-                        <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">Buy JAMB</p>
-                      </div>
-                    </Link>
-                  </div>
+                      </Link>
+                    </div>
+                  }
                 </div>
               </div>
             </div>
@@ -566,6 +559,9 @@ export default function Home() {
             </div>
             {/* md:min-h-[860px] */}
           </div>
+          <Modal open={openBillModal} footer={null}>
+            <BillPaymentAction hideTitle={false} openBillModal={openBillModal} title={currentTitle} source="nav" closeBillModal={toggleBillModalDisplay} currentBill={activeSelection} toggleBillDisplay={toggleBillModalDisplay} />
+          </Modal>
         </>
       </Layout >
     </div >

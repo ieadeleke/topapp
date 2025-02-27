@@ -62,6 +62,7 @@ export type BillPaymentParams = {
 }
 
 export type BillPaymentResponse = {
+    status: string
     settings: any,
     Transaction: any
 }

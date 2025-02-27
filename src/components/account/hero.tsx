@@ -101,7 +101,7 @@ export const AccountHero = (props: AccountHeroInterface) => {
             <div className="flex flex-col h-full justify-between">
                 <div>
                     <p className="text-sm text-white">Wallet Balance</p>
-                    <h1 className="text-3xl mb-3 text-white font-bold leading-relaxed"><span className="text-sm">NGN</span>-</h1>
+                    <h1 className="text-3xl mb-3 text-white font-bold leading-relaxed"><span className="text-sm">NGN</span>****</h1>
                 </div>
                 <div>
                     {/* <button className="text-sm text-black rounded-lg py-3 px-4 bg-primary flex items-center gap-2">Fund Wallet</button> */}

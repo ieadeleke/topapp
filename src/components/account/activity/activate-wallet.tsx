@@ -11,6 +11,7 @@ import { useActivateUserWallet } from "@/utils/apiHooks/profile/useActivateWalle
 import type { DatePickerProps } from 'antd';
 import { DatePicker, Space } from 'antd';
 import { GlobalActionContext } from "@/context/GlobalActionContext";
+import UserContext from "@/context/UserContext";
 
 interface ActivateWalletProps {
     open: boolean;
@@ -19,6 +20,7 @@ interface ActivateWalletProps {
 
 const ActivateWallet = (props: ActivateWalletProps) => {
 
+    const { user } = useContext(UserContext);
     const validator = yup.object().shape({
         bvn: yup.string().required('Please enter bvn'),
         email: yup.string().email().required('Please enter your email'),
@@ -85,7 +87,7 @@ const ActivateWallet = (props: ActivateWalletProps) => {
                         <div className="grid grid-cols-2 gap-3 mb-3">
                             <div className="form-group">
                                 <label htmlFor="" className="text-[#1B1B1B] text-sm block mb-2">Email</label>
-                                <Controller name="email" control={control}
+                                <Controller name="email" control={control} defaultValue={user?.email}
                                     render={({ field }) => (
                                         <Input {...field} className="h-[3.5rem] rounded-[13px] border-2 border-solid border-[#7575754D]" name="email" />
                                     )} />
@@ -93,7 +95,7 @@ const ActivateWallet = (props: ActivateWalletProps) => {
                             </div>
                             <div className="form-group">
                                 <label htmlFor="" className="text-[#1B1B1B] text-sm block mb-2">Phone Number</label>
-                                <Controller name="phoneNumber" control={control}
+                                <Controller name="phoneNumber" control={control} defaultValue={user?.phoneNumber}
                                     render={({ field }) => (
                                         <Input {...field} type="number" className="h-[3.5rem] rounded-[13px] border-2 border-solid border-[#7575754D]" name="email" />
                                     )} />
