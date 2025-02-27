@@ -1,9 +1,12 @@
+"use client"
+
 import Link from "next/link";
 import { IoIosArrowDown } from "react-icons/io";
 import LogoImg from "@/assets/images/logo-full.svg";
 import Image from "next/image";
-import { Dropdown, MenuProps } from "antd";
+import { Dropdown, MenuProps, Drawer, Modal, Input } from "antd";
 
+import { FaCreditCard } from "react-icons/fa6";
 import { FaArrowRight } from "react-icons/fa6";
 
 import AboutIcon1 from "@/assets/images/nav/about.svg";
@@ -11,7 +14,16 @@ import AboutIcon2 from "@/assets/images/nav/about-2.svg";
 import AboutIcon3 from "@/assets/images/nav/about-3.svg";
 import AboutIcon4 from "@/assets/images/nav/about-4.svg";
 
+import { ImCancelCircle } from "react-icons/im";
+
+import { HiOutlineMenuAlt3 } from "react-icons/hi";
+
 import WhiteNavLogo from "@/assets/images/white-logo.svg";
+import { useContext, useEffect, useState } from "react";
+import UserContext from "@/context/UserContext";
+import BillPayment from "./account/activity/billpayment";
+import { useFetchAvailableBills } from "@/utils/apiHooks/profile/useFetchAvailableBills";
+import BillPaymentAction from "./account/activity/billpaymentaction";
 
 
 interface NavInterface {
@@ -19,6 +31,17 @@ interface NavInterface {
     whiteNav?: boolean
 }
 const Navigation = (props: NavInterface) => {
+
+    const { fetchAvailableBillOptions, data, isLoading, error } = useFetchAvailableBills();
+
+    const [currentTitle, setCurrentTitle] = useState("");
+    const [activeSelection, setActiveSelection] = useState<string>("single");
+    const [billOptions, setBillOptions] = useState<any[]>([]);
+    const [availableBills, setAvailableBills] = useState<string[]>([]);
+
+    const [openMenu, setOpenMenu] = useState(false);
+    const [openBillModal, setOpenBillModal] = useState(false);
+    const [currentBillView, setCurrentBillView] = useState("view");
 
     const AboutUsItems: MenuProps["items"] = [
         {
@@ -86,13 +109,12 @@ const Navigation = (props: NavInterface) => {
                         </span>
                     </Link>
 
-                    <Link href="/" className="flex items-start gap-4">
+                    <Link href="/tax-and-government" className="flex items-start gap-4">
                         <span className="text-xl">
                             <Image src={AboutIcon3} alt="about us" className="w-full h-full" />
                         </span>
                         <div>
                             <p className="font-camptonsemi text-base mb-1">Tax & Government API</p>
-                            {/* <p className="text-sm text-gray-500 font-camptonthin text-[#353535]">Stunning Web Design</p> */}
                         </div>
                         <span>
                             <FaArrowRight className="text-[#00555A] text-xl" />
@@ -115,6 +137,7 @@ const Navigation = (props: NavInterface) => {
             ),
         },
     ];
+
     const DeveloperItems: MenuProps["items"] = [
         {
             key: "about-3",
@@ -157,27 +180,52 @@ const Navigation = (props: NavInterface) => {
                             <FaArrowRight className="text-[#00555A] text-xl" />
                         </span>
                     </Link>
-
-                    <Link href="/careers" className="flex items-start gap-4">
-                        <span className="text-xl">
-                            <Image src={AboutIcon4} alt="about us" className="w-full h-full" />
-                        </span>
-                        <div>
-                            <p className="font-camptonsemi text-base mb-1">Careers</p>
-                            {/* <p className="text-sm text-gray-500 font-camptonthin text-[#353535]">Join our wonderful team</p> */}
-                        </div>
-                        <span>
-                            <FaArrowRight className="text-[#00555A] text-xl" />
-                        </span>
-                    </Link>
                 </div>
             ),
         },
     ];
 
+    const toggleDrawer = () => setOpenMenu(!openMenu);
+    const toggleBillModalDisplay = () => {
+        setOpenBillModal(!openBillModal);
+        setCurrentBillView("view");
+    };
+
+    const { user } = useContext(UserContext)
+
+    useEffect(() => {
+        if (data) {
+            let availableData = data.map((bill: any) => {
+                return bill.code;
+            })
+            setBillOptions(data);
+            setAvailableBills(availableData);
+        }
+    }, [data]);
+
+    const selectCurrentBillType = (e: string) => {
+        let data = billOptions.find(bill => {
+            if (bill.code === e) {
+                return bill
+            }
+        })
+        setActiveSelection(data);
+    }
+
+    const toggleBillDisplay = () => {
+        setCurrentBillView("payment");
+    }
+
+    useEffect(() => {
+        const fetchAvailableBillPaymentOptions = () => {
+            fetchAvailableBillOptions();
+        }
+        fetchAvailableBillPaymentOptions();
+    }, []);
+
     return (
         <div>
-            <div className={`flex justify-between items-center px-20 py-7 w-full max-w-[2000px] top-0 ${props.navPosition ? props.navPosition : "relative"}`}>
+            <div className={`flex justify-between items-center z-40 px-5 md:px-20 py-7 w-full max-w-[2000px] top-0 ${props.navPosition ? props.navPosition : "relative"}`}>
                 <div>
                     <Link href="/">
                         {
@@ -201,7 +249,7 @@ const Navigation = (props: NavInterface) => {
                             </Dropdown>
                         </li>
                         <li>
-                            <Link className="bg-primary text-sm text-dark rounded-full py-3 px-5 flex gap-2 items-center" href="/payment/harmonize">Pay Bills</Link>
+                            <Link onClick={toggleBillModalDisplay} className="bg-primary text-sm text-dark rounded-full py-3 px-5 flex gap-2 items-center" href="#">Pay Bills</Link>
                         </li>
                         <li>
                             <Dropdown menu={{ items: DeveloperItems }} trigger={["click"]} overlayClassName="custom-dropdown">
@@ -212,11 +260,286 @@ const Navigation = (props: NavInterface) => {
                             <Link className="bg-primary text-sm text-dark rounded-full py-3 px-5 flex gap-2 items-center" href="/contact">Contact Us</Link>
                         </li>
                         <li>
-                            <Link className="bg-dark text-sm text-primary rounded-full py-3 px-5 flex gap-2 items-center" href="/auth/signup">Get Started</Link>
+                            {
+                                user?.firstName.length ?
+                                    <Link className="bg-dark text-sm text-primary rounded-full py-3 px-5 flex gap-2 items-center" href="/account/overview">Dashboard</Link>
+                                    :
+                                    <Link className="bg-dark text-sm text-primary rounded-full py-3 px-5 flex gap-2 items-center" href="/auth/options">Get Started</Link>
+                            }
                         </li>
                     </ul>
                 </div>
+                <div className="block md:hidden">
+                    <HiOutlineMenuAlt3 className={`${props.whiteNav ? "text-white" : "text-black"} text-3xl`} onClick={toggleDrawer} />
+                </div>
             </div>
+            <Modal open={openBillModal} onCancel={toggleBillModalDisplay} onClose={toggleBillModalDisplay} footer={null}>
+                <div className="pt-4 pb-8">
+                    <h4 className="text-2xl text-[#1B1B1B] text-center">Pay Bills</h4>
+                </div>
+                {
+                    currentBillView === "view" ?
+                        <div className="grid grid-cols-3 gap-4">
+                            {
+                                availableBills.includes("UTILITYBILLS") &&
+                                <div className="bg-[#F2F2F2] py-7 pb-5 px-2 rounded-[16px]">
+                                    <Link href="#" onClick={() => {
+                                        selectCurrentBillType("UTILITYBILLS")
+                                        setCurrentTitle("Buy Power");
+                                        // toggleBillModalDisplay();
+                                        setCurrentBillView("payment")
+                                    }}>
+                                        <div className="flex flex-col text-center">
+                                            <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#C6C6C6] rounded-[8px]">
+                                                <FaCreditCard />
+                                            </div>
+                                            <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">Buy Power</p>
+                                        </div>
+                                    </Link>
+                                </div>
+                            }
+                            {
+                                availableBills.includes("AIRTIME") &&
+                                <div className="bg-[#F2F2F2] py-7 pb-5 px-2 rounded-[16px]">
+                                    <Link href="#" onClick={() => {
+                                        selectCurrentBillType("AIRTIME")
+                                        setCurrentTitle("Buy Airtime");
+                                        // toggleBillModalDisplay();
+                                        setCurrentBillView("payment")
+                                    }}>
+                                        <div className="flex flex-col text-center">
+                                            <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#C6C6C6] rounded-[8px]">
+                                                <FaCreditCard />
+                                            </div>
+                                            <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">Buy Airtime</p>
+                                        </div>
+                                    </Link>
+                                </div>
+                            }
+                            {
+                                availableBills.includes("MOBILEDATA") &&
+                                <div className="bg-[#F2F2F2] py-7 pb-5 px-2 rounded-[16px]">
+                                    <Link href="#" onClick={() => {
+                                        selectCurrentBillType("MOBILEDATA")
+                                        setCurrentTitle("Buy Data");
+                                        // toggleBillModalDisplay();
+                                        setCurrentBillView("payment")
+                                    }}>
+                                        <div className="flex flex-col text-center">
+                                            <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#C6C6C6] rounded-[8px]">
+                                                <FaCreditCard />
+                                            </div>
+                                            <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">Buy Data</p>
+                                        </div>
+                                    </Link>
+                                </div>
+                            }
+                            {/* <div className="bg-[#F2F2F2] py-7 pb-5 px-2 rounded-[16px]">
+                        <Link href="#" onClick={() => {
+                        selectCurrentBillType("AIRTIME")
+                                            setCurrentTitle("Buy Airtime");
+                                            // toggleBillModalDisplay();
+                                            setCurrentBillView("payment")}}>
+                            <div className="flex flex-col text-center">
+                                <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#C6C6C6] rounded-[8px]">
+                                    <FaCreditCard />
+                                </div>
+                                <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">Pay Taxes</p>
+                            </div>
+                        </Link>
+                    </div> */}
+                            {
+                                availableBills.includes("CABLEBILLS") &&
+                                <div className="bg-[#F2F2F2] py-7 pb-5 px-2 rounded-[16px]">
+                                    <Link href="#" onClick={() => {
+                                        selectCurrentBillType("CABLEBILLS")
+                                        setCurrentTitle("Cable TV");
+                                        // toggleBillModalDisplay();
+                                        setCurrentBillView("payment")
+                                    }}>
+                                        <div className="flex flex-col text-center">
+                                            <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#C6C6C6] rounded-[8px]">
+                                                <FaCreditCard />
+                                            </div>
+                                            <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">Cable TV</p>
+                                        </div>
+                                    </Link>
+                                </div>
+                            }
+                            {/* <div className="bg-[#F2F2F2] py-7 pb-5 px-2 rounded-[16px]">
+                        <Link href="#" onClick={() => {
+                        selectCurrentBillType("AIRTIME")
+                                            setCurrentTitle("Buy Airtime");
+                                            // toggleBillModalDisplay();
+                                            setCurrentBillView("payment")}}>
+                            <div className="flex flex-col text-center">
+                                <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#C6C6C6] rounded-[8px]">
+                                    <FaCreditCard />
+                                </div>
+                                <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">Netflix</p>
+                            </div>
+                        </Link>
+                    </div> */}
+                            {/* <div className="bg-[#F2F2F2] py-7 pb-5 px-2 rounded-[16px]">
+                        <Link href="#" onClick={() => {
+                        selectCurrentBillType("AIRTIME")
+                                            setCurrentTitle("Buy Airtime");
+                                            // toggleBillModalDisplay();
+                                            setCurrentBillView("payment")}}>
+                            <div className="flex flex-col text-center">
+                                <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#C6C6C6] rounded-[8px]">
+                                    <FaCreditCard />
+                                </div>
+                                <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">E-commerce</p>
+                            </div>
+                        </Link>
+                    </div> */}
+                            {/* <div className="bg-[#F2F2F2] py-7 pb-5 px-2 rounded-[16px]">
+                                <Link href="#" onClick={() => {
+                                    selectCurrentBillType("AIRTIME")
+                                    setCurrentTitle("Buy Airtime");
+                                    // toggleBillModalDisplay();
+                                    setCurrentBillView("payment")
+                                }}>
+                                    <div className="flex flex-col text-center">
+                                        <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#C6C6C6] rounded-[8px]">
+                                            <FaCreditCard />
+                                        </div>
+                                        <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">Payroll</p>
+                                    </div>
+                                </Link>
+                            </div> */}
+                            {/* <div className="bg-[#F2F2F2] py-7 pb-5 px-2 rounded-[16px]">
+                        <Link href="#" onClick={() => {
+                        selectCurrentBillType("AIRTIME")
+                                            setCurrentTitle("Buy Airtime");
+                                            // toggleBillModalDisplay();
+                                            setCurrentBillView("payment")}}>
+                            <div className="flex flex-col text-center">
+                                <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#C6C6C6] rounded-[8px]">
+                                    <FaCreditCard />
+                                </div>
+                                <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">Betting</p>
+                            </div>
+                        </Link>
+                    </div> */}
+                            {/* <div className="bg-[#F2F2F2] py-7 pb-5 px-2 rounded-[16px]">
+                        <Link href="#" onClick={() => {
+                        selectCurrentBillType("AIRTIME")
+                                            setCurrentTitle("Buy Airtime");
+                                            // toggleBillModalDisplay();
+                                            setCurrentBillView("payment")}}>
+                            <div className="flex flex-col text-center">
+                                <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#C6C6C6] rounded-[8px]">
+                                    <FaCreditCard />
+                                </div>
+                                <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">Invoice & Receipt</p>
+                            </div>
+                        </Link>
+                    </div>
+                    <div className="bg-[#F2F2F2] py-7 pb-5 px-2 rounded-[16px]">
+                        <Link href="#" onClick={() => {
+                        selectCurrentBillType("AIRTIME")
+                                            setCurrentTitle("Buy Airtime");
+                                            // toggleBillModalDisplay();
+                                            setCurrentBillView("payment")}}>
+                            <div className="flex flex-col text-center">
+                                <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#C6C6C6] rounded-[8px]">
+                                    <FaCreditCard />
+                                </div>
+                                <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">Debit & Credit Card</p>
+                            </div>
+                        </Link>
+                    </div> */}
+                            {/* <div className="bg-[#F2F2F2] py-7 pb-5 px-2 rounded-[16px]">
+                        <Link href="#" onClick={() => {
+                        selectCurrentBillType("AIRTIME")
+                                            setCurrentTitle("Buy Airtime");
+                                            // toggleBillModalDisplay();
+                                            setCurrentBillView("payment")}}>
+                            <div className="flex flex-col text-center">
+                                <div className="mx-auto flex items-center mb-5 justify-center size-10 bg-[#C6C6C6] rounded-[8px]">
+                                    <FaCreditCard />
+                                </div>
+                                <p className="font-satoshiregular text-sm text-[#1B1B1B] block w-full">Buy JAMB</p>
+                            </div>
+                        </Link>
+                    </div> */}
+                        </div>
+                        :
+                        <div>
+                            <BillPaymentAction hideTitle={true} openBillModal={openBillModal} title={currentTitle} source="nav" closeBillModal={toggleBillModalDisplay} currentBill={activeSelection} toggleBillDisplay={toggleBillDisplay} />
+                            {/* <form action="">
+                                <div className="flex">
+                                    <div className="form-group">
+                                        <label className="block w-full" htmlFor="">Your full name</label>
+                                        <Input type="email"
+                                            inputMode="email" placeholder="Enter your email" {...field}
+                                            style={{ height: "4rem" }}
+                                            // value={email} onChange={onEmailEntered}
+                                            className="login-box rounded-lg px-2 text-sm w-full" />
+                                            )} />
+                                    </div>
+                                    <div className="form-group">
+                                        <label className="block w-full" htmlFor="">Your Email</label>
+                                    </div>
+                                </div>
+                            </form> */}
+                        </div>
+                }
+            </Modal>
+            <Drawer open={openMenu} onClose={toggleDrawer} footer={null}>
+                <div>
+                    <div className="px-5 py-5 pb-10 flex items-center justify-between">
+                        <div className="">
+                            <Image src={LogoImg} alt="logo" className="w-[50%]" />
+                        </div>
+                        <div onClick={toggleDrawer}>
+                            <ImCancelCircle className="text-3xl text-danger" />
+                        </div>
+                    </div>
+                    <ul className="flex flex-col gap-4">
+                        <li className="border-b border-solid border-black pb-4 text-black">
+                            <Link href="/" className="font-campton text-base p-4">
+                                Home</Link>
+                        </li>
+                        <li className="border-b border-solid border-black pb-4 text-black">
+                            <Link href="/about" className="font-campton text-base p-4">
+                                About Us</Link>
+                        </li>
+                        <li className="border-b border-solid border-black pb-4 text-black">
+                            <Link href="/payment-gateway" className="font-campton text-base p-4">
+                                Payment Gateway</Link>
+                        </li>
+                        <li className="border-b border-solid border-black pb-4 text-black">
+                            <Link href="/hr-solution" className="font-campton text-base p-4">
+                                HR Solution</Link>
+                        </li>
+                        <li className="border-b border-solid border-black pb-4 text-black">
+                            <Link href="/wallet" className="font-campton text-base p-4">
+                                Wallet Services</Link>
+                        </li>
+                        {/* <li className="border-b border-solid border-black pb-4 text-black">
+                            <Link href="/tax-and-government-api" className="font-campton text-base p-4">
+                                Tax and Government API</Link>
+                        </li> */}
+                        <li className="border-b border-solid border-black pb-4 text-black">
+                            <Link href="/contact" className="font-campton text-base p-4">
+                                Contact Us</Link>
+                        </li>
+                        <li className="border-b border-solid border-black pb-4 text-black">
+                            <Link href="/auth/login" className="font-campton text-base p-4">
+                                Sign In
+                            </Link>
+                        </li>
+                        <li className="border-b border-solid border-black pb-4 text-black">
+                            <Link href="/auth/signup" className="font-campton text-base p-4">
+                                Create a Free Account
+                            </Link>
+                        </li>
+                    </ul>
+                </div>
+            </Drawer>
         </div>
     )
 }

@@ -38,8 +38,49 @@ export type ActivateWalletParams = {
     dateOfBirth: string
 }
 
+export type BillInfoParams = {
+    biller_code: string;
+}
+
+export type BillCustomerInfoParams = {
+    biller_code: string;
+    customer: string;
+    item_code: string;
+}
+
+export type BillPaymentParams = {
+
+    description: string,
+    biller_code: string,
+    billName: string,
+    item_code: string,
+    transactionData: {
+        key: string
+    },
+    amount: number,
+    customer: string
+}
+
+export type BillPaymentResponse = {
+    status: string
+    settings: any,
+    Transaction: any
+}
+
 export type AvailableBillResponse = {
-    Bills: any
+    Bills: {
+        data: [],
+        message: string,
+        status: string
+    }
+}
+
+export type AvailableBillCustomerResponse = {
+    message?: string,
+    Detail?: {
+        status?: string,
+        data?: any
+    }
 }
 
 export type ActivateWalletResponse = {
@@ -65,7 +106,8 @@ export type SetAgentPinParams = {
 export type SetAgentPinResponse = {
     message?: string,
     status?: string,
-    profile?: any
+    profile?: any,
+    BillCustomerInfoParams
 }
 
 RefreshAgentWalletResponse

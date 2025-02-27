@@ -6,9 +6,13 @@ import DownloadImg from "@/assets/images/account/icons/cloud-upload.svg";
 import AccountLayout from "@/components/account/layout";
 // import useFetchWalletTransactions from "@/utils/apiHooks/wallets/useFetchWalletTransactions";
 
-import { Table } from "antd";
+import { Table, Spin } from "antd";
+import { LoadingOutlined } from '@ant-design/icons';
 // import { useEffect, useState } from "react";
+import { HiOutlineInbox } from "react-icons/hi2";
+
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 const Dashboard = () => {
 
@@ -16,6 +20,7 @@ const Dashboard = () => {
 
     // const [selectedHistory, setSelectedHistory] = useState();
     // const [history, setHistory] = useState();
+    const [loadingData, setLoadingData] = useState(true);
 
     const dataSource = [
         {
@@ -90,6 +95,11 @@ const Dashboard = () => {
     //         setHistory(walletData);
     //     };
     // }, [walletData])
+    useEffect(() => {
+        setTimeout(() => {
+            setLoadingData(false);
+        }, 4000);
+    }, [])
 
     // useEffect(() => {
     //     fetchWalletDetails();
@@ -105,7 +115,7 @@ const Dashboard = () => {
                                 <div>
                                     <h4 className="text-3xl">Transaction History</h4>
                                 </div>
-                                <div className="flex gap-3">
+                                {/* <div className="flex gap-3">
                                     <div className="border border-solid border rounded-[12px] py-3 px-5 gap-10 flex items-center gap-5">
                                         <span className="text-[13px]">Filter:</span>
                                         <span>
@@ -118,10 +128,17 @@ const Dashboard = () => {
                                             <Image src={DownloadImg} alt="filter icon" className="" />
                                         </span>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
-                        <Table dataSource={dataSource} columns={columns} rowClassName={() => "custom-row"} className="custom-table" />
+                        {
+                            loadingData ? <Spin indicator={<LoadingOutlined spin />} /> :
+                                <div className="py-5">
+                                    <HiOutlineInbox className="w-max mx-auto text-6xl mb-2" />
+                                    <p className="text-base text-center">You have not carried out any transaction yet</p>
+                                </div>
+                        }
+                        {/* <Table dataSource={dataSource} columns={columns} rowClassName={() => "custom-row"} className="custom-table" /> */}
                     </div>
                 </>
             </AccountLayout>

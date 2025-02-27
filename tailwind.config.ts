@@ -23,6 +23,7 @@ export default {
         camptonthin: "Campton Light",
         satoshi: "Satoshi Medium",
         satoshiregular: "Satoshi Regular",
+        inter: "Inter",
         satoshibold: "Satoshi Bold",
         satoshilight: "Satoshi Light",
         clashDisplay: "ClashDisplay",
@@ -31,6 +32,8 @@ export default {
       },
       gridTemplateColumns: {
         "1/2": "1fr 2fr",
+        "1.5/1": "1.5fr 1fr",
+        "1/1.5": "1fr 1.5fr",
         "2/1": "2fr 1fr",
         "1/1.5/1.5": "1.5fr 3.5fr 1.5fr",
       },
