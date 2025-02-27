@@ -23,8 +23,6 @@ import {
   const TextInput = ({ className, ...props }: InputProps) => (
     <RegularTextInput className={cn("w-full md:w-96", className)} {...props} />
   );
-  
-  
   type PaymentContentProps = {
     tx_reference: string;
     mda?: string;
